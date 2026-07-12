@@ -82,15 +82,25 @@
 
     background:#f4f5f7;
 
+    color:#484456;
+
     cursor:pointer;
 
     transition:.25s;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
 
 }
 
 .nav-btn:hover{
 
     background:#ececf2;
+
+    color:#191c1e;
 
 }
 
