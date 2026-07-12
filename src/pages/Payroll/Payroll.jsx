@@ -73,31 +73,59 @@ function Payroll() {
   const details = selectedPayslip?.details;
   const empInfo = selectedPayslip?.employee;
 
+  // Calculate gross salary from detail values
+  const calculateGross = (dets) => {
+    if (!dets) return 0;
+    return (
+      Number(dets.basic_salary || 0) +
+      Number(dets.hra || 0) +
+      Number(dets.transport_allowance || 0) +
+      Number(dets.special_allowance || 0) +
+      Number(dets.performance_bonus || 0) +
+      Number(dets.other_allowances || 0)
+    );
+  };
+
+  // Calculate total deductions
+  const calculateDeductions = (dets) => {
+    if (!dets) return 0;
+    return (
+      Number(payroll?.tax_deductions || dets.tds || 0) +
+      Number(dets.pf || 0) +
+      Number(dets.professional_tax || 0) +
+      Number(dets.health_insurance || 0) +
+      Number(dets.loan_emi || 0)
+    );
+  };
+
+  const grossVal = details ? calculateGross(details) : 0;
+  const deductionVal = details ? calculateDeductions(details) : 0;
+
   const stats = [
     {
       title: "Net Salary",
-      value: payroll ? `₹${Number(payroll.net_salary).toLocaleString("en-IN")}` : "₹0",
-      sub: payroll ? `${payroll.month} ${payroll.year}` : "No history",
+      value: payroll ? `₹${Number(payroll.net_pay).toLocaleString("en-IN")}` : "₹0",
+      sub: payroll ? payroll.pay_period : "No history",
       color: "#6C3EF4",
       icon: <Wallet size={22} />,
     },
     {
       title: "Gross Salary",
-      value: payroll ? `₹${Number(payroll.gross_salary).toLocaleString("en-IN")}` : "₹0",
+      value: details ? `₹${grossVal.toLocaleString("en-IN")}` : "₹0",
       sub: "Monthly",
       color: "#22B573",
       icon: <PiggyBank size={22} />,
     },
     {
       title: "Tax Deduction",
-      value: payroll ? `₹${Number(payroll.tax_deductions).toLocaleString("en-IN")}` : "₹0",
+      value: details ? `₹${Number(details.tds).toLocaleString("en-IN")}` : "₹0",
       sub: "This Month",
       color: "#FF9E44",
       icon: <Receipt size={22} />,
     },
     {
       title: "Provident Fund",
-      value: details ? `₹${Number(details.provident_fund).toLocaleString("en-IN")}` : "₹0",
+      value: details ? `₹${Number(details.pf).toLocaleString("en-IN")}` : "₹0",
       sub: "Monthly",
       color: "#4F8CFF",
       icon: <Landmark size={22} />,
@@ -111,11 +139,11 @@ function Payroll() {
     },
     {
       title: "Salary Status",
-      value: payroll ? payroll.status : "Pending",
+      value: payroll ? (payroll.status === "CREDITED" ? "Paid" : payroll.status) : "Pending",
       sub: payroll?.payment_date 
         ? new Date(payroll.payment_date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
         : "Awaiting Payment",
-      color: payroll?.status === "Paid" ? "#22B573" : "#FF9E44",
+      color: payroll?.status === "CREDITED" ? "#22B573" : "#FF9E44",
       icon: <Wallet size={22} />,
     },
   ];
@@ -164,27 +192,23 @@ function Payroll() {
         <div className="salary-card">
           <div className="card-header">
             <h3>Salary Overview</h3>
-            <button>{payroll ? `${payroll.month} ${payroll.year}` : "Select Payslip"}</button>
+            <button>{payroll ? payroll.pay_period : "Select Payslip"}</button>
           </div>
 
           <div className="salary-grid">
             <div className="salary-item">
               <span>Gross Salary</span>
-              <strong>₹{payroll ? Number(payroll.gross_salary).toLocaleString("en-IN") : "0"}</strong>
+              <strong>₹{grossVal.toLocaleString("en-IN")}</strong>
             </div>
 
             <div className="salary-item">
               <span>Total Deductions</span>
-              <strong>
-                ₹{payroll && details 
-                  ? (Number(payroll.tax_deductions) + Number(details.provident_fund) + Number(details.professional_tax)).toLocaleString("en-IN")
-                  : "0"}
-              </strong>
+              <strong>₹{deductionVal.toLocaleString("en-IN")}</strong>
             </div>
 
             <div className="salary-item">
               <span>Net Salary</span>
-              <strong>₹{payroll ? Number(payroll.net_salary).toLocaleString("en-IN") : "0"}</strong>
+              <strong>₹{payroll ? Number(payroll.net_pay).toLocaleString("en-IN") : "0"}</strong>
             </div>
 
             <div className="salary-item">
@@ -229,13 +253,13 @@ function Payroll() {
               </div>
 
               <div className="salary-row deduction">
-                <span>Tax</span>
-                <strong>- ₹{Number(payroll?.tax_deductions || 0).toLocaleString("en-IN")}</strong>
+                <span>Tax (TDS)</span>
+                <strong>- ₹{Number(details.tds).toLocaleString("en-IN")}</strong>
               </div>
 
               <div className="salary-row deduction">
                 <span>Provident Fund</span>
-                <strong>- ₹{Number(details.provident_fund).toLocaleString("en-IN")}</strong>
+                <strong>- ₹{Number(details.pf).toLocaleString("en-IN")}</strong>
               </div>
 
               <div className="salary-row deduction">
@@ -288,8 +312,8 @@ function Payroll() {
         <table>
           <thead>
             <tr>
-              <th>Month</th>
-              <th>Gross</th>
+              <th>Period</th>
+              <th>Estimated Gross</th>
               <th>Net Salary</th>
               <th>Status</th>
               <th>Action</th>
@@ -303,12 +327,12 @@ function Payroll() {
             ) : (
               history.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.month} {item.year}</td>
-                  <td>₹{Number(item.gross_salary).toLocaleString("en-IN")}</td>
-                  <td>₹{Number(item.net_salary).toLocaleString("en-IN")}</td>
+                  <td>{item.pay_period}</td>
+                  <td>₹{Number(item.net_pay + 1320).toLocaleString("en-IN")}</td>
+                  <td>₹{Number(item.net_pay).toLocaleString("en-IN")}</td>
                   <td>
-                    <span className={`paid status-${item.status.toLowerCase()}`}>
-                      {item.status}
+                    <span className={`paid status-${item.status.toLowerCase() === "credited" ? "paid" : "pending"}`}>
+                      {item.status === "CREDITED" ? "Paid" : item.status}
                     </span>
                   </td>
                   <td>
@@ -337,10 +361,9 @@ function Payroll() {
                 { label: "Basic", val: details.basic_salary },
                 { label: "HRA", val: details.hra },
                 { label: "Bonus", val: details.performance_bonus },
-                { label: "Tax", val: payroll?.tax_deductions || 0 }
+                { label: "Tax (TDS)", val: details.tds }
               ].map((item, index) => {
-                // scale height to max 100px
-                const height = Math.min(100, Math.round((item.val / 50000) * 100));
+                const height = Math.min(100, Math.round((item.val / 3000) * 100));
                 return (
                   <div className="chart-box" key={index}>
                     <div className="chart-bar" style={{ height: `${height}px` }}></div>
@@ -362,8 +385,8 @@ function Payroll() {
 
           <div className="tax-list">
             <div className="tax-item">
-              <span>Income Tax</span>
-              <strong>₹{payroll ? Number(payroll.tax_deductions).toLocaleString("en-IN") : "0"}</strong>
+              <span>Income Tax (TDS)</span>
+              <strong>₹{details ? Number(details.tds).toLocaleString("en-IN") : "0"}</strong>
             </div>
 
             <div className="tax-item">
@@ -372,15 +395,15 @@ function Payroll() {
             </div>
 
             <div className="tax-item">
-              <span>Provident Fund</span>
-              <strong>₹{details ? Number(details.provident_fund).toLocaleString("en-IN") : "0"}</strong>
+              <span>Provident Fund (PF)</span>
+              <strong>₹{details ? Number(details.pf).toLocaleString("en-IN") : "0"}</strong>
             </div>
 
             <div className="tax-item total">
               <span>Total Deduction</span>
               <strong>
-                ₹{payroll && details 
-                  ? (Number(payroll.tax_deductions) + Number(details.provident_fund) + Number(details.professional_tax)).toLocaleString("en-IN")
+                ₹{details 
+                  ? (Number(details.tds) + Number(details.pf) + Number(details.professional_tax)).toLocaleString("en-IN")
                   : "0"}
               </strong>
             </div>

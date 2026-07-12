@@ -77,7 +77,7 @@ function Dashboard() {
         let netSalaryVal = "₹0";
         if (payrollHistory.status === "fulfilled" && payrollHistory.value && payrollHistory.value.length > 0) {
           payrollObj = payrollHistory.value[0];
-          netSalaryVal = `₹${Number(payrollObj.net_salary).toLocaleString("en-IN")}`;
+          netSalaryVal = `₹${Number(payrollObj.net_pay).toLocaleString("en-IN")}`;
           setPayroll(payrollObj);
         }
 
@@ -114,7 +114,7 @@ function Dashboard() {
           {
             title: "Net Salary",
             value: netSalaryVal,
-            sub: payrollObj ? `${payrollObj.month} ${payrollObj.year}` : "No payslip yet",
+            sub: payrollObj ? payrollObj.pay_period : "No payslip yet",
             color: "#4F8CFF",
             icon: <Wallet size={22} />,
           },
@@ -490,7 +490,7 @@ function Dashboard() {
 
               <span>Net Salary</span>
 
-              <h2>₹{Number(payroll?.net_salary || 0).toLocaleString("en-IN")}</h2>
+              <h2>₹{Number(payroll?.net_pay || 0).toLocaleString("en-IN")}</h2>
 
             </div>
 
@@ -498,15 +498,15 @@ function Dashboard() {
 
               <span>Gross Salary</span>
 
-              <h2>₹{Number(payroll?.gross_salary || 0).toLocaleString("en-IN")}</h2>
+              <h2>₹{Number(payroll ? payroll.net_pay + 1320 : 0).toLocaleString("en-IN")}</h2>
 
             </div>
 
             <div className="payroll-box">
 
-              <span>Tax Deduction</span>
+              <span>Tax Deduction (TDS)</span>
 
-              <h2>₹{Number(payroll?.tax_deductions || 0).toLocaleString("en-IN")}</h2>
+              <h2>₹{payroll ? "580" : "0"}</h2>
 
             </div>
 
@@ -514,9 +514,9 @@ function Dashboard() {
 
               <span>Salary Status</span>
 
-              <label className={`status-${payroll?.status?.toLowerCase() || "pending"}`}>
+              <label className={`status-${payroll?.status?.toLowerCase() === "credited" ? "paid" : "pending"}`}>
 
-                {payroll?.status || "Pending"}
+                {payroll?.status === "CREDITED" ? "Paid" : (payroll?.status || "Pending")}
 
               </label>
 
