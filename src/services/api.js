@@ -54,6 +54,10 @@ export const employeeAPI = {
     const response = await api.get("/employees/me");
     return response.data;
   },
+  getDirectory: async () => {
+    const response = await api.get("/employees");
+    return response.data;
+  },
   updateProfile: async (data) => {
     const response = await api.put("/employees/me", data);
     return response.data;
@@ -189,6 +193,25 @@ export const supportAPI = {
 export const calendarAPI = {
   getEvents: async () => {
     const response = await api.get("/calendar/events");
+    return response.data;
+  },
+};
+
+export const inboxAPI = {
+  getThreads: async () => {
+    const response = await api.get("/inbox/threads");
+    return response.data;
+  },
+  getThreadMessages: async (partnerId) => {
+    const response = await api.get(`/inbox/threads/${partnerId}`);
+    return response.data;
+  },
+  sendMessage: async (recipientId, subject, message) => {
+    const response = await api.post("/inbox/messages", {
+      recipient_id: recipientId,
+      subject,
+      message
+    });
     return response.data;
   },
 };
