@@ -97,6 +97,7 @@ function Dashboard() {
             sub: "This Month",
             color: "#22B573",
             icon: <CalendarCheck size={22} />,
+            path: "/employee/attendance",
           },
           {
             title: "Assigned Tasks",
@@ -104,6 +105,7 @@ function Dashboard() {
             sub: "Pending",
             color: "#6C3EF4",
             icon: <ClipboardList size={22} />,
+            path: "/employee/assigned-task",
           },
           {
             title: "Leave Balance",
@@ -111,6 +113,7 @@ function Dashboard() {
             sub: "Days Left",
             color: "#FF9E44",
             icon: <BadgeCheck size={22} />,
+            path: "/employee/leave",
           },
           {
             title: "Net Salary",
@@ -118,6 +121,7 @@ function Dashboard() {
             sub: payrollObj ? payrollObj.pay_period : "No payslip yet",
             color: "#4F8CFF",
             icon: <Wallet size={22} />,
+            path: "/employee/payroll",
           },
           {
             title: "Performance",
@@ -125,6 +129,7 @@ function Dashboard() {
             sub: "Overall",
             color: "#E5484D",
             icon: <TrendingUp size={22} />,
+            path: "/employee/profile",
           },
           {
             title: "Notifications",
@@ -132,6 +137,7 @@ function Dashboard() {
             sub: "Unread",
             color: "#9B5CF6",
             icon: <Bell size={22} />,
+            path: "/employee/notifications",
           },
         ]);
 
@@ -232,6 +238,8 @@ function Dashboard() {
           <div
             className="stat-card"
             key={index}
+            onClick={() => navigate(item.path)}
+            style={{ cursor: "pointer" }}
           >
 
             <div
@@ -272,7 +280,7 @@ function Dashboard() {
 
             <h3>Today's Attendance</h3>
 
-            <button>View Details</button>
+            <button onClick={() => navigate("/employee/attendance")}>View Details</button>
 
           </div>
 
@@ -334,7 +342,7 @@ function Dashboard() {
 
             <h3>My Tasks</h3>
 
-            <button>View All</button>
+            <button onClick={() => navigate("/employee/assigned-task")}>View All</button>
 
           </div>
 
@@ -387,13 +395,13 @@ function Dashboard() {
 
       <div className="leave-card">
 
-        <div className="card-header">
+          <div className="card-header">
 
-          <h3>Leave Summary</h3>
+            <h3>Leave Summary</h3>
 
-          <button>Apply Leave</button>
+            <button onClick={() => navigate("/employee/leave")}>Apply Leave</button>
 
-        </div>
+          </div>
 
         <div className="leave-progress">
 
@@ -475,7 +483,7 @@ function Dashboard() {
 
             <h3>Payroll Snapshot</h3>
 
-            <button>
+            <button onClick={() => navigate("/employee/payroll")}>
 
               <Download size={16} />
 
@@ -535,7 +543,7 @@ function Dashboard() {
 
             <h3>Weekly Attendance</h3>
 
-            <button>This Week</button>
+            <button onClick={() => navigate("/employee/attendance")}>This Week</button>
 
           </div>
 
@@ -575,13 +583,13 @@ function Dashboard() {
 
       <div className="activity-card">
 
-        <div className="card-header">
+          <div className="card-header">
 
-          <h3>Recent Activity</h3>
+            <h3>Recent Activity</h3>
 
-          <button>View All</button>
+            <button onClick={() => navigate("/employee/notifications")}>View All</button>
 
-        </div>
+          </div>
 
         <div className="activity-list">
 
@@ -633,7 +641,7 @@ function Dashboard() {
 
           <div className="quick-grid">
 
-            <div className="quick-action">
+            <div className="quick-action" onClick={() => navigate("/employee/attendance")} style={{ cursor: "pointer" }}>
 
               <CalendarCheck size={24} />
 
@@ -641,7 +649,7 @@ function Dashboard() {
 
             </div>
 
-            <div className="quick-action">
+            <div className="quick-action" onClick={() => navigate("/employee/assigned-task")} style={{ cursor: "pointer" }}>
 
               <ClipboardList size={24} />
 
@@ -649,7 +657,7 @@ function Dashboard() {
 
             </div>
 
-            <div className="quick-action">
+            <div className="quick-action" onClick={() => navigate("/employee/payroll")} style={{ cursor: "pointer" }}>
 
               <Wallet size={24} />
 
@@ -657,7 +665,7 @@ function Dashboard() {
 
             </div>
 
-            <div className="quick-action">
+            <div className="quick-action" onClick={() => navigate("/employee/leave")} style={{ cursor: "pointer" }}>
 
               <BadgeCheck size={24} />
 
@@ -665,7 +673,7 @@ function Dashboard() {
 
             </div>
 
-            <div className="quick-action">
+            <div className="quick-action" onClick={() => navigate("/employee/profile")} style={{ cursor: "pointer" }}>
 
               <User size={24} />
 
@@ -673,7 +681,7 @@ function Dashboard() {
 
             </div>
 
-            <div className="quick-action">
+            <div className="quick-action" onClick={() => navigate("/employee/support")} style={{ cursor: "pointer" }}>
 
               <Headphones size={24} />
 
