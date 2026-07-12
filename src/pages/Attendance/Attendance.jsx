@@ -113,18 +113,13 @@ function Attendance() {
         const now = new Date();
         const checkInTime = now.toTimeString().split(" ")[0]; // e.g. "09:00:00"
         await attendanceAPI.checkIn({
-          location: "Web Portal",
-          device: "Browser User Agent",
-          check_in_time: checkInTime
+          remarks: "Web check-in"
         });
         alert("Checked in successfully!");
       } else if (!todayLog.check_out) {
         // Check Out
-        const now = new Date();
-        const checkOutTime = now.toTimeString().split(" ")[0]; // e.g. "18:00:00"
         await attendanceAPI.checkOut({
-          check_out_time: checkOutTime,
-          notes: "Web Portal session logout"
+          remarks: "Web check-out"
         });
         alert("Checked out successfully!");
       } else {
