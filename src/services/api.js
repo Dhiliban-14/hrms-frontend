@@ -155,4 +155,31 @@ export const notificationAPI = {
   },
 };
 
+export const supportAPI = {
+  getFAQs: async () => {
+    const response = await api.get("/support/faqs");
+    return response.data;
+  },
+  getContactHR: async () => {
+    const response = await api.get("/support/contact-hr");
+    return response.data;
+  },
+  getTickets: async () => {
+    const response = await api.get("/support/tickets");
+    return response.data;
+  },
+  getTicketDetails: async (ticketId) => {
+    const response = await api.get(`/support/tickets/${ticketId}`);
+    return response.data;
+  },
+  createTicket: async (data) => {
+    const response = await api.post("/support/tickets", data);
+    return response.data;
+  },
+  sendTicketMessage: async (ticketId, data) => {
+    const response = await api.post(`/support/tickets/${ticketId}/message`, data);
+    return response.data;
+  },
+};
+
 export default api;

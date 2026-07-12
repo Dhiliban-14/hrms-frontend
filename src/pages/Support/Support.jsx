@@ -1,3 +1,5 @@
+import { useState, useEffect } from "react";
+import { useOutletContext } from "react-router-dom";
 import "./Support.css";
 
 import {
@@ -10,484 +12,355 @@ import {
   Star,
   FileDown,
 } from "lucide-react";
-const stats = [
-  {
-    title: "Open Tickets",
-    value: "3",
-    sub: "Pending",
-    color: "#FF9E44",
-    icon: <Ticket size={22} />,
-  },
-  {
-    title: "Resolved",
-    value: "14",
-    sub: "Completed",
-    color: "#22B573",
-    icon: <CheckCircle2 size={22} />,
-  },
-  {
-    title: "Support Team",
-    value: "24/7",
-    sub: "Available",
-    color: "#6C3EF4",
-    icon: <LifeBuoy size={22} />,
-  },
-  {
-    title: "Live Chat",
-    value: "Online",
-    sub: "HR Support",
-    color: "#4F8CFF",
-    icon: <MessageCircle size={22} />,
-  },
-  {
-    title: "Avg Response",
-    value: "2 Min",
-    sub: "Today",
-    color: "#E5484D",
-    icon: <Clock3 size={22} />,
-  },
-  {
-    title: "Satisfaction",
-    value: "98%",
-    sub: "Employee Rating",
-    color: "#22B573",
-    icon: <Star size={22} />,
-  },
-];
+
+import { supportAPI } from "../../services/api";
 
 function Support() {
+  const { employee } = useOutletContext() || {};
+  const [faqs, setFaqs] = useState([]);
+  const [tickets, setTickets] = useState([]);
+  const [stats, setStats] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // Form states
+  const [category, setCategory] = useState("IT Support");
+  const [priority, setPriority] = useState("Medium");
+  const [subject, setSubject] = useState("");
+  const [description, setDescription] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+
+  const fetchSupportData = async () => {
+    if (!employee) return;
+    try {
+      setLoading(true);
+      const [faqsRes, ticketsRes] = await Promise.all([
+        supportAPI.getFAQs(),
+        supportAPI.getTickets()
+      ]);
+
+      // Flatten FAQs if they come grouped by category
+      let flatFaqs = [];
+      if (Array.isArray(faqsRes)) {
+        faqsRes.forEach(group => {
+          if (group.questions) {
+            flatFaqs.push(...group.questions);
+          }
+        });
+      }
+      setFaqs(flatFaqs.length > 0 ? flatFaqs : faqsRes || []);
+      setTickets(ticketsRes || []);
+
+      const openCount = ticketsRes?.filter(t => t.status === "Open" || t.status === "Pending").length || 0;
+      const resolvedCount = ticketsRes?.filter(t => t.status === "Resolved" || t.status === "Closed").length || 0;
+
+      setStats([
+        {
+          title: "Open Tickets",
+          value: openCount.toString(),
+          sub: "Pending",
+          color: "#FF9E44",
+          icon: <Ticket size={22} />,
+        },
+        {
+          title: "Resolved",
+          value: resolvedCount.toString(),
+          sub: "Completed",
+          color: "#22B573",
+          icon: <CheckCircle2 size={22} />,
+        },
+        {
+          title: "Support Team",
+          value: "24/7",
+          sub: "Available",
+          color: "#6C3EF4",
+          icon: <LifeBuoy size={22} />,
+        },
+        {
+          title: "Live Chat",
+          value: "Online",
+          sub: "HR Support",
+          color: "#4F8CFF",
+          icon: <MessageCircle size={22} />,
+        },
+        {
+          title: "Avg Response",
+          value: "2 Min",
+          sub: "Today",
+          color: "#E5484D",
+          icon: <Clock3 size={22} />,
+        },
+        {
+          title: "Satisfaction",
+          value: "98%",
+          sub: "Employee Rating",
+          color: "#22B573",
+          icon: <Star size={22} />,
+        },
+      ]);
+
+    } catch (err) {
+      console.error("Failed to load support center details:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchSupportData();
+  }, [employee]);
+
+  const handleSubmitTicket = async (e) => {
+    e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+
+    try {
+      if (!subject || !description) {
+        alert("Please enter subject and description.");
+        setSubmitting(false);
+        return;
+      }
+
+      await supportAPI.createTicket({
+        category,
+        priority,
+        subject,
+        description
+      });
+
+      alert("Support ticket raised successfully!");
+      setSubject("");
+      setDescription("");
+
+      // Re-fetch tickets
+      await fetchSupportData();
+    } catch (err) {
+      console.error("Failed to submit support ticket:", err);
+      alert(err.response?.data?.detail || "Failed to submit ticket.");
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  if (loading) {
+    return (
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "60vh",
+        color: "#ffffff",
+        fontFamily: "Segoe UI, sans-serif"
+      }}>
+        <div>Loading support center...</div>
+      </div>
+    );
+  }
 
   return (
-
     <div className="support-page">
-
       {/* Breadcrumb */}
-
       <div className="breadcrumb">
-
         Dashboard
-
         <span> / </span>
-
         Support
-
       </div>
 
       {/* Header */}
-
       <div className="support-header">
-
-    <div>
-
-        <h1>Support Center</h1>
-
-        <p>
-            Raise tickets, contact HR and get instant help.
-        </p>
-
-    </div>
-
-    <div className="header-actions">
-
-        <button className="download-btn">
-
+        <div>
+          <h1>Support Center</h1>
+          <p>Raise tickets, contact HR and get instant help.</p>
+        </div>
+        <div className="header-actions">
+          <button className="download-btn" onClick={() => window.print()}>
             <FileDown size={18} />
-
             Export Report
-
-        </button>
-
-        <button className="raise-btn">
-
-            <Plus size={18} />
-
-            Raise Ticket
-
-        </button>
-
-    </div>
-
-</div>
-      
+          </button>
+        </div>
+      </div>
 
       {/* KPI Cards */}
-
       <div className="stats-grid">
-
         {stats.map((item, index) => (
-
-          <div
-            className="stat-card"
-            key={index}
-          >
-
-            <div
-              className="stat-icon"
-              style={{
-                background: item.color,
-              }}
-            >
-
+          <div className="stat-card" key={index}>
+            <div className="stat-icon" style={{ background: item.color }}>
               {item.icon}
-
             </div>
-
             <div className="stat-content">
-
               <span>{item.title}</span>
-
               <h2>{item.value}</h2>
-
               <p>{item.sub}</p>
-
             </div>
-
           </div>
-
         ))}
-
       </div>
-            {/* Support Section */}
 
+      {/* Support Section */}
       <div className="support-section">
-
-        {/* Raise Ticket */}
-
+        {/* Raise Ticket Form */}
         <div className="ticket-card">
-
           <div className="card-header">
-
             <h3>Raise a Support Ticket</h3>
-
           </div>
 
-          <div className="ticket-form">
-
+          <form className="ticket-form" onSubmit={handleSubmitTicket}>
             <div className="form-group">
-
               <label>Category</label>
-
-              <select>
-
-                <option>Payroll</option>
-
-                <option>Attendance</option>
-
-                <option>Leave</option>
-
-                <option>IT Support</option>
-
-                <option>General Query</option>
-
+              <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value="IT Support">IT Support</option>
+                <option value="Payroll">Payroll</option>
+                <option value="Attendance">Attendance</option>
+                <option value="Leave">Leave Management</option>
+                <option value="General Query">General Query</option>
               </select>
-
             </div>
 
             <div className="form-group">
-
               <label>Priority</label>
-
-              <select>
-
-                <option>Low</option>
-
-                <option>Medium</option>
-
-                <option>High</option>
-
+              <select value={priority} onChange={(e) => setPriority(e.target.value)}>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
               </select>
-
             </div>
 
             <div className="form-group">
-
               <label>Subject</label>
-
               <input
                 type="text"
                 placeholder="Enter subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+                required
               />
-
             </div>
 
             <div className="form-group">
-
               <label>Description</label>
-
               <textarea
                 rows="5"
                 placeholder="Describe your issue..."
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                required
               ></textarea>
-
             </div>
 
-            <button className="submit-btn">
-
-              Submit Ticket
-
+            <button className="submit-btn" type="submit" disabled={submitting}>
+              {submitting ? "Submitting..." : "Submit Ticket"}
             </button>
-
-          </div>
-
+          </form>
         </div>
 
         {/* Right Side */}
-
         <div className="support-right">
-
           {/* HR Contact */}
-
           <div className="contact-card">
-
             <div className="card-header">
-
               <h3>HR Contact</h3>
-
             </div>
-
             <div className="contact-info">
-
               <h4>HR Department</h4>
-
-              <p>hr@zeaisoft.com</p>
-
-              <p>+91 98765 43210</p>
-
-              <button className="contact-btn">
-
+              <p>hr@zeai.com</p>
+              <p>+1 (555) 019-2834</p>
+              <button className="contact-btn" onClick={() => window.open("mailto:hr@zeai.com")}>
                 Contact HR
-
               </button>
-
             </div>
-
           </div>
 
           {/* Live Chat */}
-
           <div className="chat-card">
-
             <div className="card-header">
-
               <h3>Live Support</h3>
-
             </div>
-
             <div className="chat-info">
-
               <div className="online-dot"></div>
-
               <span>Support Team Online</span>
-
             </div>
-
-            <p>
-
-              Average Response Time
-
-            </p>
-
+            <p>Average Response Time</p>
             <h2>2 Minutes</h2>
-
-            <button className="chat-btn">
-
+            <button className="chat-btn" onClick={() => alert("Connecting to a live HR support agent...")}>
               Start Live Chat
-
             </button>
-
           </div>
-
         </div>
-
       </div>
-            {/* Ticket History */}
 
+      {/* Ticket History */}
       <div className="history-card">
-
         <div className="card-header">
-
           <h3>My Support Tickets</h3>
-
-          <button>View All</button>
-
+          <button onClick={fetchSupportData}>Refresh</button>
         </div>
 
         <table>
-
           <thead>
-
             <tr>
-
               <th>Ticket ID</th>
-
               <th>Category</th>
-
               <th>Date</th>
-
               <th>Status</th>
-
             </tr>
-
           </thead>
-
           <tbody>
-
-            <tr>
-
-              <td>#SUP001</td>
-
-              <td>Payroll</td>
-
-              <td>10 Jul 2026</td>
-
-              <td>
-
-                <span className="status open">
-
-                  Open
-
-                </span>
-
-              </td>
-
-            </tr>
-
-            <tr>
-
-              <td>#SUP002</td>
-
-              <td>Attendance</td>
-
-              <td>08 Jul 2026</td>
-
-              <td>
-
-                <span className="status progress">
-
-                  In Progress
-
-                </span>
-
-              </td>
-
-            </tr>
-
-            <tr>
-
-              <td>#SUP003</td>
-
-              <td>Leave</td>
-
-              <td>04 Jul 2026</td>
-
-              <td>
-
-                <span className="status closed">
-
-                  Closed
-
-                </span>
-
-              </td>
-
-            </tr>
-
+            {tickets.length === 0 ? (
+              <tr>
+                <td colSpan="4" style={{ textAlign: "center", color: "#bfbfbf" }}>No tickets raised.</td>
+              </tr>
+            ) : (
+              tickets.map((item, index) => (
+                <tr key={index}>
+                  <td>#{item.ticket_id}</td>
+                  <td>{item.category}</td>
+                  <td>{new Date(item.created_at).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</td>
+                  <td>
+                    <span className={`status ${item.status === 'Closed' || item.status === 'Resolved' ? 'closed' : item.status === 'In Progress' ? 'progress' : 'open'}`}>
+                      {item.status}
+                    </span>
+                  </td>
+                </tr>
+              ))
+            )}
           </tbody>
-
         </table>
-
       </div>
 
       {/* Bottom Section */}
-
       <div className="support-bottom">
-
         {/* FAQ */}
-
         <div className="faq-card">
-
           <div className="card-header">
-
             <h3>Frequently Asked Questions</h3>
-
           </div>
-
           <div className="faq-list">
-
-            <div className="faq-item">
-
-              <h4>How do I apply for leave?</h4>
-
-              <p>
-
-                Navigate to Leave Management and submit your leave request.
-
-              </p>
-
-            </div>
-
-            <div className="faq-item">
-
-              <h4>How can I download my payslip?</h4>
-
-              <p>
-
-                Open the Payroll page and click "Download Payslip".
-
-              </p>
-
-            </div>
-
-            <div className="faq-item">
-
-              <h4>Who approves attendance corrections?</h4>
-
-              <p>
-
-                Your Team Lead or HR Manager will review the request.
-
-              </p>
-
-            </div>
-
+            {faqs.slice(0, 3).map((item, index) => (
+              <div className="faq-item" key={index}>
+                <h4>{item.question}</h4>
+                <p>{item.answer}</p>
+              </div>
+            ))}
           </div>
-
         </div>
 
         {/* Emergency Contact */}
-
         <div className="emergency-card">
-
           <div className="card-header">
-
             <h3>Emergency Contact</h3>
-
           </div>
-
           <div className="emergency-content">
-
             <h2>HR Helpline</h2>
-
-            <p>+91 98765 43210</p>
-
-            <p>support@zeaisoft.com</p>
-
-            <button className="emergency-btn">
-
+            <p>+1 (555) 019-2834</p>
+            <p>support@zeai.com</p>
+            <button className="emergency-btn" onClick={() => window.open("mailto:support@zeai.com")}>
               Contact Immediately
-
             </button>
-
           </div>
-
         </div>
-
       </div>
-
     </div>
-
   );
-
 }
 
 export default Support;
