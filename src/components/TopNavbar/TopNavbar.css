@@ -1,0 +1,135 @@
+/* ==========================
+   NAVBAR
+========================== */
+
+.top-navbar{
+
+    height:75px;
+
+    background:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 30px;
+
+    border-bottom:1px solid #ececec;
+
+}
+
+/* SEARCH */
+
+.search-box{
+
+    width:340px;
+
+    height:46px;
+
+    background:#f4f5f7;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:0 16px;
+
+    color:#777;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    font-size:14px;
+
+}
+
+/* RIGHT */
+
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.nav-btn{
+
+    width:44px;
+
+    height:44px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#f4f5f7;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.nav-btn:hover{
+
+    background:#ececf2;
+
+}
+
+.profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+}
+
+.profile img{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.profile-info h4{
+
+    margin:0;
+
+    font-size:14px;
+
+}
+
+.profile-info span{
+
+    color:#888;
+
+    font-size:12px;
+
+}

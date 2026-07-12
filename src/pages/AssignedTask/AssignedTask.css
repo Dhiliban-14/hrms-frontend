@@ -1,0 +1,1061 @@
+/* ================================
+   PAGE
+================================ */
+
+.assigned-page{
+    width:100%;
+}
+
+/* ================================
+   BREADCRUMB
+================================ */
+
+.breadcrumb{
+
+    font-size:13px;
+
+    color:#999;
+
+    margin-bottom:15px;
+
+}
+
+.breadcrumb span{
+
+    margin:0 8px;
+
+}
+
+/* ================================
+   HEADER
+================================ */
+
+.assigned-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+}
+
+.assigned-header h1{
+
+    font-size:34px;
+
+    color:#222;
+
+    margin-bottom:6px;
+
+}
+
+.assigned-header p{
+
+    color:#777;
+
+    font-size:15px;
+
+}
+
+/* ================================
+   BUTTON
+================================ */
+
+.update-btn{
+
+    border:none;
+
+    background:#6C3EF4;
+
+    color:white;
+
+    padding:14px 22px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.update-btn:hover{
+
+    background:#5530db;
+
+}
+
+/* ================================
+   KPI GRID
+================================ */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(5,1fr);
+
+    gap:18px;
+
+}
+
+.stat-card{
+
+    background:white;
+
+    border:1px solid #ECECEC;
+
+    border-radius:18px;
+
+    padding:18px;
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+    transition:.3s;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.05);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.stat-icon{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+}
+
+.stat-content{
+
+    flex:1;
+
+}
+
+.stat-content span{
+
+    font-size:13px;
+
+    color:#999;
+
+}
+
+.stat-content h2{
+
+    margin:5px 0;
+
+    color:#222;
+
+    font-size:28px;
+
+}
+
+.stat-content p{
+
+    color:#888;
+
+    font-size:12px;
+
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+
+@media(max-width:1300px){
+
+.stats-grid{
+
+grid-template-columns:repeat(3,1fr);
+
+}
+
+}
+
+@media(max-width:900px){
+
+.stats-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media(max-width:600px){
+
+.stats-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/* ==========================================
+   MY PROJECTS
+========================================== */
+.projects-card{
+
+    width:100%;
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    margin-top:28px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.project-section{
+    width:100%;
+    display:block;
+}
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:22px;
+
+}
+
+.card-header h3{
+
+    font-size:20px;
+
+    color:#222;
+
+}
+
+.card-header button{
+
+    border:none;
+
+    background:none;
+
+    color:#6C3EF4;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+}
+
+/* =============================== */
+
+.table-header{
+
+    display:grid;
+
+    grid-template-columns:
+    2fr
+    1.2fr
+    1fr
+    1.2fr
+    1.5fr
+    .8fr;
+
+    padding:14px 0;
+
+    border-bottom:1px solid #ECECEC;
+
+    font-size:13px;
+
+    color:#888;
+
+    font-weight:600;
+
+}
+
+/* =============================== */
+
+.project-row{
+
+    display:grid;
+
+    grid-template-columns:
+    2fr
+    1.2fr
+    1fr
+    1.2fr
+    1.5fr
+    .8fr;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #F3F3F3;
+
+}
+
+.project-name{
+
+    font-weight:600;
+
+    color:#222;
+
+}
+
+/* =============================== */
+
+.status{
+
+    display:inline-flex;
+
+    justify-content:center;
+
+    width:80px;
+
+    padding:6px 0;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.status.active{
+
+    background:#DDF9EA;
+
+    color:#22B573;
+
+}
+
+.status.review{
+
+    background:#FFF4D7;
+
+    color:#E8A400;
+
+}
+
+.status.pending{
+
+    background:#FCE5E5;
+
+    color:#E5484D;
+
+}
+
+/* =============================== */
+
+.progress-wrapper{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.progress-bar{
+
+    width:120px;
+
+    height:8px;
+
+    background:#ECECEC;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.progress-fill{
+
+    height:100%;
+
+    background:#6C3EF4;
+
+    border-radius:20px;
+
+}
+
+.progress-wrapper small{
+
+    font-size:12px;
+
+    color:#666;
+
+}
+
+/* =============================== */
+
+.view-btn{
+
+    border:none;
+
+    background:#F4F1FF;
+
+    color:#6C3EF4;
+
+    padding:8px 14px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.view-btn:hover{
+
+    background:#6C3EF4;
+
+    color:white;
+
+}
+/* ==========================================
+   PROJECT SECTION
+========================================== */
+.project-section{
+    width:100%;
+    display:block;
+}
+/* ==========================================
+   QUICK CARD
+========================================== */
+
+.quick-card{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+    height:fit-content;
+
+}
+
+.quick-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+.quick-action{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:16px;
+
+    padding:18px;
+
+    min-height:170px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    align-items:flex-start;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.quick-action:hover{
+
+    transform:translateY(-4px);
+
+    border-color:#6C3EF4;
+
+    box-shadow:0 10px 20px rgba(108,62,244,.12);
+
+}
+
+.quick-icon{
+
+    width:54px;
+
+    height:54px;
+
+    background:#F3EEFF;
+
+    color:#6C3EF4;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:14px;
+
+    font-size:24px;
+
+    margin-bottom:16px;
+
+}
+
+.quick-action h4{
+
+    margin:0 0 8px;
+
+    font-size:17px;
+
+    color:#222;
+
+    font-weight:600;
+
+}
+
+.quick-action p{
+
+    margin:0;
+
+    color:#777;
+
+    font-size:13px;
+
+    line-height:1.5;
+
+}
+
+@media(max-width:1200px){
+
+.project-section{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/* ==========================================
+   BOTTOM SECTION
+========================================== */
+.bottom-section{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+
+    margin-top:28px;
+
+}
+/* ==========================================
+   COMMON CARD
+========================================== */
+
+.bottom-card{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+    height:100%;
+
+}
+
+/* ==========================================
+   RECENT ACTIVITY
+========================================== */
+
+.activity-item{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+    padding:16px 0;
+
+    border-bottom:1px solid #F3F3F3;
+
+}
+
+.activity-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.activity-dot{
+
+    width:12px;
+
+    height:12px;
+
+    background:#6C3EF4;
+
+    border-radius:50%;
+
+    margin-top:6px;
+
+    flex-shrink:0;
+
+}
+
+.activity-item h4{
+
+    margin:0;
+
+    font-size:15px;
+
+    color:#222;
+
+    font-weight:600;
+
+}
+
+.activity-item span{
+
+    font-size:12px;
+
+    color:#888;
+
+}
+
+/* ==========================================
+   TASK OVERVIEW
+========================================== */
+
+.task-circle{
+
+    width:160px;
+
+    height:160px;
+
+    margin:20px auto;
+
+    border:12px solid #6C3EF4;
+
+    border-radius:50%;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.task-circle h1{
+
+    margin:0;
+
+    font-size:40px;
+
+    color:#222;
+
+}
+
+.task-circle p{
+
+    margin-top:6px;
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+.task-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:14px;
+
+}
+
+.task-color{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+}
+
+.task-row span{
+
+    flex:1;
+
+    color:#555;
+
+}
+
+.task-row strong{
+
+    color:#222;
+
+}
+
+/* ==========================================
+   WEEKLY PROGRESS
+========================================== */
+
+.week-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+    margin-top:20px;
+
+}
+
+.week-grid div{
+
+    background:#F8F8FC;
+
+    border-radius:14px;
+
+    padding:20px;
+
+    text-align:center;
+
+}
+
+.week-grid h2{
+
+    margin:0;
+
+    font-size:28px;
+
+    color:#6C3EF4;
+
+}
+
+.week-grid span{
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1200px){
+
+.bottom-section{
+
+grid-template-columns:1fr;
+
+}
+
+}
+/* ==========================================
+   WEEKLY CHART
+========================================== */
+
+.chart{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:flex-end;
+
+height:180px;
+
+margin:25px 0;
+
+padding:0 8px;
+
+}
+
+.bar-item{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+gap:10px;
+
+}
+
+.bar{
+
+width:20px;
+
+background:#6C3EF4;
+
+border-radius:10px 10px 0 0;
+
+transition:.3s;
+
+}
+
+.bar:hover{
+
+background:#4E2CE5;
+
+}
+
+.bar-item span{
+
+font-size:12px;
+
+color:#777;
+
+}
+
+/* ============================= */
+
+.week-summary{
+
+display:grid;
+
+grid-template-columns:repeat(3,1fr);
+
+gap:12px;
+
+}
+
+.week-summary div{
+
+background:#F8F8FC;
+
+padding:18px;
+
+border-radius:12px;
+
+text-align:center;
+
+}
+
+.week-summary h4{
+
+margin:0;
+
+font-size:24px;
+
+color:#6C3EF4;
+
+}
+
+.week-summary span{
+
+font-size:12px;
+
+color:#777;
+
+}
+/* ===============================
+   ATTENDANCE HEADER
+================================ */
+
+.attendance-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+}
+
+.header-actions{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.download-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    border:1px solid #6C3EF4;
+
+    background:#fff;
+
+    color:#6C3EF4;
+
+    padding:12px 20px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.download-btn:hover{
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+}
+
+/* ==========================================
+   WEEKLY ATTENDANCE TREND
+========================================== */
+
+.weekly-card{
+
+    margin-top:28px;
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.weekly-chart{
+
+    margin-top:30px;
+
+    height:180px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-end;
+
+    gap:18px;
+
+}
+
+.bar-box{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+}
+
+.bar{
+
+    width:34px;
+
+    background:linear-gradient(
+        to top,
+        #6C3EF4,
+        #A855F7
+    );
+
+    border-radius:12px 12px 0 0;
+
+    transition:.3s;
+
+}
+
+.bar:hover{
+
+    transform:scaleY(1.05);
+
+}
+
+.bar-box span{
+
+    margin-top:10px;
+
+    font-size:13px;
+
+    color:#777;
+
+}

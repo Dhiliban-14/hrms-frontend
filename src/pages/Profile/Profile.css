@@ -1,0 +1,636 @@
+/* ===========================================
+   PROFILE PAGE
+=========================================== */
+
+.profile-page{
+    width:100%;
+}
+
+/* ===========================================
+   BREADCRUMB
+=========================================== */
+
+.breadcrumb{
+
+    font-size:13px;
+
+    color:#9A9A9A;
+
+    margin-bottom:15px;
+
+}
+
+.breadcrumb span{
+
+    margin:0 8px;
+
+}
+
+/* ===========================================
+   TITLE
+=========================================== */
+
+.profile-page h1{
+
+    font-size:34px;
+
+    color:#222;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.subtitle{
+
+    color:#7B7B7B;
+
+    font-size:15px;
+
+    margin-bottom:28px;
+
+}
+
+/* ===========================================
+   EMPLOYEE CARD
+=========================================== */
+
+.employee-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    border:1px solid #ECECEC;
+
+    padding:28px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+/* ===========================================
+   GRID
+=========================================== */
+
+.employee-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px 40px;
+
+}
+
+/* ===========================================
+   ITEM
+=========================================== */
+
+.employee-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #F1F1F1;
+
+}
+
+/* ===========================================
+   ICON
+=========================================== */
+
+.employee-icon{
+
+    width:38px;
+
+    height:38px;
+
+    background:#F3EEFF;
+
+    color:#6C3EF4;
+
+    border-radius:10px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    flex-shrink:0;
+
+}
+
+/* ===========================================
+   TEXT
+=========================================== */
+
+.employee-text{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    width:100%;
+
+}
+
+.employee-text span{
+
+    font-size:13px;
+
+    color:#9A9A9A;
+
+}
+
+.employee-text h4{
+
+    margin:0;
+
+    color:#222;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    text-align:right;
+
+}
+
+/* ===========================================
+   STATUS
+=========================================== */
+
+.status-active{
+
+    background:#DDF9EA;
+
+    color:#22B573;
+
+    padding:5px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+/* ===========================================
+   HOVER
+=========================================== */
+
+.employee-item{
+
+    transition:.25s;
+
+}
+
+.employee-item:hover{
+
+    transform:translateX(4px);
+
+}
+
+/* ===========================================
+   RESPONSIVE
+=========================================== */
+
+@media(max-width:1000px){
+
+.employee-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.profile-page h1{
+
+font-size:28px;
+
+}
+
+.employee-card{
+
+padding:20px;
+
+}
+
+.employee-text{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+gap:6px;
+
+}
+
+.employee-text h4{
+
+text-align:left;
+
+}
+
+}
+/* ==========================================
+   EMPLOYEE NODE
+========================================== */
+
+.employee-node{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:center;
+
+background:#F7F4FF;
+
+border:2px solid #6C3EF4;
+
+border-radius:16px;
+
+padding:18px;
+
+width:220px;
+
+margin:auto;
+
+}
+
+.employee-node img{
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+object-fit:cover;
+
+margin-bottom:12px;
+
+}
+
+.employee-node h4{
+
+margin:0;
+
+font-size:16px;
+
+color:#222;
+
+}
+
+.employee-node span{
+
+margin-top:6px;
+
+font-size:13px;
+
+color:#777;
+
+}
+/* ==========================================
+   BOTTOM GRID
+========================================== */
+
+.bottom-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+    margin-top:28px;
+}
+
+/* ==========================================
+   COMMON CARD
+========================================== */
+
+.organization-card,
+.documents-card{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.organization-card h3,
+.documents-card h3{
+
+    font-size:20px;
+
+    color:#222;
+
+    margin-bottom:24px;
+
+}
+
+/* ==========================================
+   HIERARCHY
+========================================== */
+
+.hierarchy{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.hierarchy-item{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+}
+
+.hierarchy-box{
+
+    width:220px;
+
+    padding:12px;
+
+    background:#F8F8FA;
+
+    border:1px solid #ECECEC;
+
+    border-radius:10px;
+
+    text-align:center;
+
+    font-size:14px;
+
+    font-weight:600;
+
+}
+
+.hierarchy-line{
+
+    width:2px;
+
+    height:24px;
+
+    background:#D5D5D5;
+
+}
+
+/* ==========================================
+   EMPLOYEE NODE
+========================================== */
+
+.employee-node{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    width:220px;
+
+    padding:20px;
+
+    border-radius:16px;
+
+    background:#F6F2FF;
+
+    border:2px solid #6C3EF4;
+
+    margin-top:6px;
+
+}
+
+.employee-node img{
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin-bottom:14px;
+
+}
+
+.employee-node h4{
+
+    margin:0;
+
+    font-size:16px;
+
+    color:#222;
+
+}
+
+.employee-node span{
+
+    margin-top:6px;
+
+    font-size:13px;
+
+    color:#777;
+
+}
+
+/* ==========================================
+   DOCUMENTS
+========================================== */
+
+.documents-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:18px;
+
+}
+
+.document-box{
+
+    height:150px;
+
+    border:1px solid #ECECEC;
+
+    border-radius:16px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+    background:white;
+
+}
+
+.document-box svg{
+
+    color:#6C3EF4;
+
+    margin-bottom:12px;
+
+}
+
+.document-box h4{
+
+    margin:0;
+
+    font-size:14px;
+
+    color:#222;
+
+    text-align:center;
+
+}
+
+.document-box span{
+
+    margin-top:6px;
+
+    font-size:12px;
+
+    color:#888;
+
+}
+
+.document-box:hover{
+
+    border-color:#6C3EF4;
+
+    transform:translateY(-4px);
+
+    box-shadow:0 10px 25px rgba(108,62,244,.15);
+
+}
+
+/* ==========================================
+   DOWNLOAD
+========================================== */
+
+.download-section{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin:35px 0 20px;
+
+}
+
+.download-btn{
+
+    border:none;
+
+    background:#6C3EF4;
+
+    color:white;
+
+    padding:14px 30px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.download-btn:hover{
+
+    background:#5530db;
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.profile-footer{
+
+    text-align:center;
+
+    color:#999;
+
+    font-size:13px;
+
+    margin-bottom:20px;
+
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media (max-width:1100px){
+
+.bottom-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.documents-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+@media (max-width:768px){
+
+.documents-grid{
+
+grid-template-columns:1fr;
+
+}
+
+}

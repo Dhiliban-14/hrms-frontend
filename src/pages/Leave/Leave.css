@@ -1,0 +1,617 @@
+/* ==========================================
+   LEAVE CALENDAR
+========================================== */
+
+.calendar-card{
+
+    margin-top:28px;
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.week-days{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    margin:20px 0 15px;
+
+    text-align:center;
+
+    font-weight:600;
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+.calendar-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(7,1fr);
+
+    gap:12px;
+
+}
+
+.calendar-day{
+
+    height:58px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:12px;
+
+    border:1px solid #ECECEC;
+
+    background:#FAFAFA;
+
+    transition:.3s;
+
+    cursor:pointer;
+
+}
+
+.calendar-day:hover{
+
+    background:#F3EEFF;
+
+    color:#6C3EF4;
+
+}
+
+.calendar-day.approved{
+
+    background:#DDF9EA;
+
+    color:#22B573;
+
+    border-color:#22B573;
+
+}
+
+.calendar-day.pending{
+
+    background:#FFF4D7;
+
+    color:#FF9E44;
+
+    border-color:#FF9E44;
+
+}
+/* ==========================================
+   HISTORY
+========================================== */
+
+.history-card{
+
+    margin-top:28px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    border:1px solid #ECECEC;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.history-card table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+.history-card th{
+
+    background:#F8F8FC;
+
+    padding:15px;
+
+    text-align:left;
+
+    font-size:13px;
+
+    color:#666;
+
+}
+
+.history-card td{
+
+    padding:18px 15px;
+
+    border-bottom:1px solid #F2F2F2;
+
+}
+
+.approved{
+
+    background:#DDF9EA;
+
+    color:#22B573;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.pending{
+
+    background:#FFF4D7;
+
+    color:#FF9E44;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+/* ==========================================
+   TIMELINE
+========================================== */
+
+.timeline-card{
+
+    margin-top:28px;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    border:1px solid #ECECEC;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.timeline{
+
+    margin-top:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+
+}
+
+.timeline-item{
+
+    display:flex;
+
+    gap:20px;
+
+    align-items:flex-start;
+
+}
+
+.timeline-dot{
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#DDD;
+
+    margin-top:5px;
+
+    position:relative;
+
+}
+
+.timeline-dot::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:2px;
+
+    height:45px;
+
+    background:#DDD;
+
+    left:50%;
+
+    top:18px;
+
+    transform:translateX(-50%);
+
+}
+
+.timeline-item:last-child .timeline-dot::after{
+
+    display:none;
+
+}
+
+.timeline-dot.active{
+
+    background:#6C3EF4;
+
+}
+
+.timeline-item h4{
+
+    margin-bottom:6px;
+
+    color:#222;
+
+}
+
+.timeline-item p{
+
+    color:#777;
+
+    font-size:13px;
+
+}
+/* ==========================================
+   RESPONSIVE
+========================================== */
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+/* Desktop & Laptop */
+
+@media (max-width:1100px){
+
+    .stats-grid{
+    display:grid;
+    grid-template-columns:repeat(6,1fr);
+    gap:18px;
+}
+
+    .leave-section{
+        grid-template-columns:1fr;
+    }
+
+    .summary-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .history-card{
+        overflow-x:auto;
+    }
+
+    .history-card table{
+        min-width:700px;
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:768px){
+
+    .stats-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:16px;
+    }
+
+    .week-days{
+        grid-template-columns:repeat(7,1fr);
+    }
+
+    .calendar-grid{
+        grid-template-columns:repeat(7,1fr);
+        gap:8px;
+    }
+
+    .summary-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:600px){
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+    }
+
+    .summary-grid{
+        grid-template-columns:1fr;
+    }
+
+    .calendar-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .week-days{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .form-row{
+        grid-template-columns:1fr;
+    }
+
+    .history-card{
+        overflow-x:auto;
+    }
+
+    .history-card table{
+        min-width:650px;
+    }
+
+}
+/* ==========================================
+   LEAVE SECTION
+========================================== */
+
+.leave-section{
+    display:grid;
+    grid-template-columns:360px 1fr;
+    gap:24px;
+    margin-top:30px;
+}
+
+/* ==========================================
+   CARDS
+========================================== */
+
+.balance-card,
+.leave-form-card{
+    background:#fff;
+    border:1px solid #ECECEC;
+    border-radius:20px;
+    padding:24px;
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+}
+
+/* ==========================================
+   BALANCE
+========================================== */
+
+.balance-list{
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+    margin-top:20px;
+}
+
+.balance-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding-bottom:14px;
+    border-bottom:1px solid #F2F2F2;
+}
+
+.balance-item:last-child{
+    border-bottom:none;
+}
+
+.balance-item span{
+    color:#666;
+}
+
+.balance-item strong{
+    color:#222;
+}
+
+/* ==========================================
+   FORM
+========================================== */
+
+.leave-form{
+    margin-top:20px;
+}
+
+.form-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.form-group{
+    display:flex;
+    flex-direction:column;
+    margin-bottom:18px;
+}
+
+.form-group label{
+    margin-bottom:8px;
+    font-size:14px;
+    color:#555;
+    font-weight:600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    padding:12px 14px;
+    border:1px solid #DDD;
+    border-radius:12px;
+    outline:none;
+    font-size:14px;
+    transition:.3s;
+    font-family:inherit;
+}
+
+.form-group textarea{
+    resize:none;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:#6C3EF4;
+    box-shadow:0 0 0 3px rgba(108,62,244,.12);
+}
+
+/* ==========================================
+   BUTTON
+========================================== */
+
+.submit-btn{
+    width:100%;
+    border:none;
+    background:#6C3EF4;
+    color:#fff;
+    padding:14px;
+    border-radius:12px;
+    font-size:15px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.submit-btn:hover{
+    background:#5630DB;
+}
+
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+@media(max-width:1000px){
+
+.leave-section{
+    grid-template-columns:1fr;
+}
+
+.form-row{
+    grid-template-columns:1fr;
+}
+
+}
+.header-actions{
+    display:flex;
+    gap:14px;
+    align-items:center;
+}   
+
+.leave-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    margin-bottom:30px;
+
+}
+.download-btn{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:12px 22px;
+
+    border:2px solid #6C3EF4;
+
+    background:#fff;
+
+    color:#6C3EF4;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.download-btn:hover{
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+}
+.apply-btn{
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+    border:none;
+
+    padding:12px 22px;
+
+    border-radius:14px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.apply-btn:hover{
+
+    background:#5630DB;
+
+}
+.leave-header h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    color:#222;
+
+    margin-bottom:8px;
+
+}
+.leave-header p{
+
+    font-size:15px;
+
+    color:#777;
+
+}

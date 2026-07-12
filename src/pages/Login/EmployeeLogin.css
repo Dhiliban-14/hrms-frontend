@@ -1,0 +1,899 @@
+/* ==========================================
+   GOOGLE FONT
+========================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+/* ==========================================
+   PAGE
+========================================== */
+
+.login-page{
+
+    position:relative;
+
+    width:100%;
+
+    min-height:100vh;
+
+    overflow:hidden;
+
+    font-family:'Inter',sans-serif;
+
+    background:
+    radial-gradient(circle at 15% 20%,rgba(108,62,244,.18),transparent 28%),
+    radial-gradient(circle at 85% 75%,rgba(139,92,246,.18),transparent 30%),
+    radial-gradient(circle at center,rgba(255,255,255,.92),transparent 45%),
+
+    linear-gradient(
+        135deg,
+        #FCFBFF 0%,
+        #F7F4FF 30%,
+        #F2EEFF 65%,
+        #FFFFFF 100%
+    );
+
+}
+
+/* ==========================================
+   BACKGROUND GLOW
+========================================== */
+
+.background-glow{
+
+    position:absolute;
+
+    inset:-20%;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(circle,
+    rgba(108,62,244,.18),
+    transparent 60%);
+
+    animation:glowMove 14s ease-in-out infinite;
+
+    z-index:0;
+
+}
+
+@keyframes glowMove{
+
+0%,100%{
+
+transform:translate(0,0) scale(1);
+
+}
+
+50%{
+
+transform:translate(120px,-70px) scale(1.25);
+
+}
+
+}
+
+/* ==========================================
+   OVERLAY
+========================================== */
+
+.login-overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(255,255,255,.18);
+
+    backdrop-filter:blur(6px);
+
+    z-index:1;
+
+}
+
+/* ==========================================
+   NAVBAR
+========================================== */
+
+.login-navbar{
+
+    position:relative;
+
+    z-index:5;
+
+    height:90px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 60px;
+
+}
+
+.login-logo img{
+
+    height:58px;
+
+    transition:.35s;
+
+}
+
+.login-logo img:hover{
+
+    transform:scale(1.05);
+
+}
+
+.login-navbar-right{
+
+    display:flex;
+
+    gap:15px;
+
+}
+
+.nav-icon{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border:none;
+
+    border-radius:14px;
+
+    cursor:pointer;
+
+    color:#6C3EF4;
+
+    background:rgba(255,255,255,.6);
+
+    backdrop-filter:blur(18px);
+
+    transition:.35s;
+
+    box-shadow:0 8px 25px rgba(108,62,244,.08);
+
+}
+
+.nav-icon:hover{
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+    transform:translateY(-4px);
+
+}
+
+/* ==========================================
+   MAIN
+========================================== */
+
+.login-main{
+
+    position:relative;
+
+    z-index:3;
+
+    width:92%;
+
+    max-width:1400px;
+
+    margin:auto;
+
+    min-height:calc(100vh - 90px);
+
+    display:grid;
+
+    grid-template-columns:48% 52%;
+
+    align-items:center;
+
+    gap:60px;
+
+}
+/* ==========================================
+   LEFT SECTION
+========================================== */
+
+.login-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-align:center;
+
+    animation:fadeLeft .8s ease;
+
+}
+
+.employee-illustration{
+
+    width:100%;
+
+    max-width:480px;
+
+    border-radius:30px;
+
+    box-shadow:
+    0 30px 70px rgba(108,62,244,.15);
+
+    animation:floatImage 6s ease-in-out infinite;
+
+}
+
+@keyframes floatImage{
+
+0%,100%{
+
+transform:translateY(0);
+
+}
+
+50%{
+
+transform:translateY(-14px);
+
+}
+
+}
+
+.login-left h1{
+
+    margin-top:35px;
+
+    font-size:48px;
+
+    font-weight:700;
+
+    color:#222;
+
+}
+
+.login-left p{
+
+    margin-top:18px;
+
+    max-width:520px;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+    color:#666;
+
+}
+
+/* ==========================================
+   LOGIN CARD
+========================================== */
+
+.login-card{
+
+    background:rgba(255,255,255,.65);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    border:1px solid rgba(255,255,255,.75);
+
+    border-radius:30px;
+
+    padding:45px;
+
+    box-shadow:
+    0 25px 70px rgba(108,62,244,.12);
+
+    transition:.35s;
+
+    animation:fadeRight .8s ease;
+
+}
+
+.login-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:
+    0 35px 90px rgba(108,62,244,.18);
+
+}
+
+.login-card h2{
+
+    font-size:34px;
+
+    color:#222;
+
+    margin-bottom:10px;
+
+}
+
+.login-card>span{
+
+    display:block;
+
+    color:#777;
+
+    margin-bottom:35px;
+
+    font-size:15px;
+
+}
+
+/* ==========================================
+   ANIMATIONS
+========================================== */
+
+@keyframes fadeLeft{
+
+from{
+
+opacity:0;
+
+transform:translateX(-60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+
+@keyframes fadeRight{
+
+from{
+
+opacity:0;
+
+transform:translateX(60px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateX(0);
+
+}
+
+}
+/* ==========================================
+   FORM
+========================================== */
+
+.login-card form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+/* ==========================================
+   INPUT BOX
+========================================== */
+
+.input-box{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    height:60px;
+
+    padding:0 18px;
+
+    border:1.5px solid #E7E7EF;
+
+    border-radius:16px;
+
+    background:#fff;
+
+    transition:.35s;
+
+    box-shadow:
+    0 5px 18px rgba(0,0,0,.03);
+
+}
+
+.input-box:hover{
+
+    border-color:#C8B8FF;
+
+}
+
+.input-box:focus-within{
+
+    border-color:#6C3EF4;
+
+    box-shadow:
+    0 0 0 4px rgba(108,62,244,.12);
+
+}
+
+.input-box svg{
+
+    color:#6C3EF4;
+
+    flex-shrink:0;
+
+}
+
+.input-box input{
+
+    flex:1;
+
+    height:100%;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:15px;
+
+    color:#222;
+
+    font-family:inherit;
+
+}
+
+.input-box input::placeholder{
+
+    color:#9A9A9A;
+
+}
+
+/* ==========================================
+   PASSWORD BUTTON
+========================================== */
+
+.eye-btn{
+
+    border:none;
+
+    background:none;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    color:#777;
+
+    transition:.3s;
+
+}
+
+.eye-btn:hover{
+
+    color:#6C3EF4;
+
+}
+
+/* ==========================================
+   LOGIN OPTIONS
+========================================== */
+
+.login-options{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:-6px;
+
+    font-size:14px;
+
+}
+
+.login-options label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#666;
+
+    cursor:pointer;
+
+}
+
+.login-options input{
+
+    accent-color:#6C3EF4;
+
+    cursor:pointer;
+
+}
+
+.login-options a{
+
+    color:#6C3EF4;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.3s;
+
+}
+
+.login-options a:hover{
+
+    color:#4E2CD3;
+
+}
+
+/* ==========================================
+   LOGIN BUTTON
+========================================== */
+
+.login-btn{
+
+    margin-top:10px;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #6C3EF4,
+        #8B5CF6
+    );
+
+    color:#fff;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 12px 35px rgba(108,62,244,.25);
+
+}
+
+.login-btn:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 20px 45px rgba(108,62,244,.35);
+
+}
+
+.login-btn svg{
+
+    transition:.35s;
+
+}
+
+.login-btn:hover svg{
+
+    transform:translateX(6px);
+
+}
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+/* Large Laptop */
+
+@media (max-width:1400px){
+
+    .login-main{
+
+        gap:40px;
+
+        grid-template-columns:46% 54%;
+
+    }
+
+    .login-left h1{
+
+        font-size:42px;
+
+    }
+
+}
+
+/* Laptop */
+
+@media (max-width:1200px){
+
+    .login-main{
+
+        grid-template-columns:1fr;
+
+        text-align:center;
+
+        gap:50px;
+
+        padding:20px 0 60px;
+
+    }
+
+    .login-left{
+
+        order:1;
+
+    }
+
+    .login-card{
+
+        order:2;
+
+        max-width:600px;
+
+        width:100%;
+
+        margin:auto;
+
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:900px){
+
+    .login-navbar{
+
+        padding:0 30px;
+
+    }
+
+    .login-left h1{
+
+        font-size:38px;
+
+    }
+
+    .employee-illustration{
+
+        max-width:360px;
+
+    }
+
+    .login-card{
+
+        padding:35px;
+
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:600px){
+
+    .login-navbar{
+
+        height:80px;
+
+        padding:0 20px;
+
+    }
+
+    .login-logo img{
+
+        height:45px;
+
+    }
+
+    .nav-icon{
+
+        width:42px;
+
+        height:42px;
+
+    }
+
+    .login-main{
+
+        width:94%;
+
+    }
+
+    .employee-illustration{
+
+        max-width:260px;
+
+        border-radius:20px;
+
+    }
+
+    .login-left h1{
+
+        font-size:30px;
+
+        margin-top:25px;
+
+    }
+
+    .login-left p{
+
+        font-size:15px;
+
+        line-height:1.6;
+
+    }
+
+    .login-card{
+
+        padding:25px;
+
+        border-radius:22px;
+
+    }
+
+    .login-card h2{
+
+        font-size:28px;
+
+    }
+
+    .input-box{
+
+        height:54px;
+
+    }
+
+    .login-options{
+
+        flex-direction:column;
+
+        gap:14px;
+
+        align-items:flex-start;
+
+    }
+
+    .login-btn{
+
+        height:54px;
+
+        font-size:15px;
+
+    }
+
+}
+
+/* ==========================================
+   EXTRA POLISH
+========================================== */
+
+.login-card{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.login-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:-120%;
+
+    width:80%;
+
+    height:100%;
+
+    background:linear-gradient(
+
+        90deg,
+
+        transparent,
+
+        rgba(255,255,255,.35),
+
+        transparent
+
+    );
+
+    transition:1s;
+
+}
+
+.login-card:hover::before{
+
+    left:140%;
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#6C3EF4;
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#F4F4F4;
+
+}
+
+/* ==========================================
+   SELECTION
+========================================== */
+
+::selection{
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+}

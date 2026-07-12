@@ -1,0 +1,1027 @@
+/* ==========================================
+   SUPPORT PAGE
+========================================== */
+
+.support-page{
+    width:100%;
+    padding:30px;
+    background:#FAFBFD;
+    min-height:100vh;
+}
+
+/* ==========================================
+   BREADCRUMB
+========================================== */
+
+.breadcrumb{
+    font-size:13px;
+    color:#888;
+    margin-bottom:18px;
+}
+
+.breadcrumb span{
+    margin:0 8px;
+}
+
+/* ==========================================
+   HEADER
+========================================== */
+
+.support-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:30px;
+}
+
+.support-header h1{
+    font-size:34px;
+    color:#222;
+    margin-bottom:6px;
+    font-weight:700;
+}
+
+.support-header p{
+    color:#777;
+    font-size:15px;
+}
+
+/* ==========================================
+   HEADER BUTTONS
+========================================== */
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.download-btn{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:12px 20px;
+
+    border:1px solid #6C3EF4;
+    border-radius:12px;
+
+    background:#fff;
+    color:#6C3EF4;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+    transition:.3s;
+}
+
+.download-btn:hover{
+
+    background:#6C3EF4;
+    color:#fff;
+
+}
+
+.raise-btn{
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:12px 20px;
+
+    border:none;
+    border-radius:12px;
+
+    background:#6C3EF4;
+    color:#fff;
+
+    font-size:14px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.raise-btn:hover{
+
+    background:#5630DB;
+
+}
+
+/* ==========================================
+   KPI GRID
+========================================== */
+
+.stats-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:18px;
+
+    margin-bottom:30px;
+
+}
+
+/* ==========================================
+   KPI CARD
+========================================== */
+
+.stat-card{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 12px 30px rgba(108,62,244,.12);
+
+}
+
+.stat-icon{
+
+    width:56px;
+    height:56px;
+
+    border-radius:16px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:#fff;
+
+    flex-shrink:0;
+
+}
+
+.stat-content span{
+
+    font-size:13px;
+
+    color:#888;
+
+}
+
+.stat-content h2{
+
+    margin:6px 0;
+
+    font-size:26px;
+
+    color:#222;
+
+}
+
+.stat-content p{
+
+    font-size:12px;
+
+    color:#999;
+
+}
+/* ==========================================
+   SUPPORT SECTION
+========================================== */
+
+.support-section{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:24px;
+
+    margin-top:30px;
+
+}
+
+/* ==========================================
+   COMMON CARD
+========================================== */
+
+.ticket-card,
+.contact-card,
+.chat-card{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.ticket-card:hover,
+.contact-card:hover,
+.chat-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 28px rgba(108,62,244,.10);
+
+}
+
+/* ==========================================
+   CARD HEADER
+========================================== */
+
+.card-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.card-header h3{
+
+    font-size:20px;
+
+    color:#222;
+
+    font-weight:600;
+
+}
+
+/* ==========================================
+   TICKET FORM
+========================================== */
+
+.ticket-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-size:14px;
+
+    font-weight:600;
+
+    color:#555;
+
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid #DDD;
+
+    border-radius:12px;
+
+    outline:none;
+
+    font-size:14px;
+
+    transition:.3s;
+
+    font-family:inherit;
+
+    background:#fff;
+
+}
+
+.form-group textarea{
+
+    resize:none;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    border-color:#6C3EF4;
+
+    box-shadow:0 0 0 3px rgba(108,62,244,.12);
+
+}
+
+/* ==========================================
+   SUBMIT BUTTON
+========================================== */
+
+.submit-btn{
+
+    border:none;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+    background:#5630DB;
+
+}
+
+/* ==========================================
+   RIGHT SIDE
+========================================== */
+
+.support-right{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
+
+}
+
+/* ==========================================
+   HR CONTACT
+========================================== */
+
+.contact-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.contact-info h4{
+
+    font-size:20px;
+
+    margin-bottom:10px;
+
+    color:#222;
+
+}
+
+.contact-info p{
+
+    color:#777;
+
+    margin-bottom:8px;
+
+}
+
+.contact-btn{
+
+    width:100%;
+
+    margin-top:18px;
+
+    border:none;
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+    padding:13px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.contact-btn:hover{
+
+    background:#5630DB;
+
+}
+
+/* ==========================================
+   LIVE CHAT
+========================================== */
+
+.chat-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:18px;
+
+}
+
+.online-dot{
+
+    width:12px;
+
+    height:12px;
+
+    border-radius:50%;
+
+    background:#22B573;
+
+    box-shadow:0 0 12px rgba(34,181,115,.5);
+
+}
+
+.chat-card p{
+
+    color:#777;
+
+    margin:12px 0 6px;
+
+}
+
+.chat-card h2{
+
+    font-size:30px;
+
+    color:#222;
+
+    margin-bottom:20px;
+
+}
+
+.chat-btn{
+
+    width:100%;
+
+    border:none;
+
+    background:#6C3EF4;
+
+    color:#fff;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.chat-btn:hover{
+
+    background:#5630DB;
+
+}
+/* ==========================================
+   TICKET HISTORY
+========================================== */
+
+.history-card{
+
+    margin-top:30px;
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.history-card table{
+
+    width:100%;
+
+    border-collapse:collapse;
+
+    margin-top:20px;
+
+}
+
+.history-card th{
+
+    background:#F8F8FC;
+
+    padding:16px;
+
+    text-align:left;
+
+    font-size:13px;
+
+    color:#666;
+
+    font-weight:600;
+
+}
+
+.history-card td{
+
+    padding:18px 16px;
+
+    border-bottom:1px solid #F2F2F2;
+
+    color:#444;
+
+}
+
+.history-card tr:last-child td{
+
+    border-bottom:none;
+
+}
+
+.history-card tr:hover{
+
+    background:#FAFAFF;
+
+}
+
+/* ==========================================
+   STATUS BADGES
+========================================== */
+
+.status{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:6px 14px;
+
+    border-radius:20px;
+
+    font-size:12px;
+
+    font-weight:600;
+
+}
+
+.status.open{
+
+    background:#FFF4D7;
+
+    color:#FF9E44;
+
+}
+
+.status.progress{
+
+    background:#EEE8FF;
+
+    color:#6C3EF4;
+
+}
+
+.status.closed{
+
+    background:#DDF9EA;
+
+    color:#22B573;
+
+}
+
+/* ==========================================
+   BOTTOM SECTION
+========================================== */
+
+.support-bottom{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:24px;
+
+    margin-top:30px;
+
+}
+
+/* ==========================================
+   FAQ CARD
+========================================== */
+
+.faq-card{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.faq-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.faq-item{
+
+    padding-bottom:18px;
+
+    border-bottom:1px solid #F2F2F2;
+
+}
+
+.faq-item:last-child{
+
+    border-bottom:none;
+
+    padding-bottom:0;
+
+}
+
+.faq-item h4{
+
+    color:#222;
+
+    font-size:16px;
+
+    margin-bottom:8px;
+
+}
+
+.faq-item p{
+
+    color:#777;
+
+    font-size:14px;
+
+    line-height:1.7;
+
+}
+
+/* ==========================================
+   EMERGENCY CARD
+========================================== */
+
+.emergency-card{
+
+    background:#fff;
+
+    border:1px solid #ECECEC;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 5px 18px rgba(0,0,0,.05);
+
+}
+
+.emergency-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    text-align:center;
+
+}
+
+.emergency-content h2{
+
+    color:#E5484D;
+
+    font-size:28px;
+
+    margin-bottom:14px;
+
+}
+
+.emergency-content p{
+
+    color:#666;
+
+    margin-bottom:8px;
+
+}
+
+.emergency-btn{
+
+    width:100%;
+
+    margin-top:22px;
+
+    border:none;
+
+    background:#E5484D;
+
+    color:#fff;
+
+    padding:14px;
+
+    border-radius:12px;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.emergency-btn:hover{
+
+    background:#C93A3A;
+
+}
+/* ==========================================
+   RESPONSIVE
+========================================== */
+
+/* Large Laptop */
+
+@media (max-width:1400px){
+
+    .stats-grid{
+        grid-template-columns:repeat(6,1fr);
+        gap:16px;
+    }
+
+}
+
+/* Laptop */
+
+@media (max-width:1200px){
+
+    .support-section{
+        grid-template-columns:1fr;
+    }
+
+    .support-bottom{
+        grid-template-columns:1fr;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(6,1fr);
+        overflow-x:auto;
+    }
+
+    .history-card{
+        overflow-x:auto;
+    }
+
+    .history-card table{
+        min-width:720px;
+    }
+
+}
+
+/* Tablet */
+
+@media (max-width:768px){
+
+    .support-page{
+        padding:20px;
+    }
+
+    .support-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:20px;
+    }
+
+    .header-actions{
+        width:100%;
+        display:flex;
+        gap:12px;
+    }
+
+    .download-btn,
+    .raise-btn{
+        flex:1;
+        justify-content:center;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(3,1fr);
+        gap:16px;
+    }
+
+    .history-card{
+        overflow-x:auto;
+    }
+
+    .history-card table{
+        min-width:700px;
+    }
+
+}
+
+/* Mobile */
+
+@media (max-width:600px){
+
+    .support-page{
+        padding:16px;
+    }
+
+    .support-header h1{
+        font-size:30px;
+    }
+
+    .header-actions{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .download-btn,
+    .raise-btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .stats-grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:14px;
+    }
+
+    .ticket-card,
+    .contact-card,
+    .chat-card,
+    .faq-card,
+    .emergency-card,
+    .history-card{
+        padding:18px;
+    }
+
+}
+
+/* ==========================================
+   CARD ANIMATION
+========================================== */
+
+.ticket-card,
+.contact-card,
+.chat-card,
+.history-card,
+.faq-card,
+.emergency-card{
+
+    transition:.3s;
+
+}
+
+.ticket-card:hover,
+.contact-card:hover,
+.chat-card:hover,
+.history-card:hover,
+.faq-card:hover,
+.emergency-card:hover{
+
+    transform:translateY(-5px);
+
+    box-shadow:0 14px 35px rgba(108,62,244,.12);
+
+}
+
+/* ==========================================
+   BUTTON ANIMATION
+========================================== */
+
+.download-btn,
+.raise-btn,
+.submit-btn,
+.contact-btn,
+.chat-btn,
+.emergency-btn{
+
+    transition:.3s;
+
+}
+
+.download-btn:hover,
+.raise-btn:hover,
+.submit-btn:hover,
+.contact-btn:hover,
+.chat-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+.emergency-btn:hover{
+
+    transform:translateY(-2px);
+
+}
+
+/* ==========================================
+   SCROLLBAR
+========================================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+    height:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#6C3EF4;
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#F4F4F4;
+
+}
+
+/* ==========================================
+   TEXT SELECTION
+========================================== */
+
+::selection{
+
+    background:#6C3EF4;
+    color:#fff;
+
+}
