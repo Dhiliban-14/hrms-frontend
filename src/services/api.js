@@ -31,7 +31,7 @@ api.interceptors.response.use(
       localStorage.removeItem("user_id");
       // Redirect to login if running in a browser
       if (typeof window !== "undefined") {
-        window.location.href = "/employee/login";
+        window.location.href = "/#/employee/login";
       }
     }
     return Promise.reject(error);
