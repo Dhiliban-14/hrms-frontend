@@ -50,7 +50,7 @@ function TopNavbar({ employee }) {
         {/* Notifications */}
 
         <button
-          className="nav-btn"
+          className="top-nav-btn"
           onClick={() => navigate("/employee/notifications")}
         >
           <Bell size={18} />
@@ -59,7 +59,7 @@ function TopNavbar({ employee }) {
         {/* Calendar */}
 
         <button
-          className="nav-btn"
+          className="top-nav-btn"
           onClick={() => navigate("/employee/calendar")}
         >
           <CalendarDays size={18} />
@@ -68,7 +68,7 @@ function TopNavbar({ employee }) {
         {/* Messages */}
 
         <button
-          className="nav-btn"
+          className="top-nav-btn"
           onClick={() => navigate("/employee/messages")}
         >
           <MessageCircle size={18} />
@@ -105,7 +105,7 @@ function TopNavbar({ employee }) {
         {/* Logout */}
 
         <button
-          className="nav-btn logout-btn"
+          className="top-nav-btn logout-btn"
           onClick={handleLogout}
           title="Logout"
           style={{ marginLeft: "10px", color: "#E5484D" }}
