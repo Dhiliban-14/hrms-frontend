@@ -177,6 +177,18 @@ function Attendance() {
     }
   };
 
+  const handleResetAttendance = async () => {
+    if (!confirm("Are you sure you want to clear today's attendance log for demo purposes?")) return;
+    try {
+      await attendanceAPI.resetTodayAttendance();
+      alert("Today's log has been cleared! You can now check in again.");
+      await fetchAttendanceData();
+    } catch (err) {
+      console.error("Failed to reset attendance:", err);
+      alert("Failed to reset attendance.");
+    }
+  };
+
   // Generate calendar days for the current month
   const getCalendarDays = () => {
     const now = new Date();
@@ -278,6 +290,14 @@ function Attendance() {
           <button className="download-btn" onClick={() => window.print()}>
             <Download size={18} />
             Export Report
+          </button>
+
+          <button 
+            className="download-btn" 
+            onClick={handleResetAttendance}
+            style={{ borderColor: "#E5484D", color: "#E5484D", marginRight: "10px" }}
+          >
+            Reset Today (Demo)
           </button>
 
           <button 

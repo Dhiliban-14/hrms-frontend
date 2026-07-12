@@ -112,6 +112,10 @@ export const attendanceAPI = {
     const response = await api.post("/attendance/check-out", data);
     return response.data;
   },
+  resetTodayAttendance: async () => {
+    const response = await api.delete("/attendance/today");
+    return response.data;
+  },
 };
 
 export const leaveAPI = {
