@@ -80,6 +80,14 @@
 
 }
 
+.attendance-btn.checkout-btn {
+    background: #E5484D;
+}
+
+.attendance-btn.checkout-btn:hover {
+    background: #C93B40;
+}
+
 .attendance-grid{
 
     display:grid;

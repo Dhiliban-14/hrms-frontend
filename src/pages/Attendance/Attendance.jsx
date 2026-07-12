@@ -21,6 +21,48 @@ function Attendance() {
   const [todayLog, setTodayLog] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const [workingTime, setWorkingTime] = useState("00:00:00");
+
+  const formatWorkingHours = (decimalHours) => {
+    const totalSecs = Math.round(Number(decimalHours) * 3600);
+    const secs = totalSecs % 60;
+    const mins = Math.floor((totalSecs / 60) % 60);
+    const hours = Math.floor(totalSecs / 3600);
+    const pad = (num) => String(num).padStart(2, "0");
+    return `${pad(hours)}:${pad(mins)}:${pad(secs)}`;
+  };
+
+  useEffect(() => {
+    let interval = null;
+    if (todayLog && !todayLog.check_out) {
+      const [h, m, s] = todayLog.check_in.split(":").map(Number);
+      const checkInDate = new Date();
+      checkInDate.setUTCHours(h, m, s, 0);
+
+      const updateTimer = () => {
+        const now = new Date();
+        let diffMs = now.getTime() - checkInDate.getTime();
+        if (diffMs < 0) diffMs = 0;
+        
+        const secs = Math.floor((diffMs / 1000) % 60);
+        const mins = Math.floor((diffMs / 1000 / 60) % 60);
+        const hours = Math.floor(diffMs / 1000 / 60 / 60);
+        
+        const pad = (num) => String(num).padStart(2, "0");
+        setWorkingTime(`${pad(hours)}:${pad(mins)}:${pad(secs)}`);
+      };
+
+      updateTimer();
+      interval = setInterval(updateTimer, 1000);
+    } else if (todayLog && todayLog.check_out) {
+      setWorkingTime(todayLog.working_hours ? formatWorkingHours(todayLog.working_hours) : "00:00:00");
+    } else {
+      setWorkingTime("00:00:00");
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [todayLog]);
 
   const fetchAttendanceData = async () => {
     if (!employee) return;
@@ -238,7 +280,7 @@ function Attendance() {
           </button>
 
           <button 
-            className="attendance-btn"
+            className={`attendance-btn ${actionButtonText === "Check Out" ? "checkout-btn" : ""}`}
             onClick={handleMarkAttendance}
             disabled={actionButtonDisabled || submitting}
           >
@@ -286,7 +328,7 @@ function Attendance() {
 
             <div className="attendance-box">
               <span>Working Hours</span>
-              <h2>{todayLog?.working_hours ? `${todayLog.working_hours} Hrs` : "00:00 Hrs"}</h2>
+              <h2>{workingTime}</h2>
             </div>
 
             <div className="attendance-box">
