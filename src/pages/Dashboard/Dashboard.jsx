@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
 import {
@@ -25,6 +25,7 @@ import {
 
 function Dashboard() {
   const { employee } = useOutletContext() || {};
+  const navigate = useNavigate();
   const [stats, setStats] = useState([]);
   const [tasks, setTasks] = useState([]);
   const [activities, setActivities] = useState([]);
@@ -726,7 +727,7 @@ function Dashboard() {
 
           <h3>Upcoming Events</h3>
 
-          <button>View Calendar</button>
+          <button onClick={() => navigate("/employee/calendar")}>View Calendar</button>
 
         </div>
 

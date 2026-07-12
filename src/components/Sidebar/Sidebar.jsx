@@ -5,7 +5,6 @@ import {
   ClipboardList,
   Clock3,
   CalendarDays,
-  Calendar,
   Wallet,
   Headset,
   Settings,
@@ -39,11 +38,6 @@ const menuItems = [
     title: "Apply Leave",
     icon: <CalendarDays size={18} />,
     path: "/employee/leave",
-  },
-  {
-    title: "Calendar",
-    icon: <Calendar size={18} />,
-    path: "/employee/calendar",
   },
   {
     title: "Payroll Status",
