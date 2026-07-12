@@ -186,4 +186,11 @@ export const supportAPI = {
   },
 };
 
+export const calendarAPI = {
+  getEvents: async () => {
+    const response = await api.get("/calendar/events");
+    return response.data;
+  },
+};
+
 export default api;
