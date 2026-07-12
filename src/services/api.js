@@ -25,11 +25,6 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response) {
-      alert(`API Error (${error.response.status}): ${JSON.stringify(error.response.data)}`);
-    } else {
-      alert(`Network/Request Error: ${error.message}`);
-    }
     if (error.response && error.response.status === 401) {
       localStorage.removeItem("access_token");
       localStorage.removeItem("user_email");
