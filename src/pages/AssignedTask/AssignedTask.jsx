@@ -344,24 +344,22 @@ function AssignedTask() {
                     <small>{task.progress_pct || 0}%</small>
                   </div>
 
-                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap" }}>
+                  <div style={{ display: "flex", gap: "8px", flexWrap: "nowrap" }}>
                     <button 
-                      className="view-btn" 
+                      className="view-btn update" 
                       onClick={() => handleUpdateProgress(task.id, task.progress_pct, task.status)}
                     >
                       Update
                     </button>
                     <button 
-                      className="view-btn" 
+                      className="view-btn log-time" 
                       onClick={() => { setSelectedTask(task); setShowTimesheetModal(true); }}
-                      style={{ background: "#4F8CFF" }}
                     >
                       Log Time
                     </button>
                     <button 
-                      className="view-btn" 
+                      className="view-btn submit-file" 
                       onClick={() => { setSelectedTask(task); setShowDeliverableModal(true); }}
-                      style={{ background: "#22B573" }}
                     >
                       Submit File
                     </button>
