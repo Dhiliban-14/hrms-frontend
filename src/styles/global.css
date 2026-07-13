@@ -139,3 +139,44 @@ input{
   box-shadow: 0 0 0 3px rgba(108, 62, 244, 0.15) !important;
   outline: none !important;
 }
+
+/* ==========================================
+   MUTED AND ACCESSIBLE TYPOGRAPHY CONTRAST
+========================================= */
+
+.employee-layout .breadcrumb {
+  color: var(--text-secondary, #4b5563) !important;
+  font-weight: 500;
+}
+
+.employee-layout .breadcrumb span {
+  color: var(--text-muted, #6b7280) !important;
+}
+
+/* Stat cards label and description text contrast */
+.employee-layout .stat-content span,
+.employee-layout .stat-card span {
+  color: var(--text-secondary, #4b5563) !important;
+}
+
+.employee-layout .stat-content p,
+.employee-layout .stat-card p {
+  color: var(--text-muted, #6b7280) !important;
+}
+
+/* Muted metadata, schedules, notifications, and activity details */
+.employee-layout .schedule-item span,
+.employee-layout .activity-item span,
+.employee-layout .payroll-details p,
+.employee-layout .notification-item p,
+.employee-layout .document-item span,
+.employee-layout .message-item p,
+.employee-layout .recent-activity-time,
+.employee-layout .sub-info,
+.employee-layout .sub-text,
+.employee-layout .card-subtitle,
+.employee-layout .text-muted,
+.employee-layout .meta-text,
+.employee-layout .text-secondary {
+  color: var(--text-secondary, #4b5563) !important;
+}
