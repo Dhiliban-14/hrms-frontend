@@ -32,7 +32,7 @@ input{
    UNIVERSAL MODERN ENTERPRISE TABLES
 ========================================= */
 
-table {
+.employee-layout table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
@@ -43,11 +43,11 @@ table {
   overflow: hidden;
 }
 
-thead {
+.employee-layout thead {
   background: rgba(255, 255, 255, 0.04);
 }
 
-th {
+.employee-layout th {
   color: #a78bfa !important; /* Premium brand purple */
   font-weight: 600;
   text-transform: uppercase;
@@ -61,7 +61,7 @@ th {
   z-index: 5;
 }
 
-td {
+.employee-layout td {
   color: #dfdfdf !important;
   font-size: 13.5px;
   padding: 16px 20px !important;
@@ -69,15 +69,15 @@ td {
   transition: background 0.15s ease;
 }
 
-tbody tr:last-child td {
+.employee-layout tbody tr:last-child td {
   border-bottom: none;
 }
 
-tbody tr {
+.employee-layout tbody tr {
   transition: background 0.2s ease;
 }
 
-tbody tr:hover {
+.employee-layout tbody tr:hover {
   background: rgba(255, 255, 255, 0.03) !important;
 }
 
@@ -85,24 +85,33 @@ tbody tr:hover {
    UNIVERSAL BUTTONS & INTERACTIVE ELEMENTS
 ========================================= */
 
-button, .view-btn, .submit-btn, .update-btn {
+.employee-layout button, 
+.employee-layout .view-btn, 
+.employee-layout .submit-btn, 
+.employee-layout .update-btn {
   border-radius: 8px !important;
   font-family: inherit;
   font-weight: 500;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
-button:hover, .view-btn:hover, .submit-btn:hover:not(:disabled), .update-btn:hover {
+.employee-layout button:hover, 
+.employee-layout .view-btn:hover, 
+.employee-layout .submit-btn:hover:not(:disabled), 
+.employee-layout .update-btn:hover {
   transform: translateY(-1px);
   filter: brightness(1.1);
   box-shadow: 0 4px 12px rgba(108, 62, 244, 0.2);
 }
 
-button:active, .view-btn:active, .submit-btn:active {
+.employee-layout button:active, 
+.employee-layout .view-btn:active, 
+.employee-layout .submit-btn:active {
   transform: translateY(0);
 }
 
-button:disabled, .submit-btn:disabled {
+.employee-layout button:disabled, 
+.employee-layout .submit-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none !important;
@@ -113,7 +122,9 @@ button:disabled, .submit-btn:disabled {
    UNIVERSAL FORM CONTROL INPUTS
 ========================================= */
 
-input, select, textarea {
+.employee-layout input, 
+.employee-layout select, 
+.employee-layout textarea {
   border-radius: 8px !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   background: rgba(255, 255, 255, 0.03) !important;
@@ -121,7 +132,9 @@ input, select, textarea {
   transition: all 0.2s ease !important;
 }
 
-input:focus, select:focus, textarea:focus {
+.employee-layout input:focus, 
+.employee-layout select:focus, 
+.employee-layout textarea:focus {
   border-color: #6C3EF4 !important;
   box-shadow: 0 0 0 3px rgba(108, 62, 244, 0.15) !important;
   outline: none !important;
