@@ -385,10 +385,21 @@ color:#777;
 
     text-align:center;
 
-    font-size:14px;
+}
 
-    font-weight:600;
+.hierarchy-box strong {
+    display: block;
+    color: #222222;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
 
+.hierarchy-box span {
+    display: block;
+    color: #666666;
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .hierarchy-line{
