@@ -103,22 +103,53 @@ function Leave() {
   const handleSubmitLeave = async (e) => {
     e.preventDefault();
     if (submitting) return;
+
+    // Frontend validations
+    if (!startDate || !endDate) {
+      alert("Please select both start and end dates.");
+      return;
+    }
+
+    const fromDate = new Date(startDate);
+    const toDate = new Date(endDate);
+    
+    // Normalize dates for day calculation
+    fromDate.setHours(0, 0, 0, 0);
+    toDate.setHours(0, 0, 0, 0);
+
+    const timeDiff = toDate.getTime() - fromDate.getTime();
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)) + 1; // Inclusive day count
+
+    if (daysDiff <= 0) {
+      alert("End Date must be on or after Start Date.");
+      return;
+    }
+
+    if (!reason.trim()) {
+      alert("Please provide a reason for the leave request.");
+      return;
+    }
+
     setSubmitting(true);
 
-    try {
-      if (!startDate || !endDate) {
-        alert("Please select start and end dates.");
-        setSubmitting(false);
-        return;
-      }
+    // Map leave type to expected values
+    const leaveTypeName = leaveType === "Earned" ? "Earned Leave" : leaveType === "Sick" ? "Sick Leave" : "Casual Leave";
 
-      await leaveAPI.createRequest({
-        leave_type: leaveType,
-        start_date: startDate,
-        end_date: endDate,
-        reason: reason,
-        emergency_contact: emergencyContact || null
-      });
+    const payload = {
+      leave_type: leaveTypeName,
+      from_date: startDate,
+      to_date: endDate,
+      total_days: daysDiff,
+      session: "Full Day", // Required backend field default
+      leave_reason: reason,
+      reason_details: emergencyContact ? `Emergency Contact: ${emergencyContact}` : null
+    };
+
+    console.log("Outgoing Leave Request Payload:", payload);
+
+    try {
+      const response = await leaveAPI.createRequest(payload);
+      console.log("Backend Leave Request Response:", response);
 
       alert("Leave request submitted successfully!");
       // Reset form fields
@@ -131,7 +162,21 @@ function Leave() {
       await fetchLeaveData();
     } catch (err) {
       console.error("Failed to submit leave request:", err);
-      alert(err.response?.data?.detail || "Failed to submit request.");
+      
+      // Parse FastAPI validation details for robust alerts
+      let errorMsg = "Failed to submit request.";
+      if (err.response?.data?.detail) {
+        if (Array.isArray(err.response.data.detail)) {
+          errorMsg = err.response.data.detail
+            .map(d => `${d.loc.join(".")}: ${d.msg}`)
+            .join("\n");
+        } else if (typeof err.response.data.detail === "string") {
+          errorMsg = err.response.data.detail;
+        }
+      } else if (err.message) {
+        errorMsg = err.message;
+      }
+      alert(errorMsg);
     } finally {
       setSubmitting(false);
     }
@@ -312,9 +357,9 @@ function Leave() {
             ) : (
               requests.map((item, index) => (
                 <tr key={index}>
-                  <td>{item.leave_type} Leave</td>
-                  <td>{new Date(item.start_date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</td>
-                  <td>{new Date(item.end_date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</td>
+                  <td>{item.leave_type.toLowerCase().includes("leave") ? item.leave_type : `${item.leave_type} Leave`}</td>
+                  <td>{new Date(item.from_date || item.start_date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</td>
+                  <td>{new Date(item.to_date || item.end_date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}</td>
                   <td>{item.total_days}</td>
                   <td>
                     <span className={`history-status ${item.status.toLowerCase()}`}>
