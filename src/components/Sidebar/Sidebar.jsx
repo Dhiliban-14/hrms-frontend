@@ -10,7 +10,7 @@ import {
   Settings,
 } from "lucide-react";
 
-
+import logo from "../../assets/logos/logo.png";
 import "./Sidebar.css";
 
 const menuItems = [
@@ -61,14 +61,7 @@ function Sidebar() {
     <aside className="sidebar">
 
       <div className="sidebar-logo">
-        <div className="logo-wordmark">
-          <div className="logo-main-row">
-            <span className="logo-ze">Ze</span>
-            <span className="logo-ai">AI</span>
-            <span className="logo-soft">SOFT</span>
-          </div>
-          <div className="logo-tagline">Empowering You</div>
-        </div>
+        <img src={logo} alt="ZeAI Logo" />
       </div>
 
       <nav className="sidebar-menu">

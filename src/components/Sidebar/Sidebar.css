@@ -32,61 +32,10 @@
 }
 
 .sidebar-logo img {
-  display: none;
-}
-
-/* HTML/CSS Wordmark Logo */
-.logo-wordmark {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-}
-
-.logo-main-row {
-  display: flex;
-  align-items: baseline;
-  gap: 0px;
-  line-height: 1;
-}
-
-.logo-ze {
-  font-size: 32px;
-  font-weight: 800;
-  color: #ffffff;
-  font-family: 'Outfit', 'Inter', sans-serif;
-  letter-spacing: -1px;
-}
-
-.logo-ai {
-  font-size: 32px;
-  font-weight: 800;
-  background: linear-gradient(135deg, #7c3aed, #a855f7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-family: 'Outfit', 'Inter', sans-serif;
-  letter-spacing: -1px;
-}
-
-.logo-soft {
-  font-size: 9px;
-  font-weight: 700;
-  color: #a78bfa;
-  letter-spacing: 1.5px;
-  margin-left: 4px;
-  margin-bottom: 8px;
-  font-family: 'Outfit', 'Inter', sans-serif;
-  text-transform: uppercase;
-}
-
-.logo-tagline {
-  font-size: 10px;
-  font-weight: 500;
-  color: #c4b5fd;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-family: 'Outfit', 'Inter', sans-serif;
-  opacity: 0.85;
+  height: 55px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(1.1);
 }
 
 .sidebar-logo .company-name {
