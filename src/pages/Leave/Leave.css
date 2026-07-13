@@ -462,28 +462,40 @@
     font-weight:600;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea{
-    width:100%;
-    padding:12px 14px;
-    border:1px solid #DDD;
-    border-radius:12px;
-    outline:none;
-    font-size:14px;
-    transition:.3s;
-    font-family:inherit;
+.leave-form-card input,
+.leave-form-card select,
+.leave-form-card textarea {
+    background: #ffffff !important;
+    border: 1px solid #d1d5db !important;
+    color: #1f2937 !important;
+    border-radius: 12px !important;
+    width: 100%;
+    padding: 12px 14px;
+    outline: none;
+    font-size: 14px;
+    transition: .3s;
+    font-family: inherit;
 }
 
-.form-group textarea{
-    resize:none;
+.leave-form-card textarea {
+    resize: none;
 }
 
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus{
-    border-color:#6C3EF4;
-    box-shadow:0 0 0 3px rgba(108,62,244,.12);
+.leave-form-card input:focus,
+.leave-form-card select:focus,
+.leave-form-card textarea:focus {
+    border-color: #6C3EF4 !important;
+    box-shadow: 0 0 0 3px rgba(108, 62, 244, .12) !important;
+    outline: none !important;
+}
+
+.leave-form-card .invalid-input {
+    border-color: #E5484D !important;
+}
+
+.leave-form-card .invalid-input:focus {
+    border-color: #E5484D !important;
+    box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.15) !important;
 }
 
 /* ==========================================

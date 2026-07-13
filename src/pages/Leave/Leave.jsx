@@ -28,6 +28,44 @@ function Leave() {
   const [emergencyContact, setEmergencyContact] = useState("");
   const [submitting, setSubmitting] = useState(false);
 
+  // Inline Validation States
+  const [errors, setErrors] = useState({});
+  const [touched, setTouched] = useState({
+    startDate: false,
+    endDate: false,
+    reason: false
+  });
+
+  const handleBlur = (field) => {
+    setTouched(prev => ({ ...prev, [field]: true }));
+  };
+
+  useEffect(() => {
+    const newErrors = {};
+
+    if (!leaveType) {
+      newErrors.leaveType = "Leave Type is required.";
+    }
+
+    if (!startDate) {
+      newErrors.startDate = "Start Date is required.";
+    }
+
+    if (!endDate) {
+      newErrors.endDate = "End Date is required.";
+    } else if (startDate && new Date(startDate) > new Date(endDate)) {
+      newErrors.endDate = "Start Date cannot be after End Date.";
+    }
+
+    if (!reason || reason.trim() === "") {
+      newErrors.reason = "Reason is required.";
+    }
+
+    setErrors(newErrors);
+  }, [leaveType, startDate, endDate, reason]);
+
+  const isFormValid = !errors.leaveType && !errors.startDate && !errors.endDate && !errors.reason && startDate && endDate && reason.trim() !== "";
+
   const fetchLeaveData = async () => {
     if (!employee) return;
     try {
@@ -172,6 +210,7 @@ function Leave() {
       setEndDate("");
       setReason("");
       setEmergencyContact("");
+      setTouched({ startDate: false, endDate: false, reason: false });
 
       // Re-fetch data
       await fetchLeaveData();
@@ -289,8 +328,12 @@ function Leave() {
 
           <form className="leave-form" onSubmit={handleSubmitLeave}>
             <div className="form-group">
-              <label>Leave Type</label>
-              <select value={leaveType} onChange={(e) => setLeaveType(e.target.value)}>
+              <label>Leave Type <span style={{ color: "#E5484D" }}>*</span></label>
+              <select 
+                value={leaveType} 
+                onChange={(e) => setLeaveType(e.target.value)}
+                aria-required="true"
+              >
                 <option value="Earned">Earned Leave (Annual)</option>
                 <option value="Sick">Sick Leave</option>
                 <option value="Casual">Casual Leave</option>
@@ -299,35 +342,56 @@ function Leave() {
 
             <div className="form-row">
               <div className="form-group">
-                <label>Start Date</label>
+                <label>Start Date <span style={{ color: "#E5484D" }}>*</span></label>
                 <input 
                   type="date" 
                   value={startDate} 
-                  onChange={(e) => setStartDate(e.target.value)} 
-                  required 
+                  onChange={(e) => setStartDate(e.target.value)}
+                  onBlur={() => handleBlur("startDate")}
+                  className={touched.startDate && errors.startDate ? "invalid-input" : ""}
+                  aria-required="true"
                 />
+                {touched.startDate && errors.startDate && (
+                  <span className="error-message" style={{ color: "#E5484D", fontSize: "12px", marginTop: "4px", display: "block" }}>
+                    {errors.startDate}
+                  </span>
+                )}
               </div>
 
               <div className="form-group">
-                <label>End Date</label>
+                <label>End Date <span style={{ color: "#E5484D" }}>*</span></label>
                 <input 
                   type="date" 
                   value={endDate} 
-                  onChange={(e) => setEndDate(e.target.value)} 
-                  required 
+                  onChange={(e) => setEndDate(e.target.value)}
+                  onBlur={() => handleBlur("endDate")}
+                  className={touched.endDate && errors.endDate ? "invalid-input" : ""}
+                  aria-required="true"
                 />
+                {touched.endDate && errors.endDate && (
+                  <span className="error-message" style={{ color: "#E5484D", fontSize: "12px", marginTop: "4px", display: "block" }}>
+                    {errors.endDate}
+                  </span>
+                )}
               </div>
             </div>
 
             <div className="form-group">
-              <label>Reason</label>
+              <label>Reason <span style={{ color: "#E5484D" }}>*</span></label>
               <textarea
                 rows="4"
                 placeholder="Enter leave reason..."
                 value={reason}
                 onChange={(e) => setReason(e.target.value)}
-                required
+                onBlur={() => handleBlur("reason")}
+                className={touched.reason && errors.reason ? "invalid-input" : ""}
+                aria-required="true"
               ></textarea>
+              {touched.reason && errors.reason && (
+                <span className="error-message" style={{ color: "#E5484D", fontSize: "12px", marginTop: "4px", display: "block" }}>
+                  {errors.reason}
+                </span>
+              )}
             </div>
 
             <div className="form-group">
@@ -340,8 +404,8 @@ function Leave() {
               />
             </div>
 
-            <button className="submit-btn" type="submit" disabled={submitting}>
-              {submitting ? "Submitting..." : "Submit Leave Request"}
+            <button className="submit-btn" type="submit" disabled={submitting || !isFormValid}>
+              {submitting ? "⏳ Submitting..." : "Submit Leave Request"}
             </button>
           </form>
         </div>
