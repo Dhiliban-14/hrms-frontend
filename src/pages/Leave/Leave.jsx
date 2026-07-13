@@ -257,6 +257,24 @@ function Leave() {
     }
   };
 
+  const handleClearRequests = async () => {
+    if (!window.confirm("Are you sure you want to clear all leave requests and reset balances for this demo?")) {
+      return;
+    }
+    try {
+      setLoading(true);
+      await leaveAPI.clearRequests();
+      setRequests([]);
+      await fetchLeaveData(false);
+      alert("All leave requests cleared and balances reset successfully!");
+    } catch (err) {
+      console.error("Failed to clear leave requests:", err);
+      alert("Failed to clear requests: " + (err.response?.data?.detail || err.message));
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (loading) {
     return (
       <div style={{
@@ -436,7 +454,28 @@ function Leave() {
       <div className="history-card">
         <div className="card-header">
           <h3>Leave History</h3>
-          <button>View All</button>
+          <div style={{ display: "flex", gap: "10px" }}>
+            <button 
+              className="clear-demo-btn" 
+              onClick={handleClearRequests}
+              style={{
+                background: "rgba(229, 72, 77, 0.1)",
+                color: "#E5484D",
+                border: "1px solid rgba(229, 72, 77, 0.2)",
+                padding: "6px 12px",
+                borderRadius: "8px",
+                fontSize: "13px",
+                fontWeight: "550",
+                cursor: "pointer",
+                transition: "0.2s"
+              }}
+              onMouseEnter={(e) => e.target.style.background = "rgba(229, 72, 77, 0.2)"}
+              onMouseLeave={(e) => e.target.style.background = "rgba(229, 72, 77, 0.1)"}
+            >
+              Clear Requests (Demo)
+            </button>
+            <button>View All</button>
+          </div>
         </div>
 
         <table>

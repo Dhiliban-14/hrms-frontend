@@ -151,6 +151,10 @@ export const leaveAPI = {
     const response = await api.post("/leaves/requests", data);
     return response.data;
   },
+  clearRequests: async () => {
+    const response = await api.delete("/leaves/requests");
+    return response.data;
+  },
 };
 
 export const payrollAPI = {
