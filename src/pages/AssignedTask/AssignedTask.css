@@ -1168,8 +1168,8 @@ color:#777;
     }
 }
 .history-card {
-    background: #ffffff;
-    border: 1px solid #ECECEC;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
     border-radius: 16px;
     padding: 20px;
 }
@@ -1182,13 +1182,13 @@ color:#777;
 .history-card td {
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ECECEC;
+    border-bottom: 1px solid var(--border-color);
     font-size: 13px;
 }
 .history-card th {
-    color: #6C3EF4 !important;
+    color: var(--primary) !important;
     font-weight: 600;
 }
 .history-card td {
-    color: #333333 !important;
+    color: var(--text-primary) !important;
 }

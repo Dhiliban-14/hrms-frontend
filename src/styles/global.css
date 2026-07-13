@@ -37,35 +37,35 @@ input{
   border-collapse: separate;
   border-spacing: 0;
   margin-top: 15px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   overflow: hidden;
 }
 
 .employee-layout thead {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(108, 62, 244, 0.04);
 }
 
 .employee-layout th {
-  color: #a78bfa !important; /* Premium brand purple */
+  color: var(--primary) !important;
   font-weight: 600;
   text-transform: uppercase;
   font-size: 11px;
   letter-spacing: 0.8px;
   padding: 16px 20px !important;
   text-align: left;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color);
   position: sticky;
   top: 0;
   z-index: 5;
 }
 
 .employee-layout td {
-  color: #dfdfdf !important;
+  color: var(--text-primary) !important;
   font-size: 13.5px;
   padding: 16px 20px !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--border-color);
   transition: background 0.15s ease;
 }
 
@@ -78,7 +78,7 @@ input{
 }
 
 .employee-layout tbody tr:hover {
-  background: rgba(255, 255, 255, 0.03) !important;
+  background: rgba(108, 62, 244, 0.03) !important;
 }
 
 /* ==========================================
