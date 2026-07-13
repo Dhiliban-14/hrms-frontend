@@ -431,7 +431,7 @@ function AssignedTask() {
               <tbody>
                 {timesheets.length === 0 ? (
                   <tr>
-                    <td colSpan="4" style={{ textAlign: "center", color: "#bfbfbf" }}>No logged timesheets found.</td>
+                    <td colSpan="4" style={{ textAlign: "center", color: "#666666" }}>No logged timesheets found.</td>
                   </tr>
                 ) : (
                   timesheets.map((ts, idx) => (
@@ -466,7 +466,7 @@ function AssignedTask() {
               <tbody>
                 {deliverables.length === 0 ? (
                   <tr>
-                    <td colSpan="4" style={{ textAlign: "center", color: "#bfbfbf" }}>No submitted deliverables found.</td>
+                    <td colSpan="4" style={{ textAlign: "center", color: "#666666" }}>No submitted deliverables found.</td>
                   </tr>
                 ) : (
                   deliverables.map((del, idx) => (
