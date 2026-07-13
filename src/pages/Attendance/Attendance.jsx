@@ -35,9 +35,7 @@ function Attendance() {
   useEffect(() => {
     let interval = null;
     if (todayLog && !todayLog.check_out) {
-      const [h, m, s] = todayLog.check_in.split(":").map(Number);
-      const checkInDate = new Date();
-      checkInDate.setUTCHours(h, m, s, 0);
+      const checkInDate = new Date(`${todayLog.date}T${todayLog.check_in}Z`);
 
       const updateTimer = () => {
         const now = new Date();
