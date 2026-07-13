@@ -322,10 +322,16 @@ function AssignedTask() {
                     <small style={{ display: "block", color: "#bfbfbf", marginTop: "4px" }}>{task.title}</small>
                   </span>
 
-                  <span>{task.priority}</span>
+                  <span>
+                    <span className={`priority-badge ${task.priority.toLowerCase()}`}>
+                      {task.priority}
+                    </span>
+                  </span>
 
-                  <span className={`status ${task.status.toLowerCase().replace(" ", "-")}`}>
-                    {task.status}
+                  <span>
+                    <span className={`status-badge ${task.status.toLowerCase().replace(" ", "-")}`}>
+                      {task.status}
+                    </span>
                   </span>
 
                   <span>

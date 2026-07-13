@@ -347,46 +347,85 @@ grid-template-columns:1fr;
 
 /* =============================== */
 
-.status{
-
-    display:inline-flex;
-
-    justify-content:center;
-
-    width:80px;
-
-    padding:6px 0;
-
-    border-radius:20px;
-
-    font-size:12px;
-
-    font-weight:600;
-
+/* Badges & Text Highlights Resets */
+.project-row .project-name,
+.project-row .project-name strong,
+.project-row .project-name small,
+.project-row > span:not(.status-badge):not(.priority-badge),
+.project-row .progress-wrapper small {
+    background: transparent !important;
+    background-color: transparent !important;
 }
 
-.status.active{
-
-    background:#DDF9EA;
-
-    color:#22B573;
-
+/* Priority Badges */
+.priority-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 75px;
+    padding: 5px 0;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
 }
 
-.status.review{
-
-    background:#FFF4D7;
-
-    color:#E8A400;
-
+.priority-badge.high {
+    background: #FCE5E5 !important;
+    color: #E5484D !important;
 }
 
-.status.pending{
+.priority-badge.medium {
+    background: #FFF4D7 !important;
+    color: #E8A400 !important;
+}
 
-    background:#FCE5E5;
+.priority-badge.low {
+    background: #DDF9EA !important;
+    color: #22B573 !important;
+}
 
-    color:#E5484D;
+/* Status Badges */
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 90px;
+    padding: 5px 0;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
 
+.status-badge.completed {
+    background: #DDF9EA !important;
+    color: #22B573 !important;
+}
+
+.status-badge.active {
+    background: #DDF9EA !important;
+    color: #22B573 !important;
+}
+
+.status-badge.in-progress {
+    background: #EAF2FF !important;
+    color: #4F8CFF !important;
+}
+
+.status-badge.to-do {
+    background: #F3F3F3 !important;
+    color: #666666 !important;
+}
+
+.status-badge.review {
+    background: #FFF4D7 !important;
+    color: #E8A400 !important;
+}
+
+.status-badge.pending {
+    background: #FCE5E5 !important;
+    color: #E5484D !important;
 }
 
 /* =============================== */
