@@ -462,9 +462,9 @@
     font-weight:600;
 }
 
-.leave-form-card input,
-.leave-form-card select,
-.leave-form-card textarea {
+.employee-layout .leave-form-card input,
+.employee-layout .leave-form-card select,
+.employee-layout .leave-form-card textarea {
     background: #ffffff !important;
     border: 1px solid #d1d5db !important;
     color: #1f2937 !important;
@@ -477,23 +477,23 @@
     font-family: inherit;
 }
 
-.leave-form-card textarea {
+.employee-layout .leave-form-card textarea {
     resize: none;
 }
 
-.leave-form-card input:focus,
-.leave-form-card select:focus,
-.leave-form-card textarea:focus {
+.employee-layout .leave-form-card input:focus,
+.employee-layout .leave-form-card select:focus,
+.employee-layout .leave-form-card textarea:focus {
     border-color: #6C3EF4 !important;
     box-shadow: 0 0 0 3px rgba(108, 62, 244, .12) !important;
     outline: none !important;
 }
 
-.leave-form-card .invalid-input {
+.employee-layout .leave-form-card .invalid-input {
     border-color: #E5484D !important;
 }
 
-.leave-form-card .invalid-input:focus {
+.employee-layout .leave-form-card .invalid-input:focus {
     border-color: #E5484D !important;
     box-shadow: 0 0 0 3px rgba(229, 72, 77, 0.15) !important;
 }
