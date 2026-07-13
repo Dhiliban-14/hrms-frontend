@@ -43,7 +43,22 @@ function Leave() {
       const earnedLeft = (balancesRes?.earned_total || 20) - (balancesRes?.earned_used || 0);
       const sickLeft = (balancesRes?.sick_total || 10) - (balancesRes?.sick_used || 0);
       const casualLeft = (balancesRes?.casual_total || 12) - (balancesRes?.casual_used || 0);
-      const leavesTaken = (balancesRes?.earned_used || 0) + (balancesRes?.sick_used || 0) + (balancesRes?.casual_used || 0);
+
+      const parseLeaveTaken = (val) => {
+        if (!val) return 0;
+        if (typeof val === "number") return val;
+        const strVal = String(val).trim();
+        if (strVal.includes(":") || strVal.includes("day")) {
+          const match = strVal.match(/^(\d+)/);
+          if (match) return parseFloat(match[1]);
+        }
+        const parsed = parseFloat(strVal);
+        return isNaN(parsed) ? 0 : parsed;
+      };
+
+      const leavesTaken = parseLeaveTaken(balancesRes?.earned_used) + 
+                          parseLeaveTaken(balancesRes?.sick_used) + 
+                          parseLeaveTaken(balancesRes?.casual_used);
 
       setStats([
         {
