@@ -335,6 +335,8 @@ grid-template-columns:1fr;
 
     border-bottom:1px solid #F3F3F3;
 
+    color: var(--text-secondary, #4b5563);
+
 }
 
 .project-name{
