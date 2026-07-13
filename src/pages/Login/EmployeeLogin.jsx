@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 
 import "./EmployeeLogin.css";
-import logo from "../../assets/logos/logo.png";
+import loginLogo from "../../assets/logos/logo-login.png";
 import employeeIllustration from "../../assets/images/emp.jpg";
 
 import { authAPI } from "../../services/api";
@@ -64,8 +64,8 @@ function EmployeeLogin() {
         <div className="login-logo">
 
           <img
-            src={logo}
-            alt="Logo"
+            src={loginLogo}
+            alt="ZeAI Logo"
           />
 
         </div>

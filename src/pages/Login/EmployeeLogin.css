@@ -117,8 +117,9 @@ transform:translate(120px,-70px) scale(1.25);
 
 .login-logo img{
 
-    height:58px;
-
+    height: 100px;
+    width: auto;
+    object-fit: contain;
     transition:.35s;
 
 }
