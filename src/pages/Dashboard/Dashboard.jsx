@@ -701,7 +701,7 @@ function Dashboard() {
 
             <h3>Notifications</h3>
 
-            <button>View All</button>
+            <button onClick={() => navigate("/employee/notifications")}>View All</button>
 
           </div>
 

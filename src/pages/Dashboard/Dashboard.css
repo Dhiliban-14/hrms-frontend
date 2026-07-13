@@ -582,12 +582,20 @@
 
 }
 
+.notification-card .card-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    margin-bottom: 22px !important;
+    width: 100% !important;
+}
+
 .notification-list{
 
     display:flex;
     flex-direction:column;
     gap:18px;
-    margin-top:20px;
+    margin-top:0 !important;
 
 }
 
