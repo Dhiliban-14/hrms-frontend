@@ -11,7 +11,7 @@ import {
   Moon,
 } from "lucide-react";
 
-import logo from "../../assets/logos/logo.png";
+import logo from "../../assets/logos/logo-login.png";
 import portalVideo from "../../assets/videos/black.mp4";
 
 function PortalSelection() {
