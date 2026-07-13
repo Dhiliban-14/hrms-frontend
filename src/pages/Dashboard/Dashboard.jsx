@@ -197,7 +197,7 @@ function Dashboard() {
 
   return (
 
-    <div className="dashboard-page">
+    <div className="dashboard-page fade-in">
 
       {/* Breadcrumb */}
 

@@ -198,7 +198,7 @@ function Leave() {
   }
 
   return (
-    <div className="leave-page">
+    <div className="leave-page fade-in">
       {/* Breadcrumb */}
       <div className="breadcrumb">
         Dashboard

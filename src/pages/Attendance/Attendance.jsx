@@ -269,7 +269,7 @@ function Attendance() {
   }
 
   return (
-    <div className="attendance-page">
+    <div className="attendance-page fade-in">
       {/* Breadcrumb */}
       <div className="breadcrumb">
         Dashboard

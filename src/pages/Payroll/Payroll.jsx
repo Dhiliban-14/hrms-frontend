@@ -149,7 +149,7 @@ function Payroll() {
   ];
 
   return (
-    <div className="payroll-page">
+    <div className="payroll-page fade-in">
       {/* Breadcrumb */}
       <div className="breadcrumb">
         Dashboard

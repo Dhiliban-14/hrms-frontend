@@ -174,7 +174,7 @@ function Profile() {
   ];
 
   return (
-    <div className="profile-page">
+    <div className="profile-page fade-in">
       <div className="breadcrumb">
         Dashboard
         <span> / </span>

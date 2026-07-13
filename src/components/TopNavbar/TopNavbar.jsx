@@ -24,31 +24,27 @@ function TopNavbar({ employee }) {
 
   return (
     <header className="top-navbar">
-
-      {/* Search */}
-
-      <div className="search-box">
-
-        <Search size={18} />
-
-        <input
-          type="text"
-          placeholder="Search..."
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              navigate("/employee/search");
-            }
-          }}
-        />
-
+      <div className="navbar-left">
+        <div className="greeting-msg">
+          Hello, <strong>{employee?.full_name?.split(" ")[0] || "Employee"}</strong>! 👋
+        </div>
+        <div className="search-box">
+          <Search size={18} />
+          <input
+            type="text"
+            placeholder="Search..."
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                navigate("/employee/search");
+              }
+            }}
+          />
+        </div>
       </div>
 
       {/* Right */}
-
       <div className="navbar-right">
-
         {/* Notifications */}
-
         <button
           className="top-nav-btn"
           onClick={() => navigate("/employee/notifications")}
@@ -57,7 +53,6 @@ function TopNavbar({ employee }) {
         </button>
 
         {/* Calendar */}
-
         <button
           className="top-nav-btn"
           onClick={() => navigate("/employee/calendar")}
@@ -66,7 +61,6 @@ function TopNavbar({ employee }) {
         </button>
 
         {/* Messages */}
-
         <button
           className="top-nav-btn"
           onClick={() => navigate("/employee/messages")}
@@ -75,31 +69,27 @@ function TopNavbar({ employee }) {
         </button>
 
         {/* Profile */}
-
         <div
           className="profile"
           onClick={() => navigate("/employee/profile")}
           style={{ cursor: "pointer" }}
         >
-
-          <img
-            src={employee?.photo_url || profile}
-            alt="Profile"
-            onError={(e) => {
-              e.target.src = profile;
-            }}
-          />
-
-          <div className="profile-info">
-
-            <h4>{employee?.full_name || "Employee"}</h4>
-
-            <span>{employee?.designation || "Staff"}</span>
-
+          <div className="avatar-wrapper">
+            <img
+              src={employee?.photo_url || profile}
+              alt="Profile"
+              onError={(e) => {
+                e.target.src = profile;
+              }}
+            />
+            <span className="online-indicator"></span>
           </div>
 
-          <ChevronDown size={18} />
-
+          <div className="profile-info">
+            <h4>{employee?.full_name || "Employee"}</h4>
+            <span>{employee?.designation || "Staff"}</span>
+          </div>
+          <ChevronDown size={16} />
         </div>
 
         {/* Logout */}

@@ -261,7 +261,7 @@ function AssignedTask() {
   }
 
   return (
-    <div className="assigned-page">
+    <div className="assigned-page fade-in">
       {/* Breadcrumb */}
       <div className="breadcrumb">
         Dashboard

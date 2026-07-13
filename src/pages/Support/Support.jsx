@@ -199,7 +199,7 @@ function Support() {
   }
 
   return (
-    <div className="support-page">
+    <div className="support-page fade-in">
       {/* Breadcrumb */}
       <div className="breadcrumb">
         Dashboard

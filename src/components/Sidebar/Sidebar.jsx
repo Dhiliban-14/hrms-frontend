@@ -62,6 +62,7 @@ function Sidebar() {
 
       <div className="sidebar-logo">
         <img src={logo} alt="ZeAI Logo" />
+        <span className="company-name">ZeAL Soft</span>
       </div>
 
       <nav className="sidebar-menu">
@@ -69,6 +70,7 @@ function Sidebar() {
           <NavLink
             key={item.title}
             to={item.path}
+            data-tooltip={item.title}
             className={({ isActive }) =>
               isActive ? "menu-item active" : "menu-item"
             }

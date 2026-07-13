@@ -2,144 +2,183 @@
    NAVBAR
 ========================== */
 
-.top-navbar{
+.top-navbar {
+  height: 75px;
+  background: #09090e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 30px;
+  border-bottom: 1px solid #1b1b1b;
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
 
-    height:75px;
+/* NAVBAR LEFT & GREETING */
 
-    background:white;
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
 
-    display:flex;
+.greeting-msg {
+  color: #ffffff;
+  font-size: 15px;
+  font-family: 'Outfit', 'Inter', sans-serif;
+}
 
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:0 30px;
-
-    border-bottom:1px solid #ececec;
-
+.greeting-msg strong {
+  font-weight: 600;
+  color: #a78bfa;
 }
 
 /* SEARCH */
 
-.search-box{
-
-    width:340px;
-
-    height:46px;
-
-    background:#f4f5f7;
-
-    border-radius:12px;
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    padding:0 16px;
-
-    color:#777;
-
+.search-box {
+  width: 320px;
+  height: 42px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  color: #a3a3a3;
+  transition: border-color 0.25s ease;
 }
 
-.search-box input{
+.search-box:focus-within {
+  border-color: #6C3EF4;
+}
 
-    flex:1;
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
+  color: #ffffff;
+}
 
-    border:none;
-
-    outline:none;
-
-    background:none;
-
-    font-size:14px;
-
+.search-box input::placeholder {
+  color: #737373;
 }
 
 /* RIGHT */
 
-.navbar-right{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:16px;
-
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
-.top-nav-btn{
-
-    width:44px;
-
-    height:44px;
-
-    border:none;
-
-    border-radius:12px;
-
-    background:#f4f5f7;
-
-    color:#484456;
-
-    cursor:pointer;
-
-    transition:.25s;
-
-    display:flex;
-
-    align-items:center;
-
-    justify-content:center;
-
+.top-nav-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #a3a3a3;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.top-nav-btn:hover{
-
-    background:#ececf2;
-
-    color:#191c1e;
-
+.top-nav-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  transform: translateY(-1px);
 }
 
-.profile{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:12px;
-
-    cursor:pointer;
-
+.top-nav-btn.logout-btn:hover {
+  background: rgba(229, 72, 77, 0.15);
+  color: #ff6267;
 }
 
-.profile img{
+/* PROFILE & ONLINE STATUS */
 
-    width:42px;
-
-    height:42px;
-
-    border-radius:50%;
-
-    object-fit:cover;
-
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 12px;
+  border-radius: 10px;
+  transition: background 0.2s ease;
+  color: #ffffff;
 }
 
-.profile-info h4{
-
-    margin:0;
-
-    font-size:14px;
-
+.profile:hover {
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.profile-info span{
+.avatar-wrapper {
+  position: relative;
+  width: 38px;
+  height: 38px;
+}
 
-    color:#888;
+.avatar-wrapper img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(255, 255, 255, 0.1);
+}
 
-    font-size:12px;
+.online-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 10px;
+  height: 10px;
+  background: #22B573;
+  border: 2px solid #09090e;
+  border-radius: 50%;
+}
 
+.profile-info {
+  text-align: left;
+}
+
+.profile-info h4 {
+  margin: 0;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.profile-info span {
+  color: #a3a3a3;
+  font-size: 11px;
+  display: block;
+}
+
+.profile svg {
+  color: #737373;
+}
+
+@media (max-width: 900px) {
+  .greeting-msg {
+    display: none;
+  }
+  .search-box {
+    width: 200px;
+  }
+}
+
+@media (max-width: 600px) {
+  .search-box {
+    display: none;
+  }
+  .profile-info {
+    display: none;
+  }
+  .profile svg {
+    display: none;
+  }
 }

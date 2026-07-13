@@ -120,7 +120,7 @@ function Settings() {
   };
 
   return (
-    <div className="settings-page">
+    <div className="settings-page fade-in">
       {/* Breadcrumb */}
       <div className="breadcrumb">
         Dashboard
