@@ -62,7 +62,6 @@ function Sidebar() {
 
       <div className="sidebar-logo">
         <img src={logo} alt="ZeAI Logo" />
-        <span className="company-name">Soft</span>
       </div>
 
       <nav className="sidebar-menu">
