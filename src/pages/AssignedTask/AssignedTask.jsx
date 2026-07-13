@@ -302,72 +302,74 @@ function AssignedTask() {
             <button onClick={fetchTasksData}>Refresh</button>
           </div>
 
-          <div className="table-header">
-            <span>Project & Task</span>
-            <span>Priority</span>
-            <span>Status</span>
-            <span>Deadline</span>
-            <span>Progress</span>
-            <span>Action</span>
-          </div>
+          <div className="tasks-table-wrapper">
+            <div className="table-header">
+              <span>Project & Task</span>
+              <span>Priority</span>
+              <span>Status</span>
+              <span>Deadline</span>
+              <span>Progress</span>
+              <span>Action</span>
+            </div>
 
-          {tasks.length === 0 ? (
-            <div style={{ padding: "20px", textAlign: "center", color: "#bfbfbf" }}>No tasks assigned.</div>
-          ) : (
-            tasks.map((task, index) => (
-              <div className="project-row" key={task.id || index}>
-                <span className="project-name">
-                  <strong>{task.project_name}</strong>
-                  <small style={{ display: "block", color: "#bfbfbf", marginTop: "4px" }}>{task.title}</small>
-                </span>
+            {tasks.length === 0 ? (
+              <div style={{ padding: "20px", textAlign: "center", color: "#bfbfbf" }}>No tasks assigned.</div>
+            ) : (
+              tasks.map((task, index) => (
+                <div className="project-row" key={task.id || index}>
+                  <span className="project-name">
+                    <strong>{task.project_name}</strong>
+                    <small style={{ display: "block", color: "#bfbfbf", marginTop: "4px" }}>{task.title}</small>
+                  </span>
 
-                <span>{task.priority}</span>
+                  <span>{task.priority}</span>
 
-                <span className={`status ${task.status.toLowerCase().replace(" ", "-")}`}>
-                  {task.status}
-                </span>
+                  <span className={`status ${task.status.toLowerCase().replace(" ", "-")}`}>
+                    {task.status}
+                  </span>
 
-                <span>
-                  {task.due_date 
-                    ? new Date(task.due_date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
-                    : "No Deadline"}
-                </span>
+                  <span>
+                    {task.due_date 
+                      ? new Date(task.due_date).toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })
+                      : "No Deadline"}
+                  </span>
 
-                <div className="progress-wrapper">
-                  <div className="progress-bar">
-                    <div
-                      className="progress-fill"
-                      style={{ width: `${task.progress_pct || 0}%` }}
-                    ></div>
+                  <div className="progress-wrapper">
+                    <div className="progress-bar">
+                      <div
+                        className="progress-fill"
+                        style={{ width: `${task.progress_pct || 0}%` }}
+                      ></div>
+                    </div>
+                    <small>{task.progress_pct || 0}%</small>
                   </div>
-                  <small>{task.progress_pct || 0}%</small>
-                </div>
 
-                <div style={{ display: "flex", gap: "6px" }}>
-                  <button 
-                    className="view-btn" 
-                    onClick={() => handleUpdateProgress(task.id, task.progress_pct, task.status)}
-                  >
-                    Update
-                  </button>
-                  <button 
-                    className="view-btn" 
-                    onClick={() => { setSelectedTask(task); setShowTimesheetModal(true); }}
-                    style={{ background: "#4F8CFF" }}
-                  >
-                    Log Time
-                  </button>
-                  <button 
-                    className="view-btn" 
-                    onClick={() => { setSelectedTask(task); setShowDeliverableModal(true); }}
-                    style={{ background: "#22B573" }}
-                  >
-                    Submit File
-                  </button>
+                  <div style={{ display: "flex", gap: "6px", flexWrap: "nowrap" }}>
+                    <button 
+                      className="view-btn" 
+                      onClick={() => handleUpdateProgress(task.id, task.progress_pct, task.status)}
+                    >
+                      Update
+                    </button>
+                    <button 
+                      className="view-btn" 
+                      onClick={() => { setSelectedTask(task); setShowTimesheetModal(true); }}
+                      style={{ background: "#4F8CFF" }}
+                    >
+                      Log Time
+                    </button>
+                    <button 
+                      className="view-btn" 
+                      onClick={() => { setSelectedTask(task); setShowDeliverableModal(true); }}
+                      style={{ background: "#22B573" }}
+                    >
+                      Submit File
+                    </button>
+                  </div>
                 </div>
-              </div>
-            ))
-          )}
+              ))
+            )}
+          </div>
         </div>
 
         <div className="bottom-section">
