@@ -695,7 +695,7 @@ function Dashboard() {
 
         {/* Notifications */}
 
-        <div className="notification-card">
+        <div className="dashboard-notification-card">
 
           <div className="card-header">
 
