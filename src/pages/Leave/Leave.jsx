@@ -66,17 +66,24 @@ function Leave() {
 
   const isFormValid = !errors.leaveType && !errors.startDate && !errors.endDate && !errors.reason && startDate && endDate && reason.trim() !== "";
 
-  const fetchLeaveData = async () => {
+  const fetchLeaveData = async (showSpinner = false) => {
     if (!employee) return;
     try {
-      setLoading(true);
+      if (showSpinner) setLoading(true);
       const [balancesRes, requestsRes] = await Promise.all([
         leaveAPI.getBalances(),
         leaveAPI.getRequests()
       ]);
 
       setBalances(balancesRes || null);
-      setRequests(requestsRes || []);
+
+      const sortedRequests = (requestsRes || []).sort((a, b) => {
+        if (a.id && b.id) return b.id - a.id;
+        const dateA = new Date(a.from_date || a.start_date || 0);
+        const dateB = new Date(b.from_date || b.start_date || 0);
+        return dateB - dateA;
+      });
+      setRequests(sortedRequests);
 
       const earnedLeft = (balancesRes?.earned_total || 20) - (balancesRes?.earned_used || 0);
       const sickLeft = (balancesRes?.sick_total || 10) - (balancesRes?.sick_used || 0);
@@ -145,12 +152,12 @@ function Leave() {
     } catch (err) {
       console.error("Failed to load leave details:", err);
     } finally {
-      setLoading(false);
+      if (showSpinner) setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchLeaveData();
+    fetchLeaveData(true);
   }, [employee]);
 
   const handleSubmitLeave = async (e) => {
@@ -204,7 +211,19 @@ function Leave() {
       const response = await leaveAPI.createRequest(payload);
       console.log("Backend Leave Request Response:", response);
 
-      alert("Leave request submitted successfully!");
+      // Prepend to requests locally for instant UI update
+      if (response) {
+        setRequests(prevRequests => {
+          const updated = [response, ...prevRequests];
+          return updated.sort((a, b) => {
+            if (a.id && b.id) return b.id - a.id;
+            const dateA = new Date(a.from_date || a.start_date || 0);
+            const dateB = new Date(b.from_date || b.start_date || 0);
+            return dateB - dateA;
+          });
+        });
+      }
+
       // Reset form fields
       setStartDate("");
       setEndDate("");
@@ -212,8 +231,10 @@ function Leave() {
       setEmergencyContact("");
       setTouched({ startDate: false, endDate: false, reason: false });
 
-      // Re-fetch data
-      await fetchLeaveData();
+      // Re-fetch data in background (non-blocking)
+      await fetchLeaveData(false);
+
+      alert("Leave request submitted successfully!");
     } catch (err) {
       console.error("Failed to submit leave request:", err);
       
