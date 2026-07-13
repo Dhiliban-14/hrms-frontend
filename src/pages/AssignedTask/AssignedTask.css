@@ -1186,9 +1186,9 @@ color:#777;
     font-size: 13px;
 }
 .history-card th {
-    color: #6C3EF4;
+    color: #6C3EF4 !important;
     font-weight: 600;
 }
 .history-card td {
-    color: #333333;
+    color: #333333 !important;
 }
