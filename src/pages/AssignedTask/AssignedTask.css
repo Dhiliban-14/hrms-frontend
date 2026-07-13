@@ -1208,6 +1208,10 @@ color:#777;
     color: #ffffff;
     font-size: 14px;
 }
+.modal-form select option {
+    color: #333333 !important;
+    background-color: #ffffff !important;
+}
 .modal-form input:focus,
 .modal-form select:focus,
 .modal-form textarea:focus {
