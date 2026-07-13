@@ -13,7 +13,7 @@ import {
 
 import "./EmployeeLogin.css";
 import loginLogo from "../../assets/logos/logo-login.png";
-import employeeIllustration from "../../assets/images/emp.jpg";
+import employeeIllustration from "../../assets/images/emp-new.png";
 
 import { authAPI } from "../../services/api";
 
