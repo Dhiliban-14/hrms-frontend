@@ -22,6 +22,12 @@ function Support() {
   const [stats, setStats] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  // Ticket chat states
+  const [activeTicket, setActiveTicket] = useState(null);
+  const [chatLoading, setChatLoading] = useState(false);
+  const [replyText, setReplyText] = useState("");
+  const [sendingReply, setSendingReply] = useState(false);
+
   // Form states
   const [category, setCategory] = useState("IT Support");
   const [priority, setPriority] = useState("Medium");
@@ -139,6 +145,41 @@ function Support() {
       alert(err.response?.data?.detail || "Failed to submit ticket.");
     } finally {
       setSubmitting(false);
+    }
+  };
+
+  const handleOpenTicketChat = async (ticketId) => {
+    setChatLoading(true);
+    try {
+      const details = await supportAPI.getTicketDetails(ticketId);
+      setActiveTicket(details);
+    } catch (err) {
+      console.error("Failed to fetch ticket messages:", err);
+      alert("Failed to load conversation thread.");
+    } finally {
+      setChatLoading(false);
+    }
+  };
+
+  const handleSendTicketReply = async (e) => {
+    e.preventDefault();
+    if (!replyText.trim() || !activeTicket) return;
+    setSendingReply(true);
+    try {
+      await supportAPI.sendTicketMessage(activeTicket.ticket_id, {
+        message: replyText
+      });
+      setReplyText("");
+      // Refresh chat window messages list
+      const details = await supportAPI.getTicketDetails(activeTicket.ticket_id);
+      setActiveTicket(details);
+      // Refresh background ticket status list
+      await fetchSupportData();
+    } catch (err) {
+      console.error("Failed to send message reply:", err);
+      alert(err.response?.data?.detail || "Failed to submit message.");
+    } finally {
+      setSendingReply(false);
     }
   };
 
@@ -302,12 +343,13 @@ function Support() {
               <th>Category</th>
               <th>Date</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {tickets.length === 0 ? (
               <tr>
-                <td colSpan="4" style={{ textAlign: "center", color: "#bfbfbf" }}>No tickets raised.</td>
+                <td colSpan="5" style={{ textAlign: "center", color: "#bfbfbf" }}>No tickets raised.</td>
               </tr>
             ) : (
               tickets.map((item, index) => (
@@ -319,6 +361,14 @@ function Support() {
                     <span className={`status ${item.status === 'Closed' || item.status === 'Resolved' ? 'closed' : item.status === 'In Progress' ? 'progress' : 'open'}`}>
                       {item.status}
                     </span>
+                  </td>
+                  <td>
+                    <button 
+                      className="view-conversation-btn"
+                      onClick={() => handleOpenTicketChat(item.ticket_id)}
+                    >
+                      View Chat
+                    </button>
                   </td>
                 </tr>
               ))
@@ -359,6 +409,61 @@ function Support() {
           </div>
         </div>
       </div>
+
+      {/* Ticket Chat Modal */}
+      {activeTicket && (
+        <div className="chat-modal-overlay">
+          <div className="chat-modal-container">
+            <div className="chat-modal-header">
+              <div>
+                <h3>Ticket #{activeTicket.ticket_id}: {activeTicket.subject}</h3>
+                <small style={{ color: "#a0a0a0" }}>Category: {activeTicket.category} | Priority: {activeTicket.priority} | Status: {activeTicket.status}</small>
+              </div>
+              <button className="chat-modal-close" onClick={() => setActiveTicket(null)}>×</button>
+            </div>
+            
+            <div className="chat-messages-box">
+              {/* Initial ticket description as first message */}
+              <div className="chat-bubble received">
+                <span className="chat-bubble-sender">{activeTicket.employee?.full_name || "Employee"}</span>
+                <p style={{ margin: "4px 0 0 0" }}>{activeTicket.description}</p>
+                <span className="chat-meta">
+                  {new Date(activeTicket.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                </span>
+              </div>
+
+              {activeTicket.messages?.map((msg, idx) => (
+                <div key={msg.id || idx} className={`chat-bubble ${msg.sender_id === employee?.id ? 'sent' : 'received'}`}>
+                  <span className="chat-bubble-sender">{msg.sender_name}</span>
+                  <p style={{ margin: "4px 0 0 0" }}>{msg.message}</p>
+                  <span className="chat-meta">
+                    {new Date(msg.created_at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            {activeTicket.status !== "Closed" && activeTicket.status !== "Cancelled" ? (
+              <form className="chat-input-form" onSubmit={handleSendTicketReply}>
+                <textarea
+                  placeholder="Type a message reply to HR support..."
+                  value={replyText}
+                  onChange={(e) => setReplyText(e.target.value)}
+                  rows="2"
+                  required
+                ></textarea>
+                <button type="submit" className="chat-send-btn" disabled={sendingReply}>
+                  {sendingReply ? "..." : "Send"}
+                </button>
+              </form>
+            ) : (
+              <div style={{ textAlign: "center", color: "#a0a0a0", fontSize: "14px", padding: "10px" }}>
+                This ticket is closed and read-only.
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

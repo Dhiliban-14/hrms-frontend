@@ -94,6 +94,22 @@ export const taskAPI = {
     const response = await api.put(`/tasks/${taskId}`, data);
     return response.data;
   },
+  getTimesheets: async () => {
+    const response = await api.get("/tasks/timesheets/history");
+    return response.data;
+  },
+  createTimesheet: async (data) => {
+    const response = await api.post("/tasks/timesheets", data);
+    return response.data;
+  },
+  getDeliverables: async () => {
+    const response = await api.get("/tasks/deliverables/history");
+    return response.data;
+  },
+  createDeliverable: async (data) => {
+    const response = await api.post("/tasks/deliverables", data);
+    return response.data;
+  },
 };
 
 export const attendanceAPI = {
@@ -185,7 +201,7 @@ export const supportAPI = {
     return response.data;
   },
   sendTicketMessage: async (ticketId, data) => {
-    const response = await api.post(`/support/tickets/${ticketId}/message`, data);
+    const response = await api.post(`/support/tickets/${ticketId}/messages`, data);
     return response.data;
   },
 };
