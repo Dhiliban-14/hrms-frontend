@@ -1,6 +1,6 @@
 .notifications-page {
   padding: 24px;
-  color: #ffffff;
+  color: var(--text-primary);
   font-family: "Inter", "Segoe UI", sans-serif;
   min-height: 85vh;
 }
@@ -18,13 +18,13 @@
   font-size: 32px;
   font-weight: 700;
   margin: 0 0 4px 0;
-  color: #ffffff;
+  color: var(--text-primary);
   letter-spacing: -0.64px;
 }
 
 .notifications-header p {
   margin: 0;
-  color: #9CA3AF;
+  color: var(--text-muted);
   font-size: 16px;
 }
 
@@ -77,19 +77,19 @@
 
 /* Sidebar Panel */
 .notifications-sidebar {
-  background: rgba(30, 30, 50, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   padding: 16px;
+  box-shadow: 0 5px 18px rgba(0,0,0,.05);
 }
 
 .sidebar-title {
   font-size: 15px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   padding: 0 8px 12px 8px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color);
   margin-bottom: 12px;
 }
 
@@ -109,7 +109,7 @@
   transition: all 0.2s ease;
   background: transparent;
   border: none;
-  color: #9CA3AF;
+  color: var(--text-secondary);
   width: 100%;
   text-align: left;
 }
@@ -123,13 +123,14 @@
 }
 
 .filter-item:hover {
-  background: rgba(255, 255, 255, 0.04);
-  color: #ffffff;
+  background: rgba(108, 62, 244, 0.05);
+  color: var(--primary);
 }
 
 .filter-item.active {
-  background: rgba(108, 62, 244, 0.15);
-  color: #9c7eff;
+  background: rgba(108, 62, 244, 0.1);
+  color: var(--primary);
+  font-weight: 600;
 }
 
 .filter-count {
@@ -137,22 +138,22 @@
   font-weight: 600;
   padding: 2px 8px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #9CA3AF;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
 }
 
 .filter-item.active .filter-count {
-  background: rgba(108, 62, 244, 0.3);
-  color: #ffffff;
+  background: rgba(108, 62, 244, 0.2);
+  color: var(--primary);
 }
 
 /* Main Panel */
 .notifications-panel {
-  background: rgba(30, 30, 50, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(8px);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,.05);
 }
 
 .panel-header {
@@ -160,14 +161,14 @@
   justify-content: space-between;
   align-items: center;
   padding: 16px 24px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .panel-header h3 {
   margin: 0;
   font-size: 16px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
 }
 
 .sort-container {
@@ -175,13 +176,13 @@
   align-items: center;
   gap: 6px;
   font-size: 13px;
-  color: #9CA3AF;
+  color: var(--text-secondary);
 }
 
 .sort-select {
   background: transparent;
   border: none;
-  color: #6C3EF4;
+  color: var(--primary);
   font-weight: 600;
   cursor: pointer;
   outline: none;
@@ -197,18 +198,18 @@
   display: flex;
   padding: 20px 24px;
   gap: 16px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid var(--border-color);
   transition: all 0.2s ease;
   position: relative;
   align-items: flex-start;
 }
 
 .notification-card:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(108, 62, 244, 0.02);
 }
 
 .notification-card.unread {
-  background: rgba(108, 62, 244, 0.03);
+  background: rgba(108, 62, 244, 0.04);
 }
 
 .notification-card.unread::before {
@@ -218,7 +219,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: #6C3EF4;
+  background: var(--primary);
 }
 
 .notification-icon-container {
@@ -255,19 +256,19 @@
 .notification-title {
   font-size: 15px;
   font-weight: 600;
-  color: #ffffff;
+  color: var(--text-primary);
   margin: 0;
 }
 
 .notification-time {
   font-size: 12px;
-  color: #9CA3AF;
+  color: var(--text-muted);
   white-space: nowrap;
 }
 
 .notification-desc {
   font-size: 13px;
-  color: #9CA3AF;
+  color: var(--text-secondary);
   line-height: 1.5;
   margin: 0 0 10px 0;
 }
@@ -283,8 +284,8 @@
   font-weight: 500;
   padding: 2px 8px;
   border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.05);
-  color: #9CA3AF;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
 }
 
 .notification-actions-row {
@@ -330,7 +331,7 @@
   align-items: center;
   justify-content: center;
   padding: 60px 24px;
-  color: #9CA3AF;
+  color: var(--text-muted);
 }
 
 .empty-notifications p {

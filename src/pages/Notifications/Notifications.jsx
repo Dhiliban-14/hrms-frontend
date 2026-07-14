@@ -168,7 +168,7 @@ function Notifications() {
         justifyContent: "center",
         alignItems: "center",
         height: "60vh",
-        color: "#ffffff",
+        color: "var(--text-primary)",
         fontFamily: "Segoe UI, sans-serif"
       }}>
         <div>Loading notifications...</div>
