@@ -353,19 +353,19 @@
 }
 
 /* Support Form Dropdowns Overrides */
-.ticket-form select {
+.employee-layout .ticket-form select {
     background: #ffffff !important;
     color: #333333 !important;
     border: 1px solid #DDD !important;
     border-radius: 12px !important;
 }
 
-.ticket-form select option {
+.employee-layout .ticket-form select option {
     background-color: #ffffff !important;
     color: #333333 !important;
 }
 
-.ticket-form select:focus {
+.employee-layout .ticket-form select:focus {
     border-color: #6C3EF4 !important;
     box-shadow: 0 0 0 3px rgba(108, 62, 244, 0.12) !important;
 }
