@@ -250,9 +250,11 @@ function Profile() {
                     navigate("/employee/employment-contract");
                   } else if (doc.name === "NDA") {
                     navigate("/employee/nda");
+                  } else if (doc.name === "Employee Handbook" || doc.name === "Handbook") {
+                    navigate("/employee/handbook");
                   }
                 }}
-                style={{ cursor: (doc.name === "Offer Letter" || doc.name === "Employment Contract" || doc.name === "NDA") ? "pointer" : "default" }}
+                style={{ cursor: (doc.name === "Offer Letter" || doc.name === "Employment Contract" || doc.name === "NDA" || doc.name === "Employee Handbook" || doc.name === "Handbook") ? "pointer" : "default" }}
               >
                 <FileText size={32} />
                 <h4>{doc.name}</h4>
