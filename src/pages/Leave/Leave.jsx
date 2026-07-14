@@ -275,6 +275,45 @@ function Leave() {
     }
   };
 
+  const handleExportReport = () => {
+    const now = new Date();
+    const reportDate = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+    const empName = employee?.full_name || employee?.username || 'Employee';
+    const empId = employee?.employee_id || employee?.id || 'N/A';
+    const empDept = employee?.department || 'N/A';
+    const empDesignation = employee?.designation || 'N/A';
+
+    const earnedLeft = balances ? (balances.earned_total - balances.earned_used) : 20;
+    const sickLeft = balances ? (balances.sick_total - balances.sick_used) : 10;
+    const casualLeft = balances ? (balances.casual_total - balances.casual_used) : 12;
+
+    const statsHTML = stats.map(function(s) {
+      return '<div class="stat-box"><div class="label">' + s.title + '</div><div class="value">' + s.value + '</div><div class="sub">' + s.sub + '</div></div>';
+    }).join('');
+
+    let historyHTML = '';
+    requests.forEach(function(item) {
+      const leaveType = item.leave_type.toLowerCase().includes('leave') ? item.leave_type : item.leave_type + ' Leave';
+      const from = new Date(item.from_date || item.start_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      const to = new Date(item.to_date || item.end_date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      const days = item.total_days || '-';
+      const st = item.status || '';
+      let badgeBg = '#FFF3DA'; let badgeColor = '#FF9E44';
+      if (st === 'Approved' || st === 'APPROVED') { badgeBg = '#DDF9EA'; badgeColor = '#22B573'; }
+      else if (st === 'Rejected' || st === 'REJECTED') { badgeBg = '#FCE5E5'; badgeColor = '#E5484D'; }
+      else if (st === 'Pending' || st === 'PENDING') { badgeBg = '#FFF3DA'; badgeColor = '#FF9E44'; }
+      historyHTML += '<tr><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + leaveType + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + from + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + to + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + days + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;"><span style="background:' + badgeBg + ';color:' + badgeColor + ';padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;">' + st + '</span></td></tr>';
+    });
+
+    const reportHTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Leave Report - ' + empName + '</title><style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: Segoe UI, Arial, sans-serif; color: #333; background: #fff; padding: 40px; } .report-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #6C3EF4; padding-bottom: 20px; margin-bottom: 30px; } .report-header h1 { font-size: 26px; color: #6C3EF4; margin-bottom: 4px; } .report-header p { font-size: 13px; color: #666; } .report-header .company { font-size: 22px; font-weight: 700; color: #222; } .emp-info { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-bottom: 28px; padding: 16px 20px; background: #F8F8FC; border-radius: 12px; } .emp-info div { font-size: 13px; color: #555; } .emp-info div strong { color: #222; } .section-title { font-size: 18px; font-weight: 700; color: #222; margin: 28px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #ECECEC; } .stats-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-bottom: 24px; } .stat-box { background: #F8F8FC; border: 1px solid #ECECEC; border-radius: 14px; padding: 16px; text-align: center; } .stat-box .value { font-size: 26px; font-weight: 700; color: #222; } .stat-box .label { font-size: 11px; color: #777; display: block; margin-bottom: 6px; } .stat-box .sub { font-size: 10px; color: #999; margin-top: 4px; } .balance-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 24px; } .balance-box { background: #F8F8FC; border-radius: 14px; padding: 16px; display: flex; justify-content: space-between; align-items: center; } .balance-box span { font-size: 13px; color: #555; } .balance-box strong { font-size: 15px; color: #222; } table { width: 100%; border-collapse: collapse; } table th { text-align: left; padding: 10px 14px; background: #F8F8FC; color: #666; font-size: 12px; font-weight: 600; } .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #ECECEC; font-size: 11px; color: #999; text-align: center; } @media print { body { padding: 20px; } }</style></head><body><div class="report-header"><div><h1>Leave Management Report</h1><p>Annual Leave Summary</p></div><div style="text-align:right;"><div class="company">ZeAI Soft</div><p>Generated on ' + reportDate + '</p></div></div><div class="emp-info"><div><strong>Employee:</strong> ' + empName + '</div><div><strong>Employee ID:</strong> ' + empId + '</div><div><strong>Department:</strong> ' + empDept + '</div><div><strong>Designation:</strong> ' + empDesignation + '</div></div><div class="section-title">Leave Overview</div><div class="stats-row">' + statsHTML + '</div><div class="section-title">Leave Balance</div><div class="balance-grid"><div class="balance-box"><span>Earned Leave</span><strong>' + earnedLeft + ' Days</strong></div><div class="balance-box"><span>Sick Leave</span><strong>' + sickLeft + ' Days</strong></div><div class="balance-box"><span>Casual Leave</span><strong>' + casualLeft + ' Days</strong></div><div class="balance-box"><span>Work From Home</span><strong>8 Days</strong></div></div><div class="section-title">Leave Request History</div><table><thead><tr><th>Leave Type</th><th>From</th><th>To</th><th>Days</th><th>Status</th></tr></thead><tbody>' + (historyHTML || '<tr><td colspan="5" style="text-align:center;color:#bfbfbf;padding:20px;">No leave requests found.</td></tr>') + '</tbody></table><div class="footer">This report was auto-generated by ZeAI HRMS &bull; Confidential</div><scr' + 'ipt>window.onload = function() { window.print(); }</scr' + 'ipt></body></html>';
+
+    const reportWindow = window.open('', '_blank');
+    if (reportWindow) {
+      reportWindow.document.write(reportHTML);
+      reportWindow.document.close();
+    }
+  };
+
   if (loading) {
     return (
       <div style={{
@@ -305,7 +344,7 @@ function Leave() {
           <h1>Leave Management</h1>
           <p>Apply leave and track approval status.</p>
         </div>
-        <button className="download-btn" onClick={() => window.print()}>
+        <button className="download-btn" onClick={handleExportReport}>
           <Download size={18} />
           Download Report
         </button>
