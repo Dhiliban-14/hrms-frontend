@@ -241,6 +241,57 @@ function Attendance() {
     }
   };
 
+  const handleExportReport = () => {
+    const now = new Date();
+    const monthYear = now.toLocaleString("default", { month: "long", year: "numeric" });
+    const reportDate = now.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
+    const empName = employee?.full_name || employee?.username || "Employee";
+    const empId = employee?.employee_id || employee?.id || "N/A";
+    const empDept = employee?.department || "N/A";
+    const empDesignation = employee?.designation || "N/A";
+
+    const calendarDays = getCalendarDays();
+    let calendarHTML = '';
+    calendarDays.forEach((day) => {
+      const status = getDayStatus(day);
+      let bgColor = '#FAFAFA'; let textColor = '#333'; let borderColor = '#ECECEC';
+      if (status === 'present') { bgColor = '#DDF9EA'; textColor = '#22B573'; borderColor = '#22B573'; }
+      else if (status === 'absent') { bgColor = '#FCE5E5'; textColor = '#E5484D'; borderColor = '#E5484D'; }
+      else if (status === 'leave') { bgColor = '#FFF3DA'; textColor = '#FF9E44'; borderColor = '#FF9E44'; }
+      calendarHTML += `<div style="height:44px;border:1px solid ${borderColor};border-radius:10px;display:flex;justify-content:center;align-items:center;background:${bgColor};color:${textColor};font-weight:600;font-size:13px;">${day}</div>`;
+    });
+
+    let historyHTML = '';
+    logs.slice(0, 15).forEach((item) => {
+      const dateStr = new Date(item.date).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+      const checkIn = formatTimeString(item.check_in);
+      const checkOut = formatTimeString(item.check_out);
+      const hours = item.working_hours ? `${item.working_hours}h` : '-';
+      const st = item.status || '';
+      let badgeBg = '#DDF9EA'; let badgeColor = '#22B573';
+      if (st === 'LATE') { badgeBg = '#FFF3DA'; badgeColor = '#FF9E44'; }
+      else if (st === 'ABSENT') { badgeBg = '#FCE5E5'; badgeColor = '#E5484D'; }
+      else if (st === 'LEAVE') { badgeBg = '#F3EEFF'; badgeColor = '#6C3EF4'; }
+      historyHTML += '<tr><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + dateStr + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + checkIn + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + checkOut + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;color:#333;">' + hours + '</td><td style="padding:10px 14px;border-bottom:1px solid #f0f0f0;"><span style="background:' + badgeBg + ';color:' + badgeColor + ';padding:4px 14px;border-radius:20px;font-size:12px;font-weight:600;">' + st + '</span></td></tr>';
+    });
+
+    const statsHTML = stats.map(function(s) {
+      return '<div class="stat-box"><div class="label">' + s.title + '</div><div class="value">' + s.value + '</div><div class="sub">' + s.sub + '</div></div>';
+    }).join('');
+
+    const checkInStr = formatTimeString(todayLog?.check_in);
+    const checkOutStr = formatTimeString(todayLog?.check_out);
+    const breakStr = todayLog?.break_time ? todayLog.break_time + ' Hrs' : '00:00 Hrs';
+
+    const reportHTML = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><title>Attendance Report - ' + empName + '</title><style>* { margin: 0; padding: 0; box-sizing: border-box; } body { font-family: Segoe UI, Arial, sans-serif; color: #333; background: #fff; padding: 40px; } .report-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #6C3EF4; padding-bottom: 20px; margin-bottom: 30px; } .report-header h1 { font-size: 26px; color: #6C3EF4; margin-bottom: 4px; } .report-header p { font-size: 13px; color: #666; } .report-header .company { font-size: 22px; font-weight: 700; color: #222; } .emp-info { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-bottom: 28px; padding: 16px 20px; background: #F8F8FC; border-radius: 12px; } .emp-info div { font-size: 13px; color: #555; } .emp-info div strong { color: #222; } .section-title { font-size: 18px; font-weight: 700; color: #222; margin: 28px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #ECECEC; } .stats-row { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-bottom: 24px; } .stat-box { background: #F8F8FC; border: 1px solid #ECECEC; border-radius: 14px; padding: 16px; text-align: center; } .stat-box .value { font-size: 26px; font-weight: 700; color: #222; } .stat-box .label { font-size: 11px; color: #777; display: block; margin-bottom: 6px; } .stat-box .sub { font-size: 10px; color: #999; margin-top: 4px; } .today-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; } .today-box { background: #F8F8FC; border-radius: 14px; padding: 16px; } .today-box span { font-size: 11px; color: #777; } .today-box h3 { font-size: 22px; color: #222; margin-top: 6px; } .calendar-wrap { margin-bottom: 24px; } .week-header { display: grid; grid-template-columns: repeat(7, 1fr); text-align: center; font-weight: 600; color: #777; font-size: 12px; margin-bottom: 8px; } .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; } .legend { display: flex; gap: 20px; margin-top: 10px; font-size: 12px; color: #666; } .legend span { width: 12px; height: 12px; border-radius: 3px; display: inline-block; margin-right: 5px; vertical-align: middle; } table { width: 100%; border-collapse: collapse; } table th { text-align: left; padding: 10px 14px; background: #F8F8FC; color: #666; font-size: 12px; font-weight: 600; } .footer { margin-top: 40px; padding-top: 16px; border-top: 1px solid #ECECEC; font-size: 11px; color: #999; text-align: center; } @media print { body { padding: 20px; } }</style></head><body><div class="report-header"><div><h1>Attendance Report</h1><p>' + monthYear + '</p></div><div style="text-align:right;"><div class="company">ZeAI Soft</div><p>Generated on ' + reportDate + '</p></div></div><div class="emp-info"><div><strong>Employee:</strong> ' + empName + '</div><div><strong>Employee ID:</strong> ' + empId + '</div><div><strong>Department:</strong> ' + empDept + '</div><div><strong>Designation:</strong> ' + empDesignation + '</div></div><div class="section-title">Monthly Summary</div><div class="stats-row">' + statsHTML + '</div><div class="section-title">Today\'s Attendance</div><div class="today-grid"><div class="today-box"><span>Check In</span><h3>' + checkInStr + '</h3></div><div class="today-box"><span>Check Out</span><h3>' + checkOutStr + '</h3></div><div class="today-box"><span>Working Hours</span><h3>' + workingTime + '</h3></div><div class="today-box"><span>Break Time</span><h3>' + breakStr + '</h3></div></div><div class="section-title">Attendance Calendar &#8212; ' + monthYear + '</div><div class="calendar-wrap"><div class="week-header"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div><div class="cal-grid">' + calendarHTML + '</div><div class="legend"><div><span style="background:#DDF9EA;"></span> Present</div><div><span style="background:#FFF3DA;"></span> Leave</div><div><span style="background:#FCE5E5;"></span> Absent</div></div></div><div class="section-title">Attendance History</div><table><thead><tr><th>Date</th><th>Check In</th><th>Check Out</th><th>Hours</th><th>Status</th></tr></thead><tbody>' + historyHTML + '</tbody></table><div class="footer">This report was auto-generated by ZeAI HRMS &bull; Confidential</div><scr' + 'ipt>window.onload = function() { window.print(); }</scr' + 'ipt></body></html>';
+
+    const reportWindow = window.open('', '_blank');
+    if (reportWindow) {
+      reportWindow.document.write(reportHTML);
+      reportWindow.document.close();
+    }
+  };
+
   if (loading) {
     return (
       <div style={{
@@ -285,7 +336,7 @@ function Attendance() {
         </div>
 
         <div className="header-actions">
-          <button className="download-btn" onClick={() => window.print()}>
+          <button className="download-btn" onClick={handleExportReport}>
             <Download size={18} />
             Export Report
           </button>
