@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import "./Profile.css";
 
 import {
@@ -23,6 +23,7 @@ import { employeeAPI } from "../../services/api";
 
 function Profile() {
   const { employee } = useOutletContext() || {};
+  const navigate = useNavigate();
   const [hierarchyList, setHierarchyList] = useState([]);
   const [documents, setDocuments] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -239,7 +240,16 @@ function Profile() {
           <h3>Documents Assigned</h3>
           <div className="documents-grid">
             {documents.map((doc, index) => (
-              <div key={index} className="document-box">
+              <div 
+                key={index} 
+                className="document-box"
+                onClick={() => {
+                  if (doc.name === "Offer Letter") {
+                    navigate("/employee/offer-letter");
+                  }
+                }}
+                style={{ cursor: doc.name === "Offer Letter" ? "pointer" : "default" }}
+              >
                 <FileText size={32} />
                 <h4>{doc.name}</h4>
                 <span>{doc.type} ({doc.file_size})</span>

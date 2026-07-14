@@ -9,6 +9,7 @@ import EmployeeLayout from "../layouts/EmployeeLayout";
 // Main Pages
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Profile/Profile";
+import Empinfo from "../pages/Profile/Empinfo";
 import AssignedTask from "../pages/AssignedTask/AssignedTask";
 import Attendance from "../pages/Attendance/Attendance";
 import Leave from "../pages/Leave/Leave";
@@ -155,6 +156,11 @@ function AppRoutes() {
           />
 
         </Route>
+
+        <Route
+          path="/employee/offer-letter"
+          element={<Empinfo />}
+        />
 
       </Routes>
     </HashRouter>
