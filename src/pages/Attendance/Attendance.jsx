@@ -35,7 +35,7 @@ function Attendance() {
   useEffect(() => {
     let interval = null;
     if (todayLog && !todayLog.check_out) {
-      const checkInDate = new Date(`${todayLog.date}T${todayLog.check_in}Z`);
+      const checkInDate = new Date(`${todayLog.date}T${todayLog.check_in}`);
 
       const updateTimer = () => {
         const now = new Date();
