@@ -33,6 +33,55 @@ function Dashboard() {
   const [leaves, setLeaves] = useState(null);
   const [payroll, setPayroll] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [todayLog, setTodayLog] = useState(null);
+  const [workingTime, setWorkingTime] = useState("00h 00m");
+
+  const formatWorkingHours = (decimalHours) => {
+    if (!decimalHours) return "00h 00m";
+    const totalSecs = Math.round(Number(decimalHours) * 3600);
+    const mins = Math.floor((totalSecs / 60) % 60);
+    const hours = Math.floor(totalSecs / 3600);
+    return `${hours}h ${mins}m`;
+  };
+
+  const formatTimeString = (timeStr) => {
+    if (!timeStr) return "--:--";
+    try {
+      const parts = timeStr.split(":");
+      const hours = parseInt(parts[0]);
+      const minutes = parts[1];
+      const ampm = hours >= 12 ? "PM" : "AM";
+      const formattedHours = hours % 12 || 12;
+      return `${formattedHours}:${minutes} ${ampm}`;
+    } catch (e) {
+      return timeStr;
+    }
+  };
+
+  useEffect(() => {
+    let interval = null;
+    if (todayLog && !todayLog.check_out) {
+      const checkInDate = new Date(`${todayLog.date}T${todayLog.check_in}Z`);
+      const updateTimer = () => {
+        const now = new Date();
+        let diffMs = now.getTime() - checkInDate.getTime();
+        if (diffMs < 0) diffMs = 0;
+        
+        const mins = Math.floor((diffMs / 1000 / 60) % 60);
+        const hours = Math.floor(diffMs / 1000 / 60 / 60);
+        setWorkingTime(`${hours}h ${mins}m`);
+      };
+      updateTimer();
+      interval = setInterval(updateTimer, 60000); // Update every minute
+    } else if (todayLog && todayLog.check_out) {
+      setWorkingTime(formatWorkingHours(todayLog.working_hours));
+    } else {
+      setWorkingTime("00h 00m");
+    }
+    return () => {
+      if (interval) clearInterval(interval);
+    };
+  }, [todayLog]);
 
   useEffect(() => {
     if (!employee) return;
@@ -45,16 +94,27 @@ function Dashboard() {
           assignedTasks,
           leaveBalances,
           payrollHistory,
-          notifyList
+          notifyList,
+          attendanceLogs
         ] = await Promise.allSettled([
           attendanceAPI.getMetrics(),
           taskAPI.getTasks(),
           leaveAPI.getBalances(),
           payrollAPI.getHistory(),
-          notificationAPI.getNotifications()
+          notificationAPI.getNotifications(),
+          attendanceAPI.getLogs()
         ]);
 
         const presentDaysVal = attendanceMetrics.status === "fulfilled" ? attendanceMetrics.value.present_days : "0";
+
+        let todayEntry = null;
+        if (attendanceLogs.status === "fulfilled" && attendanceLogs.value) {
+          const logsRes = attendanceLogs.value;
+          const now = new Date();
+          const todayStr = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+          todayEntry = logsRes.find(log => log.date === todayStr);
+          setTodayLog(todayEntry || null);
+        }
         
         let tasksData = [];
         let pendingTasksCount = 0;
@@ -292,7 +352,7 @@ function Dashboard() {
 
               <span>Check In</span>
 
-              <h2>09:02 AM</h2>
+              <h2>{todayLog?.check_in ? formatTimeString(todayLog.check_in) : "--:--"}</h2>
 
             </div>
 
@@ -302,7 +362,7 @@ function Dashboard() {
 
               <span>Check Out</span>
 
-              <h2>06:15 PM</h2>
+              <h2>{todayLog?.check_out ? formatTimeString(todayLog.check_out) : "--:--"}</h2>
 
             </div>
 
@@ -312,7 +372,7 @@ function Dashboard() {
 
               <span>Working Hours</span>
 
-              <h2>08h 13m</h2>
+              <h2>{workingTime}</h2>
 
             </div>
 
@@ -322,9 +382,9 @@ function Dashboard() {
 
               <span>Status</span>
 
-              <label className="status-present">
+              <label className={todayLog ? `status-${todayLog.status.toLowerCase()}` : "status-absent"}>
 
-                Present
+                {todayLog ? todayLog.status : "Not Checked In"}
 
               </label>
 

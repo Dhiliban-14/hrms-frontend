@@ -198,13 +198,35 @@
     color:#222;
 }
 
-.status-present{
+.status-present, .status-present_days {
     display:inline-block;
     margin-top:10px;
     padding:7px 18px;
     border-radius:20px;
     background:#DDF9EA;
     color:#22B573;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status-late {
+    display:inline-block;
+    margin-top:10px;
+    padding:7px 18px;
+    border-radius:20px;
+    background:#FFF3DA;
+    color:#FF9E44;
+    font-size:13px;
+    font-weight:600;
+}
+
+.status-absent, .status-absent_days {
+    display:inline-block;
+    margin-top:10px;
+    padding:7px 18px;
+    border-radius:20px;
+    background:#FCE5E5;
+    color:#E5484D;
     font-size:13px;
     font-weight:600;
 }
