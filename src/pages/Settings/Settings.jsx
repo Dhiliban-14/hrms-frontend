@@ -284,25 +284,17 @@ function Settings() {
             <Globe size={22} />
             <div>
               <h4>Language</h4>
-              <select 
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                style={{
-                  background: "rgba(255, 255, 255, 0.05)",
-                  border: "1px solid rgba(255, 255, 255, 0.08)",
-                  color: "#ffffff",
-                  padding: "6px 12px",
-                  borderRadius: "8px",
-                  outline: "none",
-                  marginTop: "8px",
-                  cursor: "pointer"
-                }}
-              >
-                <option value="English">English</option>
-                <option value="Tamil">Tamil</option>
-                <option value="Hindi">Hindi</option>
-              </select>
+              <p>Select display language</p>
             </div>
+            <select 
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="language-select"
+            >
+              <option value="English">English</option>
+              <option value="Tamil">Tamil</option>
+              <option value="Hindi">Hindi</option>
+            </select>
           </div>
         </div>
       </div>
