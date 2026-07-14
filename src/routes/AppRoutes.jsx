@@ -10,6 +10,7 @@ import EmployeeLayout from "../layouts/EmployeeLayout";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Profile/Profile";
 import Empinfo from "../pages/Profile/Empinfo";
+import EmpContract from "../pages/Profile/EmpContract";
 import AssignedTask from "../pages/AssignedTask/AssignedTask";
 import Attendance from "../pages/Attendance/Attendance";
 import Leave from "../pages/Leave/Leave";
@@ -160,6 +161,11 @@ function AppRoutes() {
         <Route
           path="/employee/offer-letter"
           element={<Empinfo />}
+        />
+
+        <Route
+          path="/employee/employment-contract"
+          element={<EmpContract />}
         />
 
       </Routes>

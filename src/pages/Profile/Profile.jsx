@@ -246,9 +246,11 @@ function Profile() {
                 onClick={() => {
                   if (doc.name === "Offer Letter") {
                     navigate("/employee/offer-letter");
+                  } else if (doc.name === "Employment Contract") {
+                    navigate("/employee/employment-contract");
                   }
                 }}
-                style={{ cursor: doc.name === "Offer Letter" ? "pointer" : "default" }}
+                style={{ cursor: (doc.name === "Offer Letter" || doc.name === "Employment Contract") ? "pointer" : "default" }}
               >
                 <FileText size={32} />
                 <h4>{doc.name}</h4>
