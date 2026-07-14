@@ -352,8 +352,10 @@
 
 }
 
-/* Support Form Dropdowns Overrides */
-.employee-layout .ticket-form select {
+/* Support Form Dropdowns & Inputs Overrides */
+.employee-layout .ticket-form select,
+.employee-layout .ticket-form input,
+.employee-layout .ticket-form textarea {
     background: #ffffff !important;
     color: #333333 !important;
     border: 1px solid #DDD !important;
@@ -365,7 +367,9 @@
     color: #333333 !important;
 }
 
-.employee-layout .ticket-form select:focus {
+.employee-layout .ticket-form select:focus,
+.employee-layout .ticket-form input:focus,
+.employee-layout .ticket-form textarea:focus {
     border-color: #6C3EF4 !important;
     box-shadow: 0 0 0 3px rgba(108, 62, 244, 0.12) !important;
 }
