@@ -11,6 +11,7 @@ import Dashboard from "../pages/Dashboard/Dashboard";
 import Profile from "../pages/Profile/Profile";
 import Empinfo from "../pages/Profile/Empinfo";
 import EmpContract from "../pages/Profile/EmpContract";
+import NDA from "../pages/Profile/NDA";
 import AssignedTask from "../pages/AssignedTask/AssignedTask";
 import Attendance from "../pages/Attendance/Attendance";
 import Leave from "../pages/Leave/Leave";
@@ -166,6 +167,11 @@ function AppRoutes() {
         <Route
           path="/employee/employment-contract"
           element={<EmpContract />}
+        />
+
+        <Route
+          path="/employee/nda"
+          element={<NDA />}
         />
 
       </Routes>
