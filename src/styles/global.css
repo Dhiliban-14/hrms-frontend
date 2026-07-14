@@ -180,3 +180,52 @@ input{
 .employee-layout .text-secondary {
   color: var(--text-secondary, #4b5563) !important;
 }
+
+/* Print CSS fallbacks */
+@media print {
+  .sidebar-container,
+  .sidebar,
+  .top-navbar,
+  .top-navbar-container,
+  .navbar,
+  .breadcrumb,
+  .download-btn,
+  .export-btn,
+  .ticket-form,
+  .header-actions,
+  button,
+  .faq-card,
+  .emergency-card,
+  .chat-card,
+  .contact-card,
+  .salary-chart,
+  .chart-card,
+  .live-chat,
+  .legend,
+  .leave-form-container,
+  form {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #333333 !important;
+  }
+
+  .main-content,
+  .page-container,
+  .leave-page,
+  .attendance-page,
+  .payroll-page,
+  .support-page {
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+    background: #ffffff !important;
+    color: #333333 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, span, strong, td, th {
+    color: #333333 !important;
+  }
+}
