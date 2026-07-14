@@ -284,7 +284,7 @@ function Settings() {
             <Globe size={22} />
             <div>
               <h4>Language</h4>
-              <p>Select display language</p>
+              <p>{language}</p>
             </div>
             <select 
               value={language}
