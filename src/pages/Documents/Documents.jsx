@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import "./Documents.css";
 
 import {
@@ -14,6 +14,7 @@ import {
 import api, { employeeAPI } from "../../services/api";
 
 function Documents() {
+  const navigate = useNavigate();
   const { employee } = useOutletContext() || {};
   const [activeTab, setActiveTab] = useState("assigned");
   const [assignedDocs, setAssignedDocs] = useState([]);
@@ -64,8 +65,7 @@ function Documents() {
   };
 
   const handleDownloadLetter = (letter) => {
-    const downloadUrl = `${baseURL}/employees/me/verification-letters/download/${letter.request_id}`;
-    window.open(downloadUrl, "_blank");
+    navigate("/employee/verification-letter", { state: { letter } });
   };
 
   const handleRequestSubmit = async (e) => {

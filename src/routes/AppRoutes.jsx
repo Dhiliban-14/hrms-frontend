@@ -13,6 +13,7 @@ import Empinfo from "../pages/Profile/Empinfo";
 import EmpContract from "../pages/Profile/EmpContract";
 import NDA from "../pages/Profile/NDA";
 import Handbook from "../pages/Profile/Handbook";
+import VerificationLetter from "../pages/Profile/VerificationLetter";
 import AssignedTask from "../pages/AssignedTask/AssignedTask";
 import Attendance from "../pages/Attendance/Attendance";
 import Leave from "../pages/Leave/Leave";
@@ -178,6 +179,11 @@ function AppRoutes() {
         <Route
           path="/employee/handbook"
           element={<Handbook />}
+        />
+
+        <Route
+          path="/employee/verification-letter"
+          element={<VerificationLetter />}
         />
 
       </Routes>
