@@ -174,7 +174,7 @@ export default function VerificationLetter() {
                      <div className="flex flex-col items-start w-full">
                        <div className="flex items-start gap-0.5 w-fit">
                          <p className="font-inter text-2xl font-extrabold leading-8 w-fit tracking-[-0.05em]">
-                           <span className="text-purple-verif">Ze</span><span className="text-dark-brand">AI</span>
+                           <span className="text-purple-verif">Ze</span><span className={employee?.theme_mode === "Dark" ? "text-white" : "text-dark-brand"}>AI</span>
                          </p>
                          <p className="font-inter text-[10px] font-bold text-purple-verif self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                            SOFT
@@ -205,8 +205,8 @@ export default function VerificationLetter() {
                 </div>
                 <div className="bg-[#9333EA] w-full h-px"></div>
                 <div className="flex flex-col items-center w-full">
-                  <p className="text-[#1E293B] font-inter text-lg font-bold leading-7 w-fit">
-                    TO WHOM IT MAY CONCERN
+                  <p className="text-[#1E293B] font-inter text-lg font-bold leading-7 w-fit uppercase">
+                    {letter.recipient || "TO WHOM IT MAY CONCERN"}
                   </p>
                 </div>
                 <div className="flex pt-2 justify-end items-start w-full">
@@ -219,7 +219,7 @@ export default function VerificationLetter() {
                 <div className="flex pt-2 flex-col items-start gap-3 w-full">
                   <div className="flex flex-col items-start w-full">
                     <p className="text-[#374151] font-inter text-xs leading-[19.5px] w-full">
-                      This is to certify that {employee?.name || "Mr. Alex Rivera"} (Emp ID: {employee?.employee_id || "EMP-2048"}) is employed with ZeAI Soft Pvt. Ltd. as a {employee?.designation || "Software Engineer"} in the {employee?.department || "Engineering"} Department since {employee?.joining_date || "Jan 10, 2022"}.
+                      This is to certify that {employee?.full_name || "Mr. Alex Rivera"} (Emp ID: {employee?.employee_id || "EMP-2048"}) is employed with ZeAI Soft Pvt. Ltd. as a {employee?.designation || "Software Engineer"} in the {employee?.department || "Engineering"} Department since {employee?.joining_date || "Jan 10, 2022"}.
                     </p>
                   </div>
                   <div className="flex flex-col items-start w-full">
@@ -230,8 +230,7 @@ export default function VerificationLetter() {
                   </div>
                   <div className="flex flex-col items-start w-full">
                     <p className="text-[#374151] font-inter text-xs leading-[19.5px] w-full">
-                      This letter is issued upon his request for Visa
-                      Application purpose.
+                      This letter is issued upon request for {letter.purpose || "Visa Application"} purpose.
                     </p>
                   </div>
                   <div className="flex flex-col items-start w-full">

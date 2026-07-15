@@ -83,7 +83,7 @@ function Profile() {
         return;
       }
 
-      await employeeAPI.requestVerificationLetter({
+      const res = await employeeAPI.requestVerificationLetter({
         purpose,
         recipient,
         email: employee?.email || "",
@@ -92,6 +92,7 @@ function Profile() {
       });
 
       alert("Employment Verification Letter request submitted and auto-generated successfully!");
+      navigate("/employee/verification-letter", { state: { letter: res } });
     } catch (err) {
       console.error("Verification letter request failed:", err);
       alert(err.response?.data?.detail || "Failed to submit request.");
