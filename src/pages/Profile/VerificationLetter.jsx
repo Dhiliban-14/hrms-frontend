@@ -176,7 +176,7 @@ export default function VerificationLetter() {
                          <p className="font-inter text-2xl font-extrabold leading-8 w-fit tracking-[-0.05em]">
                            <span className="text-[#6D28D9]">Ze</span><span className="text-[#191C1E]">AI</span>
                          </p>
-                         <p className="font-inter text-[10px] font-bold text-[#6D28D9] self-center" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
+                         <p className="font-inter text-[10px] font-bold text-[#6D28D9] self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                            SOFT
                          </p>
                        </div>

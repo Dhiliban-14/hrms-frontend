@@ -174,7 +174,7 @@ export default function Empinfo() {
                          <p className="font-nimbusSans text-3xl font-black leading-9 w-fit">
                            <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span>
                          </p>
-                         <p className="font-nimbusSans text-[10px] font-bold text-[#4200BB] tracking-[0.1em] self-center" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
+                         <p className="font-nimbusSans text-[10px] font-bold text-[#4200BB] self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                            SOFT
                          </p>
                        </div>

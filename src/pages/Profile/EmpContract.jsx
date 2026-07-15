@@ -133,7 +133,7 @@ export default function EmpContract() {
                      <p className="font-inter text-2xl font-black leading-8 w-fit tracking-[-0.05em]">
                        <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span>
                      </p>
-                     <p className="font-inter text-[10px] font-bold text-[#4200BB] self-center" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
+                     <p className="font-inter text-[10px] font-bold text-[#4200BB] self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                        SOFT
                      </p>
                    </div>

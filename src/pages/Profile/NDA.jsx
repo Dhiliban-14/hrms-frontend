@@ -305,7 +305,7 @@ export default function NDA() {
                             <p className="font-nimbusSans text-3xl font-bold leading-9 w-fit">
                               <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span>
                             </p>
-                            <p className="font-nimbusSans text-[10px] font-bold text-[#5A18EE] self-center" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
+                            <p className="font-nimbusSans text-[10px] font-bold text-[#5A18EE] self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                               SOFT
                             </p>
                           </div>
