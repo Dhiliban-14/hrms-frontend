@@ -1,7 +1,23 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { employeeAPI } from "../../services/api";
+import logo from "../../assets/logos/logo.png";
 export default function Handbook() {
   const navigate = useNavigate();
+  const [employee, setEmployee] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    employeeAPI.getProfile()
+      .then(res => {
+        setEmployee(res);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load profile:", err);
+        setLoading(false);
+      });
+  }, []);
   const [activeSection, setActiveSection] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
   const [acknowledged, setAcknowledged] = useState({});
@@ -228,9 +244,9 @@ All grievance submissions are handled with absolute confidentiality. We guarante
       <div className="w-[297px] h-full absolute left-0 top-0">
         <div className="bg-[#000] w-[297px] h-full absolute left-0 top-0"></div>
         <img
-          src="/Image6.png"
+          src={logo}
           className="w-[243px] h-[98px] absolute left-6 top-[35px] max-w-none"
-          alt="image 6"
+          alt="ZeAI Logo"
         />
         <div className="flex flex-col items-start gap-5 w-[236px] h-[549px] absolute left-5 top-[188px]">
           <div className="flex py-3 px-4 items-center gap-3 rounded-lg w-full cursor-pointer hover:bg-[rgba(255,255,255,0.05)]" onClick={() => navigate("/employee/dashboard")}>
@@ -744,7 +760,7 @@ All grievance submissions are handled with absolute confidentiality. We guarante
         </div>
         <div className="w-[149px] h-10 absolute left-[758px] top-5">
           <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[51px] h-10 absolute left-0 top-0 overflow-hidden relative" onClick={() => navigate("/employee/notifications")}>
-            <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-6 text-center">
+            <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
               notifications
             </p>
             <div className="flex justify-center items-center absolute right-1.5 bottom-0 rounded-full border-[1.6px] border-[#FFF] bg-[#4A00C1] w-4 h-4 overflow-hidden">
@@ -754,7 +770,7 @@ All grievance submissions are handled with absolute confidentiality. We guarante
             </div>
           </button>
           <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[50px] h-10 absolute left-[57px] top-0 overflow-hidden relative" onClick={() => navigate("/employee/inbox")}>
-            <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-6 text-center">
+            <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
               mail
             </p>
             <div className="flex justify-center items-center absolute right-1.5 bottom-0 rounded-full border-[1.6px] border-[#FFF] bg-[#4A00C1] w-4 h-4 overflow-hidden">
@@ -764,7 +780,7 @@ All grievance submissions are handled with absolute confidentiality. We guarante
             </div>
           </button>
           <button className="cursor-pointer text-nowrap flex justify-center items-center w-[30px] h-6 absolute left-[119px] top-2" onClick={() => navigate("/employee/calendar")}>
-            <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-[30px] h-6 text-center">
+            <p className="shrink-0 text-[#494456] material-icons text-2xl w-[30px] h-6 text-center">
               calendar_month
             </p>
           </button>
@@ -772,18 +788,18 @@ All grievance submissions are handled with absolute confidentiality. We guarante
         <div className="flex items-center gap-3 w-[205px] h-10 absolute left-[930px] top-5 overflow-hidden cursor-pointer" onClick={() => navigate("/employee/profile")}>
           <button className="cursor-pointer text-nowrap flex justify-center items-center shrink-0 rounded-full bg-[#4A00C1] w-10 h-10 overflow-hidden">
             <p className="shrink-0 text-[#FFF] font-manrope text-sm font-bold w-[19px] text-center">
-              E
+              {employee?.full_name ? employee.full_name[0].toUpperCase() : "E"}
             </p>
           </button>
           <div className="flex flex-col items-start shrink-0 w-[117px] h-[30px] overflow-hidden">
             <p className="text-[#191C1D] font-manrope text-xs font-semibold w-[117px] h-full">
-              Employee
+              {employee?.full_name || "Employee"}
             </p>
             <p className="text-[#494456] font-manrope text-[11px] font-medium w-[117px] h-full">
-              Employee@zeai.com
+              {employee?.email || "Employee@zeai.com"}
             </p>
           </div>
-          <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-6">
+          <p className="shrink-0 text-[#494456] material-icons text-2xl w-6">
             expand_more
           </p>
         </div>

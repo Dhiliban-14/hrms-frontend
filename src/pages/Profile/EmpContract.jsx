@@ -1,8 +1,24 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { employeeAPI } from "../../services/api";
+import logo from "../../assets/logos/logo.png";
 
 export default function EmpContract() {
   const navigate = useNavigate();
+  const [employee, setEmployee] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    employeeAPI.getProfile()
+      .then(res => {
+        setEmployee(res);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load profile:", err);
+        setLoading(false);
+      });
+  }, []);
 
   useEffect(() => {
     // Inject Tailwind CSS Play CDN script
@@ -43,9 +59,9 @@ export default function EmpContract() {
       <div className="w-[297px] h-[1418px] absolute left-0 top-0">
         <div className="bg-[#000] w-[297px] h-[1418px] absolute left-0 top-0"></div>
         <img
-          src="/Image6.png"
+          src={logo}
           className="w-[230px] h-[93px] absolute left-[30px] top-[29px] max-w-none cursor-pointer"
-          alt="image 6"
+          alt="ZeAI Logo"
           onClick={() => navigate("/employee/dashboard")}
         />
         <div className="flex flex-col items-start gap-5 w-[236px] absolute left-5 top-[169px]">
@@ -229,8 +245,8 @@ export default function EmpContract() {
           </div>
         </div>
       </div>
-      <div className="inline-flex pt-[100px] pr-8 pb-8 pl-8 items-start gap-5 absolute left-[321px] top-0">
-        <div className="flex flex-col items-start gap-6 w-[596px] h-full absolute left-8 top-[100px]">
+      <div className="inline-flex pt-6 pr-8 pb-8 pl-8 items-start gap-6 absolute left-[321px] top-[80px]">
+        <div className="flex flex-col items-start gap-6 w-[640px] shrink-0">
           <div className="flex justify-between items-center w-full">
             <div className="flex items-center gap-2 w-fit cursor-pointer" onClick={() => navigate("/employee/profile")}>
               <svg
@@ -355,7 +371,7 @@ export default function EmpContract() {
                     </div>
                     <div className="flex flex-col items-start w-full">
                       <p className="text-[#191C1E] font-inter text-sm font-bold leading-5 w-full">
-                        Alex Rivera 456 Oak Grove Lane San Jose, CA 95112
+                        {employee?.full_name || "Alex Rivera"} 456 Oak Grove Lane San Jose, CA 95112
                       </p>
                     </div>
                   </div>
@@ -450,12 +466,12 @@ export default function EmpContract() {
                   <div className="flex flex-col items-start w-full">
                     <div className="flex flex-col items-start w-full">
                       <p className="text-[#191C1E] font-inter text-sm font-bold leading-5 w-full">
-                        Alex Rivera
+                        {employee?.full_name || "Alex Rivera"}
                       </p>
                     </div>
                     <div className="flex flex-col items-start w-full">
                       <p className="text-[#484456] font-inter text-xs leading-4 w-full">
-                        Software Engineer
+                        {employee?.designation || "Software Engineer"}
                       </p>
                     </div>
                     <div className="flex pt-1 flex-col items-start w-full">
@@ -474,7 +490,7 @@ export default function EmpContract() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col items-start gap-5 w-[340px] h-full absolute left-[648px] top-[100px]">
+        <div className="flex flex-col items-start gap-5 w-[320px] shrink-0">
           <div className="flex p-6 flex-col items-start gap-6 rounded-3xl border border-[rgba(255,255,255,0.20)] bg-[rgba(255,255,255,0.80)] shadow-[04px24px0rgba(0,0,0,0.04)] w-full">
             <div className="flex justify-between items-center w-full">
               <div className="flex flex-col items-start w-fit">
@@ -497,7 +513,7 @@ export default function EmpContract() {
                 </div>
                 <div className="flex flex-col items-start w-full">
                   <p className="text-[#191C1E] font-inter text-sm font-semibold leading-5 w-full">
-                    Alex Rivera
+                    {employee?.full_name || "Alex Rivera"}
                   </p>
                 </div>
               </div>
@@ -509,7 +525,7 @@ export default function EmpContract() {
                 </div>
                 <div className="flex flex-col items-start w-full">
                   <p className="text-[#191C1E] font-inter text-sm font-semibold leading-5 w-full">
-                    EMP-2048
+                    {employee?.employee_id || "EMP-2048"}
                   </p>
                 </div>
               </div>
@@ -521,7 +537,7 @@ export default function EmpContract() {
                 </div>
                 <div className="flex flex-col items-start w-full">
                   <p className="text-[#191C1E] font-inter text-sm font-semibold leading-5 w-full">
-                    Software Engineer
+                    {employee?.designation || "Software Engineer"}
                   </p>
                 </div>
               </div>
@@ -533,7 +549,7 @@ export default function EmpContract() {
                 </div>
                 <div className="flex flex-col items-start w-full">
                   <p className="text-[#191C1E] font-inter text-sm font-semibold leading-5 w-full">
-                    Engineering
+                    {employee?.department || "Engineering"}
                   </p>
                 </div>
               </div>
@@ -687,7 +703,7 @@ export default function EmpContract() {
         </div>
         <div className="w-[149px] h-10 absolute left-[758px] top-5">
           <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[51px] h-10 absolute left-0 top-0 overflow-hidden relative" onClick={() => navigate("/employee/notifications")}>
-            <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-6 text-center">
+            <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
               notifications
             </p>
             <div className="flex justify-center items-center absolute right-1.5 bottom-0 rounded-full border-[1.6px] border-[#FFF] bg-[#4A00C1] w-4 h-4 overflow-hidden">
@@ -697,7 +713,7 @@ export default function EmpContract() {
             </div>
           </button>
           <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[50px] h-10 absolute left-[57px] top-0 overflow-hidden relative" onClick={() => navigate("/employee/inbox")}>
-            <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-6 text-center">
+            <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
               mail
             </p>
             <div className="flex justify-center items-center absolute right-1.5 bottom-0 rounded-full border-[1.6px] border-[#FFF] bg-[#4A00C1] w-4 h-4 overflow-hidden">
@@ -707,7 +723,7 @@ export default function EmpContract() {
             </div>
           </button>
           <button className="cursor-pointer text-nowrap flex justify-center items-center w-[30px] h-6 absolute left-[119px] top-2" onClick={() => navigate("/employee/calendar")}>
-            <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-[30px] h-6 text-center">
+            <p className="shrink-0 text-[#494456] material-icons text-2xl w-[30px] h-6 text-center">
               calendar_month
             </p>
           </button>
@@ -715,18 +731,18 @@ export default function EmpContract() {
         <div className="flex items-center gap-3 w-[205px] h-10 absolute left-[930px] top-5 overflow-hidden cursor-pointer" onClick={() => navigate("/employee/profile")}>
           <button className="cursor-pointer text-nowrap flex justify-center items-center shrink-0 rounded-full bg-[#4A00C1] w-10 h-10 overflow-hidden">
             <p className="shrink-0 text-[#FFF] font-manrope text-sm font-bold w-[19px] text-center">
-              E
+              {employee?.full_name ? employee.full_name[0].toUpperCase() : "E"}
             </p>
           </button>
           <div className="flex flex-col items-start shrink-0 w-[117px] h-[30px] overflow-hidden">
             <p className="text-[#191C1D] font-manrope text-xs font-semibold w-[117px] h-full">
-              Employee
+              {employee?.full_name || "Employee"}
             </p>
             <p className="text-[#494456] font-manrope text-[11px] font-medium w-[117px] h-full">
-              Employee@zeai.com
+              {employee?.email || "Employee@zeai.com"}
             </p>
           </div>
-          <p className="shrink-0 text-[#494456] font-materialIcons text-2xl w-6">
+          <p className="shrink-0 text-[#494456] material-icons text-2xl w-6">
             expand_more
           </p>
         </div>
