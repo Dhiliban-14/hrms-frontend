@@ -176,9 +176,23 @@ export default function PayslipDetail() {
           {/* Main Document Card */}
           <div id="payslip-print-area" className="printable-doc-content flex p-12 flex-col items-start gap-8 rounded-[32px] border border-[#E9E4F5] bg-[#FFF] shadow-[0_4px_30px_rgba(0,0,0,0.02)] w-[820px] shrink-0">
             <div className="flex justify-between items-start w-full">
-              <div className="flex flex-col items-start gap-1">
-                <h1 className="text-3xl font-extrabold text-[#4A00C1] tracking-tight font-inter">ZeAI</h1>
-                <p className="text-[10px] text-gray-400 font-semibold tracking-wider font-inter">GLOBAL SOLUTIONS | HR DEPT</p>
+              <div className="flex flex-col items-start w-fit">
+                <div className="flex items-start gap-1 w-full justify-start select-none">
+                  <span className="font-hanken text-3xl font-extrabold tracking-[-0.05em] leading-[30px] text-purple-brand">
+                    Ze
+                    <span className="text-dark-brand">
+                      AI
+                    </span>
+                  </span>
+                  <span className="font-manrope text-[9px] font-bold text-purple-brand tracking-[0.15em] self-end mb-0.5 leading-[9px] [writing-mode:vertical-rl]">
+                    SOFT
+                  </span>
+                </div>
+                <div className="flex flex-col items-start w-full">
+                  <span className="font-inter text-[8px] font-semibold text-purple-brand tracking-[0.2em] leading-3 uppercase mt-1">
+                    EMPOWERING YOU
+                  </span>
+                </div>
               </div>
               <div className="text-right">
                 <h2 className="text-xl font-bold text-gray-800 font-inter">PAYSLIP</h2>
