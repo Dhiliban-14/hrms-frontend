@@ -196,7 +196,13 @@ function Payroll() {
     .payslip-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 3px solid #6C3EF4; padding-bottom: 20px; margin-bottom: 30px; }
     .payslip-header h1 { font-size: 26px; color: #6C3EF4; margin-bottom: 4px; }
     .payslip-header p { font-size: 13px; color: #666; }
-    .payslip-header .company { font-size: 22px; font-weight: 700; color: #222; }
+    .payslip-header .company { display: flex; flex-direction: column; align-items: flex-end; }
+    .report-logo-wrap { display: flex; align-items: flex-start; gap: 2px; line-height: 1; }
+    .report-logo-text { font-size: 24px; font-weight: 900; letter-spacing: -0.05em; font-family: Arial, sans-serif; }
+    .logo-ze { color: #4200BB; }
+    .logo-ai { color: #191C1E; }
+    .logo-soft { writing-mode: vertical-rl; text-orientation: mixed; font-size: 8px; font-weight: 700; color: #4200BB; letter-spacing: 0.15em; align-self: flex-end; margin-bottom: 2px; font-family: Arial, sans-serif; }
+    .report-logo-sub { color: #4200BB; font-size: 7px; font-weight: 500; letter-spacing: 0.2em; margin-top: 1px; text-transform: uppercase; font-family: Arial, sans-serif; }
     
     .emp-info { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 40px; margin-bottom: 28px; padding: 16px 20px; background: #F8F8FC; border-radius: 12px; }
     .emp-info div { font-size: 13px; color: #555; }
@@ -234,7 +240,13 @@ function Payroll() {
       <p>Payslip for the period of ${payPeriod}</p>
     </div>
     <div style="text-align:right;">
-      <div class="company">ZeAI Soft</div>
+      <div class="company">
+        <div class="report-logo-wrap">
+          <span class="report-logo-text"><span class="logo-ze">Ze</span><span class="logo-ai">AI</span></span>
+          <span class="logo-soft">SOFT</span>
+        </div>
+        <span class="report-logo-sub">EMPOWERING YOU</span>
+      </div>
       <p>Payslip No: ${payslipNo}</p>
       <p>Generated on ${reportDate}</p>
     </div>
