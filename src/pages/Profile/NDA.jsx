@@ -302,8 +302,8 @@ export default function NDA() {
                     <div className="flex pb-4 justify-between items-start w-full">
                       <div className="flex flex-col items-start gap-1 w-fit">
                         <div className="flex flex-col items-start w-full">
-                          <p className="text-[#5A18EE] font-nimbusSans text-3xl font-bold leading-9 w-fit">
-                            ZeAI
+                          <p className="font-nimbusSans text-3xl font-bold leading-9 w-fit">
+                            <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span>
                           </p>
                         </div>
                         <div className="flex flex-col items-start w-full">
