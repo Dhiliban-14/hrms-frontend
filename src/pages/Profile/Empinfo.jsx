@@ -54,7 +54,7 @@ export default function Empinfo() {
   }, []);
 
   return (
-    <div className="bg-[#FEFEFE] min-w-screen min-h-screen overflow-hidden relative">
+    <div className="bg-[#FEFEFE] min-w-screen min-h-screen relative">
       <div className="flex flex-col items-start bg-[#CBC3D9] w-px h-8 absolute left-[1229px] top-6 overflow-hidden"></div>
       <div className="w-[297px] h-[1418px] absolute left-0 top-0">
         <div className="bg-[#000] w-[297px] h-[1418px] absolute left-0 top-0"></div>
@@ -669,7 +669,7 @@ export default function Empinfo() {
           </p>
         </div>
         <div className="w-[149px] h-10 absolute left-[758px] top-5">
-          <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[51px] h-10 absolute left-0 top-0 overflow-hidden relative" onClick={() => navigate("/employee/notifications")}>
+          <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[51px] h-10 absolute left-0 top-0 overflow-hidden" onClick={() => navigate("/employee/notifications")}>
             <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
               notifications
             </p>
@@ -679,7 +679,7 @@ export default function Empinfo() {
               </p>
             </div>
           </button>
-          <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[50px] h-10 absolute left-[57px] top-0 overflow-hidden relative" onClick={() => navigate("/employee/inbox")}>
+          <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[50px] h-10 absolute left-[57px] top-0 overflow-hidden" onClick={() => navigate("/employee/inbox")}>
             <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
               mail
             </p>
