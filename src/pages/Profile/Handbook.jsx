@@ -528,7 +528,7 @@ All grievance submissions are handled with absolute confidentiality. We guarante
           </div>
         </div>
         <div className="flex pt-2 items-start gap-8 w-full">
-          <div className="flex flex-col items-start w-64 h-full">
+          <div className="flex flex-col items-start w-64">
             <div className="flex p-4 flex-col items-start gap-4 rounded-2xl border border-[#CAC3D9] bg-[#FFF] shadow-[01px2px0rgba(0,0,0,0.05)] w-full">
               <div className="flex py-0 px-4 flex-col items-start w-full">
                 <p className="text-[#4200BB] font-inter text-[11px] font-bold leading-[16.5px] w-full tracking-[0.1em]">
@@ -597,8 +597,9 @@ All grievance submissions are handled with absolute confidentiality. We guarante
                 ))}
               </div>
             </div>
-            {/* Main Content Pane */}
-            <div className="flex-1">
+          </div>
+          {/* Main Content Pane */}
+          <div className="flex-1">
               {activeSection === 1 ? (
                 <div>
                   {/* Grid of Chapter Cards */}
@@ -737,7 +738,6 @@ All grievance submissions are handled with absolute confidentiality. We guarante
             </div>
           </div>
         </div>
-      </div>
 
       {/* Top Header Navbar */}
       <div className="w-[1143px] h-20 absolute left-[297px] top-0">
