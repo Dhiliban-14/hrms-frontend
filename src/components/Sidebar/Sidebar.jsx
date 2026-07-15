@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import {
   LayoutDashboard,
   UserRound,
@@ -57,6 +57,26 @@ const menuItems = [
 ];
 
 function Sidebar() {
+  const location = useLocation();
+  const currentPath = location.pathname;
+
+  const isItemActive = (itemPath) => {
+    if (currentPath === itemPath) return true;
+    if (itemPath === "/employee/profile") {
+      return [
+        "/employee/offer-letter",
+        "/employee/employment-contract",
+        "/employee/nda",
+        "/employee/handbook",
+        "/employee/verification-letter"
+      ].some(p => currentPath.startsWith(p));
+    }
+    if (itemPath === "/employee/payroll") {
+      return currentPath.startsWith("/employee/payslip");
+    }
+    return false;
+  };
+
   return (
     <aside className="sidebar">
 
@@ -71,7 +91,7 @@ function Sidebar() {
             to={item.path}
             data-tooltip={item.title}
             className={({ isActive }) =>
-              isActive ? "menu-item active" : "menu-item"
+              isActive || isItemActive(item.path) ? "menu-item active" : "menu-item"
             }
           >
             <div className="menu-icon">
