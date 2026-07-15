@@ -301,11 +301,11 @@ export default function NDA() {
                     <div className="absolute bg-[rgba(255,255,255,0.00)] shadow-[020px25px-5pxrgba(0,0,0,0.10),08px10px-6pxrgba(0,0,0,0.10)] w-[638px] h-[1000px]"></div>
                     <div className="flex pb-4 justify-between items-start w-full">
                         <div className="flex flex-col items-start w-full">
-                          <div className="flex items-end gap-1 w-fit">
+                          <div className="flex items-start gap-0.5 w-fit">
                             <p className="font-nimbusSans text-3xl font-bold leading-9 w-fit">
                               <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span>
                             </p>
-                            <p className="font-nimbusSans text-xs font-bold leading-none mb-1 text-[#5A18EE] tracking-[0.05em]">
+                            <p className="font-nimbusSans text-[10px] font-bold text-[#5A18EE] self-center" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                               SOFT
                             </p>
                           </div>
