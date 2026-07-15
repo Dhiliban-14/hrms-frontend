@@ -303,7 +303,7 @@ export default function NDA() {
                       <div className="flex flex-col items-start gap-1 w-fit">
                         <div className="flex flex-col items-start w-full">
                           <p className="font-nimbusSans text-3xl font-bold leading-9 w-fit">
-                            <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span>
+                            <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#5A18EE]"> SOFT</span>
                           </p>
                         </div>
                         <div className="flex flex-col items-start w-full">

@@ -171,7 +171,7 @@ export default function Empinfo() {
                   <div className="flex flex-col items-start w-fit">
                     <div className="flex flex-col items-start w-full">
                       <p className="font-nimbusSans text-3xl font-black leading-9 w-fit">
-                        <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span>
+                        <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#4200BB]"> SOFT</span>
                       </p>
                     </div>
                     <div className="flex flex-col items-start w-full">

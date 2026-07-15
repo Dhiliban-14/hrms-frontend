@@ -131,7 +131,7 @@ export default function EmpContract() {
                 <div className="flex flex-col items-start w-fit">
                   <div className="flex flex-col items-start w-full">
                     <p className="font-inter text-2xl font-black leading-8 w-fit tracking-[-0.05em]">
-                      <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI SOFT</span>
+                      <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#4200BB]"> SOFT</span>
                     </p>
                   </div>
                   <div className="flex flex-col items-start w-full">

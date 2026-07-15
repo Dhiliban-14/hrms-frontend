@@ -174,7 +174,7 @@ export default function VerificationLetter() {
                     <div className="flex items-center w-full">
                       <div className="flex flex-col items-start w-fit">
                         <p className="font-inter text-2xl font-extrabold leading-8 w-fit tracking-[-0.05em]">
-                          <span className="text-[#6D28D9]">Ze</span><span className="text-[#191C1E]">AI Soft</span>
+                          <span className="text-[#6D28D9]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#6D28D9]"> Soft</span>
                         </p>
                       </div>
                     </div>
