@@ -528,7 +528,7 @@ function Leave() {
             >
               Clear Requests (Demo)
             </button>
-            <button>View All</button>
+            <button onClick={() => alert("All leave history records are already displayed in the table below.")}>View All</button>
           </div>
         </div>
 

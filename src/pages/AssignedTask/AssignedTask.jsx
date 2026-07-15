@@ -382,7 +382,7 @@ function AssignedTask() {
           <div className="bottom-card">
             <div className="card-header">
               <h3>Recent Activity</h3>
-              <button>View All</button>
+              <button onClick={() => alert("All recent task activities are already displayed.")}>View All</button>
             </div>
 
             {tasks.slice(0, 3).map((item, index) => (

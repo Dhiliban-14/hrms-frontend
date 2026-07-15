@@ -478,7 +478,7 @@ function Attendance() {
       <div className="history-card">
         <div className="card-header">
           <h3>Attendance History</h3>
-          <button>View All</button>
+          <button onClick={() => alert("All attendance history records are already displayed in the table below.")}>View All</button>
         </div>
 
         <table>
