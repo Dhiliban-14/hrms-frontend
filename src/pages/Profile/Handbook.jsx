@@ -595,8 +595,10 @@ All grievance submissions are handled with absolute confidentiality. We guarante
                     </p>
                   </div>
                 ))}
-              </div>            {/* Main Content Pane */}
-            <div className="w-full">
+              </div>
+            </div>
+            {/* Main Content Pane */}
+            <div className="flex-1">
               {activeSection === 1 ? (
                 <div>
                   {/* Grid of Chapter Cards */}
@@ -805,6 +807,5 @@ All grievance submissions are handled with absolute confidentiality. We guarante
         </div>
       </div>
     </div>
-  </div>
   );
 }
