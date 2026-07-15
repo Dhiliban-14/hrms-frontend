@@ -169,16 +169,19 @@ export default function Empinfo() {
               <div className="flex pb-8 flex-col items-start w-full">
                 <div className="flex justify-between items-start w-full">
                   <div className="flex flex-col items-start w-fit">
-                    <div className="flex flex-col items-start w-full">
-                      <p className="font-nimbusSans text-3xl font-black leading-9 w-fit">
-                        <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#4200BB]"> SOFT</span>
-                      </p>
-                    </div>
-                    <div className="flex flex-col items-start w-full">
-                      <p className="text-[#484456] font-nimbusSans text-[10px] leading-[15px] w-fit tracking-[0.1em]">
-                        GLOBAL SOLUTIONS | HR DEPT
-                      </p>
-                    </div>
+                     <div className="flex flex-col items-start w-full">
+                       <div className="flex items-end gap-1 w-fit">
+                         <p className="font-nimbusSans text-3xl font-black leading-9 w-fit">
+                           <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span>
+                         </p>
+                         <p className="font-nimbusSans text-xs font-bold leading-none mb-1 text-[#4200BB] tracking-[0.05em]">
+                           SOFT
+                         </p>
+                       </div>
+                       <p className="text-[#4200BB] font-nimbusSans text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
+                         EMPOWERING YOU
+                       </p>
+                     </div>
                   </div>
                   <div className="flex flex-col items-start w-fit">
                     <div className="flex flex-col items-end w-full">

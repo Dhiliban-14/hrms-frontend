@@ -300,18 +300,19 @@ export default function NDA() {
                   <div className="flex max-w-[896px] min-h-[1000px] p-12 flex-col items-start gap-8 bg-[#FFF] w-full h-[1000px] relative">
                     <div className="absolute bg-[rgba(255,255,255,0.00)] shadow-[020px25px-5pxrgba(0,0,0,0.10),08px10px-6pxrgba(0,0,0,0.10)] w-[638px] h-[1000px]"></div>
                     <div className="flex pb-4 justify-between items-start w-full">
-                      <div className="flex flex-col items-start gap-1 w-fit">
                         <div className="flex flex-col items-start w-full">
-                          <p className="font-nimbusSans text-3xl font-bold leading-9 w-fit">
-                            <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#5A18EE]"> SOFT</span>
-                          </p>
-                        </div>
-                        <div className="flex flex-col items-start w-full">
-                          <p className="text-[#94A3B8] font-nimbusSans text-[10px] leading-[15px] w-fit tracking-[0.1em]">
+                          <div className="flex items-end gap-1 w-fit">
+                            <p className="font-nimbusSans text-3xl font-bold leading-9 w-fit">
+                              <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span>
+                            </p>
+                            <p className="font-nimbusSans text-xs font-bold leading-none mb-1 text-[#5A18EE] tracking-[0.05em]">
+                              SOFT
+                            </p>
+                          </div>
+                          <p className="text-[#5A18EE] font-nimbusSans text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
                             EMPOWERING YOU
                           </p>
                         </div>
-                      </div>
                       <div className="flex flex-col items-start w-fit">
                         <div className="flex flex-col items-end w-full">
                           <p className="text-[#1E293B] font-nimbusSans text-xs font-bold leading-4 w-fit">

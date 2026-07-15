@@ -128,18 +128,19 @@ export default function EmpContract() {
                     />
                   </svg>
                 </div>
-                <div className="flex flex-col items-start w-fit">
-                  <div className="flex flex-col items-start w-full">
-                    <p className="font-inter text-2xl font-black leading-8 w-fit tracking-[-0.05em]">
-                      <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#4200BB]"> SOFT</span>
-                    </p>
-                  </div>
-                  <div className="flex flex-col items-start w-full">
-                    <p className="text-[#484456] font-inter text-xs leading-4 w-fit tracking-[0.1em]">
-                      ENTERPRISE SOLUTIONS
-                    </p>
-                  </div>
-                </div>
+                 <div className="flex flex-col items-start w-fit">
+                   <div className="flex items-end gap-1 w-fit">
+                     <p className="font-inter text-2xl font-black leading-8 w-fit tracking-[-0.05em]">
+                       <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span>
+                     </p>
+                     <p className="font-inter text-xs font-bold leading-none mb-1 text-[#4200BB] tracking-[0.05em]">
+                       SOFT
+                     </p>
+                   </div>
+                   <p className="text-[#4200BB] font-inter text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
+                     EMPOWERING YOU
+                   </p>
+                 </div>
               </div>
               <div className="flex flex-col items-start w-fit">
                 <div className="flex flex-col items-end w-full">

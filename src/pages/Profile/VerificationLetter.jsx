@@ -170,20 +170,21 @@ export default function VerificationLetter() {
             <div className="flex p-4 flex-col items-start rounded-xl border border-dashed border-[#D1D5DB] bg-[#F9FAFB] w-full">
               <div className="flex max-w-[576px] p-8 flex-col items-start gap-6 bg-[#FFF] shadow-[04px20px0rgba(0,0,0,0.05)] w-full">
                 <div className="flex pb-4 justify-between items-start w-full">
-                  <div className="flex flex-col items-start gap-2 w-fit">
-                    <div className="flex items-center w-full">
-                      <div className="flex flex-col items-start w-fit">
-                        <p className="font-inter text-2xl font-extrabold leading-8 w-fit tracking-[-0.05em]">
-                          <span className="text-[#6D28D9]">Ze</span><span className="text-[#191C1E]">AI</span><span className="text-[#6D28D9]"> Soft</span>
-                        </p>
-                      </div>
-                    </div>
-                    <div className="flex flex-col items-start w-full">
-                      <p className="text-[#6B7280] font-inter text-[10px] font-medium leading-[15px] w-fit tracking-[0.1em]">
-                        EMPOWERING YOU
-                      </p>
-                    </div>
-                  </div>
+                   <div className="flex flex-col items-start gap-2 w-fit">
+                     <div className="flex flex-col items-start w-full">
+                       <div className="flex items-end gap-1 w-fit">
+                         <p className="font-inter text-2xl font-extrabold leading-8 w-fit tracking-[-0.05em]">
+                           <span className="text-[#6D28D9]">Ze</span><span className="text-[#191C1E]">AI</span>
+                         </p>
+                         <p className="font-inter text-xs font-bold leading-none mb-1 text-[#6D28D9] tracking-[0.05em]">
+                           Soft
+                         </p>
+                       </div>
+                       <p className="text-[#6D28D9] font-inter text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
+                         EMPOWERING YOU
+                       </p>
+                     </div>
+                   </div>
                   <div className="flex flex-col items-start w-fit">
                     <div className="flex flex-col items-end w-full">
                       <p className="text-[#1E293B] font-inter text-sm font-bold leading-5 w-fit">
