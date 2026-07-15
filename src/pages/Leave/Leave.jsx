@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import "./Leave.css";
 
 import {
@@ -14,6 +14,7 @@ import {
 import { leaveAPI } from "../../services/api";
 
 function Leave() {
+  const navigate = useNavigate();
   const { employee } = useOutletContext() || {};
   const [stats, setStats] = useState([]);
   const [balances, setBalances] = useState(null);
@@ -539,12 +540,13 @@ function Leave() {
               <th>To</th>
               <th>Days</th>
               <th>Status</th>
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {requests.length === 0 ? (
               <tr>
-                <td colSpan="5" style={{ textAlign: "center", color: "#bfbfbf" }}>No leave requests found.</td>
+                <td colSpan="6" style={{ textAlign: "center", color: "#bfbfbf" }}>No leave requests found.</td>
               </tr>
             ) : (
               requests.map((item, index) => (
@@ -557,6 +559,27 @@ function Leave() {
                     <span className={`history-status ${item.status.toLowerCase()}`}>
                       {item.status}
                     </span>
+                  </td>
+                  <td>
+                    <button 
+                      className="view-details-btn" 
+                      onClick={() => navigate(`/employee/leave-detail/${item.id || index}`, { state: { leaveRequest: item } })}
+                      style={{
+                        background: "rgba(108, 62, 244, 0.08)",
+                        color: "#6C3EF4",
+                        border: "1px solid rgba(108, 62, 244, 0.15)",
+                        padding: "5px 12px",
+                        borderRadius: "8px",
+                        fontSize: "11px",
+                        fontWeight: "600",
+                        cursor: "pointer",
+                        transition: "0.2s"
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = "rgba(108, 62, 244, 0.15)"}
+                      onMouseLeave={(e) => e.target.style.background = "rgba(108, 62, 244, 0.08)"}
+                    >
+                      View Details
+                    </button>
                   </td>
                 </tr>
               ))

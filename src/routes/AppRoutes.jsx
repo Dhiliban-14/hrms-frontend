@@ -17,6 +17,7 @@ import VerificationLetter from "../pages/Profile/VerificationLetter";
 import AssignedTask from "../pages/AssignedTask/AssignedTask";
 import Attendance from "../pages/Attendance/Attendance";
 import Leave from "../pages/Leave/Leave";
+import LeaveDetail from "../pages/Leave/LeaveDetail";
 import Payroll from "../pages/Payroll/Payroll";
 import PayslipDetail from "../pages/Payroll/PayslipDetail";
 import Support from "../pages/Support/Support";
@@ -86,6 +87,11 @@ function AppRoutes() {
           <Route
             path="leave"
             element={<Leave />}
+          />
+
+          <Route
+            path="leave-detail/:id"
+            element={<LeaveDetail />}
           />
 
           <Route
