@@ -18,6 +18,7 @@ import AssignedTask from "../pages/AssignedTask/AssignedTask";
 import Attendance from "../pages/Attendance/Attendance";
 import Leave from "../pages/Leave/Leave";
 import Payroll from "../pages/Payroll/Payroll";
+import PayslipDetail from "../pages/Payroll/PayslipDetail";
 import Support from "../pages/Support/Support";
 import Settings from "../pages/Settings/Settings";
 
@@ -184,6 +185,11 @@ function AppRoutes() {
         <Route
           path="/employee/verification-letter"
           element={<VerificationLetter />}
+        />
+
+        <Route
+          path="/employee/payslip/:payslipNo"
+          element={<PayslipDetail />}
         />
 
       </Routes>

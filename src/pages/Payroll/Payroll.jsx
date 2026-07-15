@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import "./Payroll.css";
 
 import {
@@ -15,6 +15,7 @@ import { payrollAPI } from "../../services/api";
 
 function Payroll() {
   const { employee } = useOutletContext() || {};
+  const navigate = useNavigate();
   const [history, setHistory] = useState([]);
   const [selectedPayslip, setSelectedPayslip] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -521,7 +522,7 @@ function Payroll() {
                     </span>
                   </td>
                   <td>
-                    <button className="download-small" onClick={() => loadPayslipDetails(item.payslip_no)}>
+                    <button className="download-small" onClick={() => navigate(`/employee/payslip/${item.payslip_no}`)}>
                       View Details
                     </button>
                   </td>
