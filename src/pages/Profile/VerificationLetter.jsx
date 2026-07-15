@@ -62,10 +62,10 @@ export default function VerificationLetter() {
   }, []);
 
   return (
-    <div className="bg-[#FEFEFE] min-w-screen min-h-screen">
+    <div className="bg-[#FEFEFE] min-w-screen min-h-screen flex relative">
       <div className="flex flex-col items-start bg-[#CBC3D9] w-px h-8 absolute left-[1229px] top-6 overflow-hidden"></div>
-      <div className="w-[297px] h-[1418px] absolute left-0 top-0">
-        <div className="bg-[#000] w-[297px] h-[1418px] absolute left-0 top-0"></div>
+      <div className="w-[297px] shrink-0 min-h-screen sticky top-0">
+        <div className="bg-[#000] w-[297px] h-full absolute left-0 top-0"></div>
         <img
           src={logo}
           className="w-[230px] h-[93px] absolute left-[30px] top-[29px] max-w-none"
@@ -252,7 +252,7 @@ export default function VerificationLetter() {
           </div>
         </div>
       </div>
-      <div className="flex pt-0 pr-6 pb-8 pl-6 flex-col items-start rounded-[40px] border-t border-t-[#FEFEFE] border-l border-l-[#FEFEFE] bg-[rgba(249,250,251,0.50)] w-[1056px] h-[914px] absolute left-[322px] top-[83px]">
+      <div className="flex-1 flex flex-col items-start rounded-[40px] border-t border-t-[#FEFEFE] border-l border-l-[#FEFEFE] bg-[rgba(249,250,251,0.50)] pt-[80px] pr-6 pb-8 pl-6 min-h-screen">
         <div className="flex py-6 px-0 justify-between items-center w-full">
           <div className="flex flex-col items-start gap-1 w-fit">
             <div className="flex items-center gap-2 w-full">

@@ -239,9 +239,9 @@ All grievance submissions are handled with absolute confidentiality. We guarante
   ];
 
   return (
-    <div className="bg-[#FEFEFE] min-w-screen min-h-screen">
+    <div className="bg-[#FEFEFE] min-w-screen min-h-screen flex relative">
       <div className="flex flex-col items-start bg-[#CBC3D9] w-px h-8 absolute left-[1229px] top-6 overflow-hidden"></div>
-      <div className="w-[297px] h-full absolute left-0 top-0">
+      <div className="w-[297px] shrink-0 min-h-screen sticky top-0">
         <div className="bg-[#000] w-[297px] h-full absolute left-0 top-0"></div>
         <img
           src={logo}
@@ -429,7 +429,7 @@ All grievance submissions are handled with absolute confidentiality. We guarante
           </div>
         </div>
       </div>
-      <div className="flex p-8 flex-col items-start gap-6 w-[1020px] absolute left-[338px] top-[69px]">
+      <div className="flex-1 flex flex-col items-start gap-6 pt-[80px] pr-8 pb-8 pl-8 min-h-screen">
         <div className="flex items-center gap-2 w-full">
           <button className="cursor-pointer text-nowrap flex justify-center items-center w-9 h-5" onClick={() => navigate("/employee/profile")}>
             <p className="text-[#484456] font-inter text-[13px] leading-[19.5px] w-[37px] h-5">

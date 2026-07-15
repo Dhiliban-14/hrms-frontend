@@ -54,10 +54,10 @@ export default function Empinfo() {
   }, []);
 
   return (
-    <div className="bg-[#FEFEFE] min-w-screen min-h-screen relative">
+    <div className="bg-[#FEFEFE] min-w-screen min-h-screen flex relative">
       <div className="flex flex-col items-start bg-[#CBC3D9] w-px h-8 absolute left-[1229px] top-6 overflow-hidden"></div>
-      <div className="w-[297px] h-[1418px] absolute left-0 top-0">
-        <div className="bg-[#000] w-[297px] h-[1418px] absolute left-0 top-0"></div>
+      <div className="w-[297px] shrink-0 min-h-screen sticky top-0">
+        <div className="bg-[#000] w-[297px] h-full absolute left-0 top-0"></div>
         <img
           src={logo}
           className="w-[230px] h-[93px] absolute left-[30px] top-[29px] max-w-none cursor-pointer"
@@ -245,7 +245,7 @@ export default function Empinfo() {
           </div>
         </div>
       </div>
-      <div className="flex max-w-[1400px] pt-6 pr-6 pb-[25px] pl-6 flex-col items-start gap-4 w-[1020px] absolute left-[325px] top-[81px]">
+      <div className="flex-1 flex flex-col items-start gap-4 pt-[80px] pr-6 pb-[25px] pl-6 min-h-screen">
         <div className="flex items-center w-full">
           <div className="flex items-center gap-2 w-fit cursor-pointer" onClick={() => navigate("/employee/profile")}>
             <svg
