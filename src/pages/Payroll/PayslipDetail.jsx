@@ -174,7 +174,7 @@ export default function PayslipDetail() {
 
         <div className="flex w-full gap-6 items-start">
           {/* Main Document Card */}
-          <div id="payslip-print-area" className="flex p-12 flex-col items-start gap-8 rounded-[32px] border border-[#E9E4F5] bg-[#FFF] shadow-[0_4px_30px_rgba(0,0,0,0.02)] w-[820px] shrink-0">
+          <div id="payslip-print-area" className="printable-doc-content flex p-12 flex-col items-start gap-8 rounded-[32px] border border-[#E9E4F5] bg-[#FFF] shadow-[0_4px_30px_rgba(0,0,0,0.02)] w-[820px] shrink-0">
             <div className="flex justify-between items-start w-full">
               <div className="flex flex-col items-start gap-1">
                 <h1 className="text-3xl font-extrabold text-[#4A00C1] tracking-tight font-inter">ZeAI</h1>

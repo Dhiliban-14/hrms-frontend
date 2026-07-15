@@ -100,7 +100,7 @@ export default function EmpContract() {
               </p>
             </div>
           </div>
-          <div className="flex min-h-[1000px] p-20 flex-col items-start gap-16 rounded-xl bg-[#FFF] shadow-[010px25px-5pxrgba(0,0,0,0.10),08px10px-6pxrgba(0,0,0,0.10)] w-full overflow-hidden relative">
+          <div className="printable-doc-container printable-doc-content flex min-h-[1000px] p-20 flex-col items-start gap-16 rounded-xl bg-[#FFF] shadow-[010px25px-5pxrgba(0,0,0,0.10),08px10px-6pxrgba(0,0,0,0.10)] w-full overflow-hidden relative">
             <div className="flex pt-[173px] pr-0 pb-[172px] pl-0 flex-col justify-center items-center absolute opacity-[2%] w-[596px] h-[1194px]">
               <div className="flex pt-0 pr-[54px] pb-0 pl-0 flex-col items-start -space-y-0 w-fit">
                 <p className="text-[#191C1E] font-inter text-[200px] font-black leading-[300px] w-fit">

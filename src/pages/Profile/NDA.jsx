@@ -296,8 +296,8 @@ export default function NDA() {
                     </svg>
                   </div>
                 </div>
-                <div className="flex max-h-[800px] p-8 justify-center items-start bg-[#64748B] w-full h-[800px]">
-                  <div className="flex max-w-[896px] min-h-[1000px] p-12 flex-col items-start gap-8 bg-[#FFF] w-full h-[1000px] relative">
+                <div className="printable-doc-container flex max-h-[800px] p-8 justify-center items-start bg-[#64748B] w-full h-[800px]">
+                  <div className="printable-doc-content flex max-w-[896px] min-h-[1000px] p-12 flex-col items-start gap-8 bg-[#FFF] w-full h-[1000px] relative">
                     <div className="absolute bg-[rgba(255,255,255,0.00)] shadow-[020px25px-5pxrgba(0,0,0,0.10),08px10px-6pxrgba(0,0,0,0.10)] w-[638px] h-[1000px]"></div>
                     <div className="flex pb-4 justify-between items-start w-full">
                         <div className="flex flex-col items-start w-full">

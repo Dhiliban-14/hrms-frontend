@@ -108,7 +108,7 @@ export default function Empinfo() {
           </div>
         </div>
         <div className="flex w-full gap-6 items-start">
-          <div className="flex p-8 flex-col items-center rounded-[32px] border border-[rgba(0,0,0,0.05)] bg-[#FFF] shadow-[04px20px0rgba(0,0,0,0.05)] w-[640px] shrink-0">
+          <div className="printable-doc-container flex p-8 flex-col items-center rounded-[32px] border border-[rgba(0,0,0,0.05)] bg-[#FFF] shadow-[04px20px0rgba(0,0,0,0.05)] w-[640px] shrink-0">
             <div className="flex pb-6 flex-col items-start w-full">
               <div className="flex pb-4 justify-between items-center border-b border-b-[#CAC3D9] w-full">
                 <div className="flex flex-col items-start w-fit">
@@ -165,7 +165,7 @@ export default function Empinfo() {
                 </div>
               </div>
             </div>
-            <div className="flex max-w-[800px] p-8 flex-col items-start -space-y-px bg-[#FFF] shadow-[0010px0rgba(0,0,0,0.10)] w-full overflow-hidden">
+            <div className="printable-doc-content flex max-w-[800px] p-8 flex-col items-start -space-y-px bg-[#FFF] shadow-[0010px0rgba(0,0,0,0.10)] w-full overflow-hidden">
               <div className="flex pb-8 flex-col items-start w-full">
                 <div className="flex justify-between items-start w-full">
                   <div className="flex flex-col items-start w-fit">

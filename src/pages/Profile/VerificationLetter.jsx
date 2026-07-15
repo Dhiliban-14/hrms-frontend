@@ -167,8 +167,8 @@ export default function VerificationLetter() {
                 </p>
               </div>
             </div>
-            <div className="flex p-4 flex-col items-start rounded-xl border border-dashed border-[#D1D5DB] bg-[#F9FAFB] w-full">
-              <div className="flex max-w-[576px] p-8 flex-col items-start gap-6 bg-[#FFF] shadow-[04px20px0rgba(0,0,0,0.05)] w-full">
+            <div className="printable-doc-container flex p-4 flex-col items-start rounded-xl border border-dashed border-[#D1D5DB] bg-[#F9FAFB] w-full">
+              <div className="printable-doc-content flex max-w-[576px] p-8 flex-col items-start gap-6 bg-[#FFF] shadow-[04px20px0rgba(0,0,0,0.05)] w-full">
                 <div className="flex pb-4 justify-between items-start w-full">
                    <div className="flex flex-col items-start gap-2 w-fit">
                      <div className="flex flex-col items-start w-full">
