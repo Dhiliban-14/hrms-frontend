@@ -54,7 +54,8 @@ function AssignedTask() {
       ]);
 
       const data = tasksRes.status === "fulfilled" ? tasksRes.value : [];
-      setTasks(data || []);
+      const sortedData = (data || []).sort((a, b) => (b.progress_pct || 0) - (a.progress_pct || 0));
+      setTasks(sortedData);
 
       if (timesheetsRes.status === "fulfilled") {
         setTimesheets(timesheetsRes.value || []);
