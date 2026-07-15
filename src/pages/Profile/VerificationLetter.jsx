@@ -174,13 +174,13 @@ export default function VerificationLetter() {
                      <div className="flex flex-col items-start w-full">
                        <div className="flex items-start gap-0.5 w-fit">
                          <p className="font-inter text-2xl font-extrabold leading-8 w-fit tracking-[-0.05em]">
-                           <span className="text-[#6D28D9]">Ze</span><span className="text-[#191C1E]">AI</span>
+                           <span className="text-purple-verif">Ze</span><span className="text-dark-brand">AI</span>
                          </p>
-                         <p className="font-inter text-[10px] font-bold text-[#6D28D9] self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
+                         <p className="font-inter text-[10px] font-bold text-purple-verif self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                            SOFT
                          </p>
                        </div>
-                       <p className="text-[#6D28D9] font-inter text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
+                       <p className="text-purple-verif font-inter text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
                          EMPOWERING YOU
                        </p>
                      </div>

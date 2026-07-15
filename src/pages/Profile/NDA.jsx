@@ -303,13 +303,13 @@ export default function NDA() {
                         <div className="flex flex-col items-start w-full">
                           <div className="flex items-start gap-0.5 w-fit">
                             <p className="font-nimbusSans text-3xl font-bold leading-9 w-fit">
-                              <span className="text-[#5A18EE]">Ze</span><span className="text-[#191C1E]">AI</span>
+                              <span className="text-purple-nda">Ze</span><span className="text-dark-brand">AI</span>
                             </p>
-                            <p className="font-nimbusSans text-[10px] font-bold text-[#5A18EE] self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
+                            <p className="font-nimbusSans text-[10px] font-bold text-purple-nda self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                               SOFT
                             </p>
                           </div>
-                          <p className="text-[#5A18EE] font-nimbusSans text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
+                          <p className="text-purple-nda font-nimbusSans text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
                             EMPOWERING YOU
                           </p>
                         </div>

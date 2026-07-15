@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap');
 
+/* Brand color helper classes to preserve colors in print/PDF views */
+.text-purple-brand {
+  color: #4200BB !important;
+}
+.text-purple-nda {
+  color: #5A18EE !important;
+}
+.text-purple-verif {
+  color: #6D28D9 !important;
+}
+.text-dark-brand {
+  color: #191C1E !important;
+}
+
 *{
     margin:0;
     padding:0;
@@ -225,8 +239,8 @@ input{
     color: #333333 !important;
   }
 
-  /* Force all general text outside the printable document to #333333 */
-  body *:not(.printable-doc-content):not(.printable-doc-content *) :is(h1, h2, h3, h4, h5, h6, p, span, strong, td, th, div) {
+  /* Force all general text to #333333 in print */
+  h1, h2, h3, h4, h5, h6, p, span, strong, td, th {
     color: #333333 !important;
   }
 

@@ -172,13 +172,13 @@ export default function Empinfo() {
                      <div className="flex flex-col items-start w-full">
                        <div className="flex items-start gap-0.5 w-fit">
                          <p className="font-nimbusSans text-3xl font-black leading-9 w-fit">
-                           <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span>
+                           <span className="text-purple-brand">Ze</span><span className="text-dark-brand">AI</span>
                          </p>
-                         <p className="font-nimbusSans text-[10px] font-bold text-[#4200BB] self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
+                         <p className="font-nimbusSans text-[10px] font-bold text-purple-brand self-end" style={{writingMode:'vertical-rl', textOrientation:'mixed', letterSpacing:'0.15em'}}>
                            SOFT
                          </p>
                        </div>
-                       <p className="text-[#4200BB] font-nimbusSans text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
+                       <p className="text-purple-brand font-nimbusSans text-[9px] font-medium leading-[14px] w-fit tracking-[0.2em] mt-0.5">
                          EMPOWERING YOU
                        </p>
                      </div>
