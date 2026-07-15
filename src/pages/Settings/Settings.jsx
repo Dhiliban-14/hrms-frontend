@@ -80,6 +80,11 @@ function Settings() {
     try {
       // 1. Password update if fields are filled
       if (newPassword) {
+        if (!currentPassword) {
+          alert("Please enter your current password to change it.");
+          setSaving(false);
+          return;
+        }
         if (newPassword !== confirmPassword) {
           alert("New passwords do not match!");
           setSaving(false);
@@ -90,7 +95,7 @@ function Settings() {
           setSaving(false);
           return;
         }
-        await authAPI.changePassword(newPassword);
+        await authAPI.changePassword(currentPassword, newPassword);
         alert("Password updated successfully!");
         setCurrentPassword("");
         setNewPassword("");
@@ -113,7 +118,20 @@ function Settings() {
       alert("Settings and preferences saved successfully!");
     } catch (err) {
       console.error("Failed to save settings:", err);
-      alert(err.response?.data?.detail || "Failed to save settings.");
+      let errMsg = "Failed to save settings.";
+      if (err.response?.data?.detail) {
+        const detail = err.response.data.detail;
+        if (typeof detail === "string") {
+          errMsg = detail;
+        } else if (Array.isArray(detail)) {
+          errMsg = detail.map(d => `${d.loc ? d.loc.join('.') : 'error'}: ${d.msg}`).join('\n');
+        } else {
+          errMsg = JSON.stringify(detail);
+        }
+      } else if (err.message) {
+        errMsg = err.message;
+      }
+      alert(errMsg);
     } finally {
       setSaving(false);
     }
