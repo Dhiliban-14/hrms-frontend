@@ -50,6 +50,10 @@ export const authAPI = {
     });
     return response.data;
   },
+  logoutAll: async () => {
+    const response = await api.post("/auth/logout-all");
+    return response.data;
+  },
 };
 
 export const employeeAPI = {

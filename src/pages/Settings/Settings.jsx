@@ -428,9 +428,18 @@ function Settings() {
           <button className="outline-btn" onClick={() => setShowLoginHistory(true)}>
             Login History
           </button>
-          <button className="danger-btn" onClick={() => {
-            localStorage.removeItem("access_token");
-            window.location.reload();
+          <button className="danger-btn" onClick={async () => {
+            if (window.confirm("Are you sure you want to log out of all active devices and sessions globally?")) {
+              try {
+                await authAPI.logoutAll();
+              } catch (err) {
+                console.error("Global logout error:", err);
+              }
+              localStorage.removeItem("access_token");
+              localStorage.removeItem("user_email");
+              localStorage.removeItem("user_id");
+              window.location.reload();
+            }
           }}>
             Logout All Devices
           </button>
