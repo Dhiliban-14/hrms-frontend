@@ -58,6 +58,70 @@ function Settings() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [saving, setSaving] = useState(false);
 
+  const [showLoginHistory, setShowLoginHistory] = useState(false);
+  const [sessions, setSessions] = useState([
+    { id: 1, device: "Windows • Chrome", details: "Chennai, India", current: true },
+    { id: 2, device: "Android • Chrome", details: "Last Active • Yesterday", current: false }
+  ]);
+
+  const loginHistoryLogs = [
+    { date: "15 Jul 2026, 11:45 AM", device: "Windows 11 • Chrome 126.0", location: "Chennai, India", ip: "103.241.12.89", status: "Active Now" },
+    { date: "14 Jul 2026, 09:12 AM", device: "Android 14 • Chrome Mobile", location: "Chennai, India", ip: "103.241.12.89", status: "Logged Out" },
+    { date: "13 Jul 2026, 02:22 PM", device: "macOS Sonoma • Safari 17.4", location: "Bengaluru, India", ip: "122.164.45.102", status: "Logged Out" },
+    { date: "10 Jul 2026, 06:15 PM", device: "Windows 11 • Chrome 126.0", location: "Chennai, India", ip: "103.241.12.89", status: "Expired" }
+  ];
+
+  const handleDownloadMyData = () => {
+    try {
+      const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({
+        employee_profile: {
+          id: employee?.id,
+          employee_id: employee?.employee_id,
+          full_name: fullName,
+          email: email,
+          phone_number: phone
+        },
+        preferences: {
+          theme_mode: darkMode ? "Dark" : "Light",
+          display_language: language,
+          email_notifications: emailNotifications,
+          two_factor_auth: twoFactor
+        },
+        exported_at: new Date().toISOString()
+      }, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", dataStr);
+      downloadAnchor.setAttribute("download", `employee_data_${employee?.employee_id || 'profile'}.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to compile and download data.");
+    }
+  };
+
+  const handleExportSettings = () => {
+    try {
+      const settingsStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify({
+        theme_mode: darkMode ? "Dark" : "Light",
+        display_language: language,
+        email_notifications: emailNotifications,
+        two_factor_auth: twoFactor,
+        exported_at: new Date().toISOString()
+      }, null, 2));
+      const downloadAnchor = document.createElement('a');
+      downloadAnchor.setAttribute("href", settingsStr);
+      downloadAnchor.setAttribute("download", `settings_export.json`);
+      document.body.appendChild(downloadAnchor);
+      downloadAnchor.click();
+      downloadAnchor.remove();
+    } catch (err) {
+      console.error(err);
+      alert("Failed to export settings.");
+    }
+  };
+
   useEffect(() => {
     if (employee) {
       setFullName(employee.full_name || "");
@@ -323,25 +387,29 @@ function Settings() {
           <h3>Active Login Sessions</h3>
         </div>
 
-        <div className="session-item">
-          <div>
-            <h4>Windows • Chrome</h4>
-            <p>Chennai, India</p>
+        {sessions.map((sess) => (
+          <div className="session-item" key={sess.id}>
+            <div>
+              <h4>{sess.device}</h4>
+              <p>{sess.details}</p>
+            </div>
+            {sess.current ? (
+              <span className="active-session">
+                Current Session
+              </span>
+            ) : (
+              <button 
+                className="logout-btn" 
+                onClick={() => {
+                  setSessions(sessions.filter(s => s.id !== sess.id));
+                  alert(`Logged out of session on ${sess.device} successfully.`);
+                }}
+              >
+                Logout
+              </button>
+            )}
           </div>
-          <span className="active-session">
-            Current Session
-          </span>
-        </div>
-
-        <div className="session-item">
-          <div>
-            <h4>Android • Chrome</h4>
-            <p>Last Active • Yesterday</p>
-          </div>
-          <button className="logout-btn" onClick={() => alert("Logged out session successfully.")}>
-            Logout
-          </button>
-        </div>
+        ))}
       </div>
 
       {/* Privacy */}
@@ -351,13 +419,13 @@ function Settings() {
         </div>
 
         <div className="privacy-grid">
-          <button className="outline-btn" onClick={() => alert("Your data download has started.")}>
+          <button className="outline-btn" onClick={handleDownloadMyData}>
             Download My Data
           </button>
-          <button className="outline-btn" onClick={() => alert("Settings exported.")}>
+          <button className="outline-btn" onClick={handleExportSettings}>
             Export Settings
           </button>
-          <button className="outline-btn" onClick={() => alert("No login history available.")}>
+          <button className="outline-btn" onClick={() => setShowLoginHistory(true)}>
             Login History
           </button>
           <button className="danger-btn" onClick={() => {
@@ -368,6 +436,119 @@ function Settings() {
           </button>
         </div>
       </div>
+
+      {/* Login History Modal */}
+      {showLoginHistory && (
+        <div style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
+          backgroundColor: "rgba(15, 23, 42, 0.4)",
+          backdropFilter: "blur(4px)",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          zIndex: 9999,
+          animation: "fadeIn 0.2s ease-out"
+        }}>
+          <div style={{
+            background: "#FFF",
+            width: "90%",
+            maxWidth: "600px",
+            borderRadius: "24px",
+            border: "1px solid #E9E4F5",
+            padding: "24px",
+            boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
+          }}>
+            <div style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              borderBottom: "1px solid #F3F4F6",
+              paddingBottom: "16px",
+              marginBottom: "16px"
+            }}>
+              <h3 style={{
+                color: "#1E293B",
+                fontSize: "18px",
+                fontWeight: "700",
+                fontFamily: "Inter, sans-serif",
+                margin: 0
+              }}>Login History</h3>
+              <button 
+                onClick={() => setShowLoginHistory(false)}
+                style={{
+                  background: "none",
+                  border: "none",
+                  fontSize: "24px",
+                  color: "#9CA3AF",
+                  cursor: "pointer",
+                  padding: "4px"
+                }}
+              >
+                &times;
+              </button>
+            </div>
+
+            <div style={{ overflowX: "auto" }}>
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead>
+                  <tr style={{ borderBottom: "2px solid #F3F4F6", textAlign: "left" }}>
+                    <th style={{ padding: "10px 6px", fontSize: "11px", color: "#9CA3AF", textTransform: "uppercase" }}>Date & Time</th>
+                    <th style={{ padding: "10px 6px", fontSize: "11px", color: "#9CA3AF", textTransform: "uppercase" }}>Device</th>
+                    <th style={{ padding: "10px 6px", fontSize: "11px", color: "#9CA3AF", textTransform: "uppercase" }}>IP & Location</th>
+                    <th style={{ padding: "10px 6px", fontSize: "11px", color: "#9CA3AF", textTransform: "uppercase" }}>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {loginHistoryLogs.map((log, i) => (
+                    <tr key={i} style={{ borderBottom: "1px solid #F3F4F6" }}>
+                      <td style={{ padding: "12px 6px", fontSize: "12px", color: "#4B5563" }}>{log.date}</td>
+                      <td style={{ padding: "12px 6px", fontSize: "12px", color: "#1E293B", fontWeight: "600" }}>{log.device}</td>
+                      <td style={{ padding: "12px 6px", fontSize: "12px", color: "#4B5563" }}>
+                        <div>{log.location}</div>
+                        <div style={{ fontSize: "10px", color: "#9CA3AF" }}>{log.ip}</div>
+                      </td>
+                      <td style={{ padding: "12px 6px" }}>
+                        <span style={{
+                          fontSize: "10px",
+                          fontWeight: "600",
+                          padding: "3px 8px",
+                          borderRadius: "20px",
+                          backgroundColor: log.status === "Active Now" ? "rgba(34, 181, 115, 0.1)" : "rgba(156, 163, 175, 0.1)",
+                          color: log.status === "Active Now" ? "#22B573" : "#9CA3AF"
+                        }}>
+                          {log.status}
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <div style={{ display: "flex", justifyContent: "flex-end", marginTop: "20px" }}>
+              <button 
+                onClick={() => setShowLoginHistory(false)}
+                style={{
+                  background: "#6C3EF4",
+                  color: "#FFF",
+                  border: "none",
+                  borderRadius: "8px",
+                  padding: "8px 16px",
+                  fontSize: "13px",
+                  fontWeight: "600",
+                  cursor: "pointer"
+                }}
+              >
+                Close
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
