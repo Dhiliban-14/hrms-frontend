@@ -8,15 +8,7 @@ export default function VerificationLetter() {
   const location = useLocation();
   const [employee, setEmployee] = useState(null);
   const [loading, setLoading] = useState(true);
-
-  // Get letter from location state or fallback to a default mock letter
-  const letter = location.state?.letter || {
-    request_id: "EVL-2024-0018",
-    purpose: "Visa Application",
-    recipient: "US Embassy",
-    requested_on: "Oct 24, 2024",
-    status: "GENERATED"
-  };
+  const [letter, setLetter] = useState(location.state?.letter || null);
 
   useEffect(() => {
     // Inject Tailwind CSS Play CDN script
@@ -33,15 +25,42 @@ export default function VerificationLetter() {
     document.head.appendChild(link);
 
     // Fetch employee info
-    employeeAPI.getProfile()
-      .then(res => {
-        setEmployee(res);
+    const initData = async () => {
+      try {
+        const empProfile = await employeeAPI.getProfile();
+        setEmployee(empProfile);
+
+        if (!location.state?.letter) {
+          const letters = await employeeAPI.getVerificationLetters();
+          if (letters && letters.length > 0) {
+            setLetter(letters[letters.length - 1]);
+          } else {
+            setLetter({
+              request_id: "EVL-2024-0018",
+              purpose: "Visa Application",
+              recipient: "US Embassy",
+              requested_on: "Oct 24, 2024",
+              status: "GENERATED"
+            });
+          }
+        }
+      } catch (err) {
+        console.error("Failed to initialize verification letter data:", err);
+        if (!letter) {
+          setLetter({
+            request_id: "EVL-2024-0018",
+            purpose: "Visa Application",
+            recipient: "US Embassy",
+            requested_on: "Oct 24, 2024",
+            status: "GENERATED"
+          });
+        }
+      } finally {
         setLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to load profile:", err);
-        setLoading(false);
-      });
+      }
+    };
+
+    initData();
 
     return () => {
       // Clean up script
@@ -61,6 +80,22 @@ export default function VerificationLetter() {
       });
     };
   }, []);
+
+  if (loading || !letter) {
+    return (
+      <div style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        height: "100vh",
+        background: "#0f0f1a",
+        color: "#ffffff",
+        fontFamily: "Segoe UI, sans-serif"
+      }}>
+        <div>Loading document details...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#FEFEFE] min-w-screen min-h-screen flex relative">

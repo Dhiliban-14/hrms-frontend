@@ -64,41 +64,8 @@ function Profile() {
     fetchProfileDetails();
   }, [employee]);
 
-  const handleRequestVerification = async () => {
-    if (requestingLetter) return;
-    setRequestingLetter(true);
-    try {
-      const purpose = prompt(
-        "Enter the purpose for the Employment Verification Letter (e.g., Bank Loan, Visa Application):",
-        "General Employment Verification"
-      );
-      if (!purpose) {
-        setRequestingLetter(false);
-        return;
-      }
-
-      const recipient = prompt("Enter the recipient authority (e.g., State Bank, US Embassy):", "To Whom It May Concern");
-      if (!recipient) {
-        setRequestingLetter(false);
-        return;
-      }
-
-      const res = await employeeAPI.requestVerificationLetter({
-        purpose,
-        recipient,
-        email: employee?.email || "",
-        address: employee?.current_address || "Office Headquarters",
-        additional_notes: "Requested via Employee Self Service Portal"
-      });
-
-      alert("Employment Verification Letter request submitted and auto-generated successfully!");
-      navigate("/employee/verification-letter", { state: { letter: res } });
-    } catch (err) {
-      console.error("Verification letter request failed:", err);
-      alert(err.response?.data?.detail || "Failed to submit request.");
-    } finally {
-      setRequestingLetter(false);
-    }
+  const handleRequestVerification = () => {
+    navigate("/employee/verification-letter");
   };
 
   if (loading) {
