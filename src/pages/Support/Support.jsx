@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import "./Support.css";
 
 import {
@@ -16,6 +16,7 @@ import {
 import { supportAPI } from "../../services/api";
 
 function Support() {
+  const navigate = useNavigate();
   const { employee } = useOutletContext() || {};
   const [faqs, setFaqs] = useState([]);
   const [tickets, setTickets] = useState([]);
@@ -451,7 +452,7 @@ function Support() {
             </div>
             <p>Average Response Time</p>
             <h2>2 Minutes</h2>
-            <button className="chat-btn" onClick={() => alert("Connecting to a live HR support agent...")}>
+            <button className="chat-btn" onClick={() => navigate("/employee/messages")}>
               Start Live Chat
             </button>
           </div>
