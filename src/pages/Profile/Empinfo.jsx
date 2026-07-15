@@ -245,7 +245,7 @@ export default function Empinfo() {
           </div>
         </div>
       </div>
-      <div className="flex-1 flex flex-col items-start gap-4 pt-[80px] pr-6 pb-[25px] pl-6 min-h-screen">
+      <div className="flex-1 flex flex-col items-start gap-4 pt-8 pr-6 pb-[25px] pl-6 min-h-screen">
         <div className="flex items-center w-full">
           <div className="flex items-center gap-2 w-fit cursor-pointer" onClick={() => navigate("/employee/profile")}>
             <svg
@@ -648,72 +648,7 @@ export default function Empinfo() {
           </div>
         </div>
       </div>
-      <div className="w-[1143px] h-20 absolute left-[297px] top-0">
-        <div className="bg-[rgba(0,0,0,0.10)] w-[1143px] h-20 absolute left-0 top-0"></div>
-        <div className="flex pt-3 pr-[265px] pb-3 pl-[13px] items-center gap-[11px] rounded-xl bg-[#FFF] w-[453px] h-12 absolute left-[39px] top-4 overflow-hidden">
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="shrink-0 w-6 h-6 overflow-hidden relative "
-          >
-            <path
-              d="M19.6 21L13.3 14.7C12.8 15.1 12.225 15.4167 11.575 15.65C10.925 15.8833 10.2333 16 9.5 16C7.68333 16 6.146 15.3707 4.888 14.112C3.63 12.8533 3.00067 11.316 3 9.5C2.99933 7.684 3.62867 6.14667 4.888 4.888C6.14733 3.62933 7.68467 3 9.5 3C11.3153 3 12.853 3.62933 14.113 4.888C15.373 6.14667 16.002 7.684 16 9.5C16 10.2333 15.8833 10.925 15.65 11.575C15.4167 12.225 15.1 12.8 14.7 13.3L21 19.6L19.6 21ZM9.5 14C10.75 14 11.8127 13.5627 12.688 12.688C13.5633 11.8133 14.0007 10.7507 14 9.5C13.9993 8.24933 13.562 7.187 12.688 6.313C11.814 5.439 10.7513 5.00133 9.5 5C8.24867 4.99867 7.18633 5.43633 6.313 6.313C5.43967 7.18967 5.002 8.252 5 9.5C4.998 10.748 5.43567 11.8107 6.313 12.688C7.19033 13.5653 8.25267 14.0027 9.5 14Z"
-              fill="#9593AC"
-            />
-          </svg>
-          <p className="flex flex-col justify-center shrink-0 text-[#9593AC] font-hankenGrotesk text-[13px] font-bold leading-6 w-[140px] h-[15px]">
-            Search here......
-          </p>
-        </div>
-        <div className="w-[149px] h-10 absolute left-[758px] top-5">
-          <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[51px] h-10 absolute left-0 top-0 overflow-hidden" onClick={() => navigate("/employee/notifications")}>
-            <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
-              notifications
-            </p>
-            <div className="flex justify-center items-center absolute right-1.5 bottom-0 rounded-full border-[1.6px] border-[#FFF] bg-[#4A00C1] w-4 h-4 overflow-hidden">
-              <p className="shrink-0 text-[#FFF] font-manrope text-[10px] w-1.5 text-center">
-                8
-              </p>
-            </div>
-          </button>
-          <button className="cursor-pointer text-nowrap flex justify-center items-center rounded-full w-[50px] h-10 absolute left-[57px] top-0 overflow-hidden" onClick={() => navigate("/employee/inbox")}>
-            <p className="shrink-0 text-[#494456] material-icons text-2xl w-6 text-center">
-              mail
-            </p>
-            <div className="flex justify-center items-center absolute right-1.5 bottom-0 rounded-full border-[1.6px] border-[#FFF] bg-[#4A00C1] w-4 h-4 overflow-hidden">
-              <p className="shrink-0 text-[#FFF] font-manrope text-[10px] w-1.5 text-center">
-                5
-              </p>
-            </div>
-          </button>
-          <button className="cursor-pointer text-nowrap flex justify-center items-center w-[30px] h-6 absolute left-[119px] top-2" onClick={() => navigate("/employee/calendar")}>
-            <p className="shrink-0 text-[#494456] material-icons text-2xl w-[30px] h-6 text-center">
-              calendar_month
-            </p>
-          </button>
-        </div>
-        <div className="flex items-center gap-3 w-[205px] h-10 absolute left-[930px] top-5 overflow-hidden cursor-pointer" onClick={() => navigate("/employee/profile")}>
-          <button className="cursor-pointer text-nowrap flex justify-center items-center shrink-0 rounded-full bg-[#4A00C1] w-10 h-10 overflow-hidden">
-            <p className="shrink-0 text-[#FFF] font-manrope text-sm font-bold w-[19px] text-center">
-              {employee?.full_name ? employee.full_name[0].toUpperCase() : "E"}
-            </p>
-          </button>
-          <div className="flex flex-col items-start shrink-0 w-[117px] h-[30px] overflow-hidden">
-            <p className="text-[#191C1D] font-manrope text-xs font-semibold w-[117px] h-full">
-              {employee?.full_name || "Employee"}
-            </p>
-            <p className="text-[#494456] font-manrope text-[11px] font-medium w-[117px] h-full">
-              {employee?.email || "Employee@zeai.com"}
-            </p>
-          </div>
-          <p className="shrink-0 text-[#494456] material-icons text-2xl w-6">
-            expand_more
-          </p>
-        </div>
-      </div>
+      
     </div>
   );
 }
