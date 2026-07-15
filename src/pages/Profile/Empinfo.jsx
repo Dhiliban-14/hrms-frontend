@@ -170,8 +170,8 @@ export default function Empinfo() {
                 <div className="flex justify-between items-start w-full">
                   <div className="flex flex-col items-start w-fit">
                     <div className="flex flex-col items-start w-full">
-                      <p className="text-[#4200BB] font-nimbusSans text-3xl font-black leading-9 w-fit">
-                        ZeAI
+                      <p className="font-nimbusSans text-3xl font-black leading-9 w-fit">
+                        <span className="text-[#4200BB]">Ze</span><span className="text-[#191C1E]">AI</span>
                       </p>
                     </div>
                     <div className="flex flex-col items-start w-full">
